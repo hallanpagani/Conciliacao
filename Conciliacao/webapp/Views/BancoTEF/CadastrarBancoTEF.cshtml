@@ -1,0 +1,100 @@
+﻿@model ConciliacaoModelo.model.cadastros.BancoTEF
+@using Conciliacao.App_Helpers.Componentes
+
+@{
+    ViewBag.Title = "Cadastrar caminho do banco de dados do TEF";
+    Layout = "~/Views/Shared/Genericas/_Cadastro.cshtml";
+    ViewBag.Tamanho = " col-lg-6 ";
+}
+
+
+            @using (Html.BeginForm("CadastrarBancoTEF", "BancoTEF", FormMethod.Post, new { @class = "form-horizontal smart-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Partial("_ValidationSummary")
+
+                @Html.HiddenFor(model => model.id_tef)
+
+                <div class="row" style="padding-top: 20px;">
+
+                    <div class="row">
+
+                        <section class="col col-sm-12 col-md-12 col-lg-12">
+                            @Html.LabelFor(model => model.identificacao_tef)
+                            @Html.TextBoxPadraoFor(model => model.identificacao_tef)
+                        </section>
+                        
+                        <div class="row"></div>
+                        
+                        <section class="col col-sm-12 col-md-4 col-lg-4">
+                            <label for="sid_banco">SID Banco</label>
+                            @Html.TextBoxFor(model => model.sid_banco, new { @class = "form-control" })
+                        </section>
+
+                        <section class="col col-sm-12 col-md-6 col-lg-6">
+                            <label for="ip_banco">IP Banco</label>
+                            @Html.TextBoxFor(model => model.ip_banco, new { @class = "form-control" })
+                        </section>
+
+                        <section class="col col-sm-12 col-md-2 col-lg-2">
+                            <label for="rede_porta">Porta</label>
+                            @Html.TextBoxFor(model => model.porta_banco, new { @class = "form-control", @type = "number" })
+                        </section>
+
+                        <section class="col col-sm-12 col-md-6 col-lg-6">
+                            <label for="usuario_rede">Usuário Banco</label>
+                            @Html.TextBoxFor(model => model.usuario_banco, new { @class = "form-control" })
+                        </section>
+
+                        <section class="col col-sm-12 col-md-6 col-lg-6">
+                            <label for="senha_rede">Senha Banco</label>
+                            @Html.TextBoxFor(model => model.senha_banco, new { @class = "form-control", @type = "password" })
+                        </section>
+                        
+                    </div>
+
+
+                </div>
+
+                <footer>
+                    @Html.BotaoSalvar()
+                </footer>
+
+            }
+
+
+@section pagespecific {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var Url = '@Url.Action("GetRedes", "Redes")';
+            $("#Redes").select2({
+                placeholder: "Selecione uma rede",
+                minimumInputLength: 0,
+                language: "pt-BR",
+                ajax: {
+                    dataType: "json",
+                    url: Url,
+                    data: function (params) {
+                        return {
+                            term: params.term // search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (obj) {
+                                return { id: obj.id, text: obj.text };
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+        });
+
+    </script>
+
+}

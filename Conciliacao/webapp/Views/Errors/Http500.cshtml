@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Http500";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #imagem500 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+</style>
+
+<img src="~/Content/img/erro500.png" id="imagem500" />
+
+
+<article class="col col-sm-12 col-md-12 col-lg-12">
+    <div class="widget-body">
+        <h3>
+            Nós receberemos os detalhes do que ocorreu e vamos trabalhar para solucionar o mais breve possível.
+        </h3>
+
+        <h4>
+            @Html.Raw(@ViewData["Erro"])
+        </h4>
+
+    </div>
+</article>
+
+
+

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.cadastros.EstabelecimentoListar>
+
+@{
+    ViewBag.Title = "Estabelecimentos cadastrados";
+    Layout = "~/Views/Shared/Genericas/_Consultas.cshtml";
+    ViewBag.NomeDaJanela = "Lista de estabelecimentos";
+    ViewBag.TamanhoCadastro = "col-lg-12";
+    ViewBag.Action = "CadastrarEstabelecimento";
+}
+
+<thead>
+
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            CPF/CNPJ
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Telefone
+        </th>
+        <th>
+            Telefone 2
+        </th>
+        <th>
+            Cadastro
+        </th>
+        <th>
+            Cidade
+        </th>
+        <th>
+            Estado
+        </th>
+        <!-- th>
+            Última atualização
+        </th -->
+        
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model)
+{
+
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.nome)</td>
+        <td>@Html.DisplayFor(modelItem => item.cpfcnpj)</td>
+        <td>@Html.DisplayFor(modelItem => item.email)</td>
+        <td>@Html.DisplayFor(modelItem => item.fone1)</td>
+        <td>@Html.DisplayFor(modelItem => item.fone2)</td>
+        <td>@Html.DisplayFor(modelItem => item.dt_inc)</td>
+        <td>@Html.DisplayFor(modelItem => item.cidade)</td>
+        <td>@Html.DisplayFor(modelItem => item.estado)</td>
+        <td>
+            @Html.ActionLink("Editar", "CadastrarEstabelecimento", new { id = item.id }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</tbody>
+
+

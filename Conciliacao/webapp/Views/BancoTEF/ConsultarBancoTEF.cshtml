@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.cadastros.BancoTEFListar>
+
+@{
+    ViewBag.NomeDaJanela = "Consultar endereços banco do TEF";
+    ViewBag.Action = "cadastrarbancotef";
+    ViewBag.Controller = "bancotef";
+    ViewBag.Title = "Consultar endereços banco do TEF";
+    Layout = "~/Views/Shared/Genericas/_Consultas.cshtml";
+    ViewBag.IconeTopo = "fa-list";
+}
+
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.identificacao_tef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sid_banco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ip_banco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porta_banco)
+        </th>
+        
+        <th>
+            Opções
+        </th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.identificacao_tef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sid_banco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ip_banco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.porta_banco)
+            </td>
+            
+
+            <td class="col-md-2 col-lg-2">
+                @Html.ActionLink("Editar", "CadastrarBancoTEF", "BancoTEF", new { id = item.id_tef }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;
+                <!-- --Html.ActionLink("Deletar", "DeletarVan", "vans", new { id = item.id_rede }, new { --class = "btn btn-danger", --id = "deletar" }) -->
+            </td>
+
+        </tr>
+
+    }
+</tbody>

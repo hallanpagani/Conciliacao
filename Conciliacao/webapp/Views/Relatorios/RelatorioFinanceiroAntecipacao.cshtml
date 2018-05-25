@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.conciliador.UseRede.ConciliacaoUseRedeEEFIAntecipacaoStructListar>
+
+
+@{
+    Layout = "~/Views/Shared/Genericas/_RelatorioGenerico.cshtml";
+    ViewBag.NomeDaJanela = "Relatório financeiro de antecipação";
+    ViewBag.Relatorio = "RelatorioFinanceiroAntecipacao";
+}
+
+
+<thead>
+    <tr style="page-break-inside: avoid !important">
+
+        <th>
+            Documento
+        </th>
+        <th>
+            Dt.Lancamento
+        </th>
+        <th>
+            Vl.Lancamento
+        </th>
+        <th>
+            Vl.Taxa.desconto
+        </th>
+        <th>
+            Banco
+        </th>
+        <th>
+            Agência
+        </th>
+        <th>
+            Conta
+        </th>
+
+        <th>
+            Nr.Parcela
+        </th>
+
+
+ 
+        <th>
+            Nr.Pv.Original
+        </th>
+        <th>
+            Bandeira
+        </th>
+    </tr>
+</thead>
+<tbody>
+
+    @foreach (var item in Model)
+    {
+
+        <tr >
+
+            
+            <td>@Html.DisplayFor(modelItem => item.numero_documento)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_lancamento)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_lancamento)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_taxa_desconto)</td>
+            <td>@Html.DisplayFor(modelItem => item.banco)</td>
+            <td>@Html.DisplayFor(modelItem => item.agencia)</td>
+            <td>@Html.DisplayFor(modelItem => item.conta_corrente)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.numero_parcela)</td>
+        
+
+            <td>@Html.DisplayFor(modelItem => item.numero_pv_original)</td>
+            <td>@Html.DisplayFor(modelItem => item.bandeira)</td>
+        </tr>
+    }
+
+</tbody>

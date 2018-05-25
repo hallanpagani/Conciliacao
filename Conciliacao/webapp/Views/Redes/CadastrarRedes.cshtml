@@ -1,0 +1,45 @@
+﻿@model ConciliacaoModelo.model.cadastros.Rede
+@using Conciliacao.App_Helpers.Componentes
+
+@{
+    ViewBag.Title = "Cadastrar redes";
+    Layout = "~/Views/Shared/Genericas/_Cadastro.cshtml";
+    ViewBag.Tamanho = "col-lg-6";
+}
+
+@using (Html.BeginForm("CadastrarRedes", "Redes", FormMethod.Post, new { @class = "form-horizontal smart-form", @id="#meuform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Partial("_ValidationSummary")
+
+    @Html.HiddenFor(model => model.id_rede)
+
+    <div class="row" style="padding-top: 20px;">
+        <section class="col col-sm-12 col-md-6 col-lg-6">
+            @Html.LabelFor(model => model.Nome)
+            @Html.TextBoxPadraoFor(model => model.Nome)
+        </section>
+    </div>
+
+    <div class="row" >
+        <section class="col col-sm-12 col-md-6 col-lg-6">
+
+            
+            @Html.CheckBoxFor(model => model.HabilitaConciliacaoAutomatica)
+            <label for="HabilitaConciliacaoAutomatica">Habilitar conciliação automática</label>
+        </section>
+    </div>
+
+
+    <footer>
+        @Html.BotaoSalvar()
+        <div class="pull-left">
+            @Html.ActionLink("Voltar", "ConsultarRedes", "Redes", null, new { @class = "btn btn-warning" })
+        </div>
+    </footer>
+
+}
+
+@section pagespecific {
+
+}

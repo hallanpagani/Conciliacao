@@ -1,0 +1,11 @@
+D:\C#\Conciliacao\ConciliacaoFuncoes\bin\Debug\ConciliacaoFuncoes.dll
+D:\C#\Conciliacao\ConciliacaoFuncoes\bin\Debug\ConciliacaoFuncoes.pdb
+D:\C#\Conciliacao\ConciliacaoFuncoes\obj\Debug\ConciliacaoFuncoes.csprojResolveAssemblyReference.cache
+D:\C#\Conciliacao\ConciliacaoFuncoes\obj\Debug\ConciliacaoFuncoes.dll
+D:\C#\Conciliacao\ConciliacaoFuncoes\obj\Debug\ConciliacaoFuncoes.pdb
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\bin\Debug\ConciliacaoFuncoes.dll
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\bin\Debug\ConciliacaoFuncoes.pdb
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Debug\ConciliacaoFuncoes.csproj.CoreCompileInputs.cache
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Debug\ConciliacaoFuncoes.dll
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Debug\ConciliacaoFuncoes.pdb
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Debug\ConciliacaoFuncoes.csprojResolveAssemblyReference.cache

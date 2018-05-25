@@ -1,0 +1,271 @@
+﻿@model List<ConciliacaoModelo.model.conciliador.ArquivoCompleto>
+
+@{
+    ViewBag.NomeDaJanela = "Resumo";
+    // ViewBag.Action = "CadastrarAgenda";
+    //  ViewBag.Controller = "Agenda";
+    //   ViewBag.Title = "Agenda cadastradas";
+    ViewBag.IconeTopo = "fa-list";
+}
+
+<table id="datatable_tabletools_completo" class="table table-striped table-bordered table-hover" width="100%">
+    <thead>
+        <tr>
+
+            <th>
+                Registro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </th>
+            <th>
+                Estabelecimento
+            </th>
+            <th>
+                RO
+            </th>
+            <th>
+                Parcela
+            </th>
+            <th>
+                Tot.de.Parcelas
+            </th>
+            <th>
+                Filer
+            </th>
+            <th>
+                Plano
+            </th>
+            <th>
+                Tp.Transação
+            </th>
+            <th>
+                Apresentação
+            </th>
+            <th>
+                Prev.Pagto
+            </th>
+            <th>
+                Envio.Banco
+            </th>
+            <th>
+                Cartão
+            </th>
+            <th>
+                Sinal Vl.Bruto
+            </th>
+            <th>
+                Vl.Bruto
+            </th>
+            <th>
+                Sinal Comissão
+            </th>
+            <th>
+                Comissão
+            </th>
+            <th>
+                Sinal Rejeitado
+            </th>
+            <th>
+                Vl.Rejeitado
+            </th>
+            <th>
+                Sinal Liquído
+            </th>
+            <th>
+                Vl.Liquído
+            </th>
+
+            <th>
+                Vl.Total
+            </th>
+            <th>
+                Vl.Próx.Parc
+            </th>
+            <th>
+                Taxas
+            </th>
+            <th>
+                Autorização
+            </th>
+            <th>
+                NSU/DOC
+            </th>
+            <th>
+                Banco
+            </th>
+            <th>
+                Agência
+            </th>
+            <th>
+                Conta Corrente
+            </th>
+            <th>
+                Status.Pagto
+            </th>
+            <th>
+                Motivo.Rejeição
+            </th>
+            <th>
+                Cvs Aceitos
+            </th>
+            <th>
+                Produto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </th>
+            <th>
+                Cvs Reijeitados
+            </th>
+            <th>
+                Dt.Venda
+            </th>
+            <th>
+                Dt.Captura
+            </th>
+            <th>
+                Origem.Ajuste
+            </th>
+            <th>
+                Vl.Complementar
+            </th>
+            <th>
+                Produto.financeiro
+            </th>
+            <th>
+                Vl.Antecipado
+            </th>
+            <th>
+                Bandeira
+            </th>
+            <th>
+                Número Único RO
+            </th>
+            <th>
+                Taxas.Comissão
+            </th>
+            <th>
+                Tarifa
+            </th>
+            <th>
+                Taxa.Garantia
+            </th>
+            
+            <th>
+                Meio.Captura&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </th>
+            
+            <th>
+                Terminal
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.registro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estabelecimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.parcela)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.total_parcela)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.filer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipo_transacao)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.apresentacao)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.prev_pagamento)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.envio_banco)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.cartao)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.sinal_valor_bruto)
+                </td>
+
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.valor_bruto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sinal_comissao)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.comissao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sinal_rejeitado)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.valor_rejeitado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sinal_liquido)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.valor_liquido)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.valor_total_venda)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.valor_prox_parcela)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.taxas)
+                </td>
+
+                <td> @Html.DisplayFor(modelItem => item.autorizacao)      </td>
+                <td> @Html.DisplayFor(modelItem => item.nsu_doc)          </td>
+                <td> @Html.DisplayFor(modelItem => item.banco)            </td>
+                <td> @Html.DisplayFor(modelItem => item.agencia)          </td>
+                <td> @Html.DisplayFor(modelItem => item.conta_corrente)   </td>
+                <td> @Html.DisplayFor(modelItem => item.status_pagamento) </td>
+
+                <td> @Html.DisplayFor(modelItem => item.motivo_rejeicao)     </td>
+                <td> @Html.DisplayFor(modelItem => item.cvs_aceitos)         </td>
+                <td> @Html.DisplayFor(modelItem => item.produto)             </td>
+                <td> @Html.DisplayFor(modelItem => item.cvs_rejeitados)      </td>
+                <td style="text-align: center"> @Html.DisplayFor(modelItem => item.data_venda)          </td>
+                <td style="text-align: center"> @Html.DisplayFor(modelItem => item.data_captura)        </td>
+                <td> @Html.DisplayFor(modelItem => item.origem_ajuste)       </td>
+                <td style="text-align: right"> @Html.DisplayFor(modelItem => item.valor_complementar)  </td>
+                <td> @Html.DisplayFor(modelItem => item.produto_financeiro)  </td>
+                <td style="text-align: right"> @Html.DisplayFor(modelItem => item.valor_antecipado)    </td>
+                <td> @Html.DisplayFor(modelItem => item.bandeira)            </td>
+                <td> @Html.DisplayFor(modelItem => item.registro_unico_RO) </td>
+                <td style="text-align: right"> @Html.DisplayFor(modelItem => item.taxas_comissao)  </td>
+                <td style="text-align: right"> @Html.DisplayFor(modelItem => item.tarifa)         </td>
+                <td style="text-align: right"> @Html.DisplayFor(modelItem => item.taxa_garantia)   </td>
+                
+                
+                <td> @Html.DisplayFor(modelItem => item.meio_captura)        </td>
+                
+                <td> @Html.DisplayFor(modelItem => item.terminal)            </td>
+                
+
+                
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+

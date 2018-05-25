@@ -1,0 +1,184 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <div class="row">
+        <section id="widget-grid" class="">
+
+            <article class="col-xs-12 col-sm-12 col-md-12 @ViewBag.Tamanho">
+                <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false"
+                     data-widget-sortable="false"
+                     data-widget-deletebutton="false"
+                     data-widget-togglebutton="false">
+
+                    <header>
+                        <span class="widget-icon"> <i class="fa @ViewBag.IconeTopo"></i> </span>
+                        <h2>@ViewBag.NomeDaJanela</h2>
+                    </header>
+                    <div class="row">
+                        <!-- NEW WIDGET START -->
+                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            @Html.ActionLink("Cadastrar", (string)ViewBag.Action, (string)ViewBag.Controller, null, new { @class = "btn btn-danger", @style = "margin-bottom: 5px !important;" })
+
+                            <!-- Widget ID (each widget will need unique ID)-->
+                            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-2"
+                                 data-widget-editbutton="false"
+                                 data-widget-fullscreenbutton="true"
+                                 data-widget-sortable="false"
+                                 data-widget-deletebutton="false"
+                                 data-widget-togglebutton="false">
+                                <!-- widget options:
+                                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                                    data-widget-colorbutton="false"
+                                    data-widget-editbutton="false"
+                                    data-widget-togglebutton="false"
+                                    data-widget-deletebutton="false"
+                                    data-widget-fullscreenbutton="false"
+                                    data-widget-custombutton="false"
+                                    data-widget-collapsed="true"
+                                    data-widget-sortable="false"
+
+                                    -->
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                                    <h2>@ViewBag.NomeDaJanela</h2>
+                                </header>
+                                <!-- widget div-->
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                                </div>
+                                <!-- end widget edit box -->
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+                                    <table id="datatable_tabletools" class="table table-striped table-bordered table-hover" width="100%">
+                                        @RenderBody()
+                                    </table>
+                                </div>
+                                <!-- end widget content -->
+                                <!-- end widget div -->
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+</div>
+
+@section pagespecific {
+
+    @RenderSection("pagespecific", required: false)
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            /* // DOM Position key index //
+
+            l - Length changing (dropdown)
+            f - Filtering input (search)
+            t - The Table! (datatable)
+            i - Information (records)
+            p - Pagination (paging)
+            r - pRocessing
+            < and > - div elements
+            <"#id" and > - div with an id
+            <"class" and > - div with a class
+            <"#id.class" and > - div with an id and class
+
+            Also see: http://legacy.datatables.net/usage/features
+            */
+
+            /* BASIC ;*/
+            var responsiveHelper_datatable_tabletools = undefined;
+
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+            /* TABLETOOLS */
+            var table = $('#datatable_tabletools').DataTable({
+
+                // Tabletools options:
+                //   https://datatables.net/extensions/tabletools/button_options
+                stateSave: true,
+                select: { style: 'multi' },
+                language: {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "Mostrando _MENU_ por pág&nbsp;&nbsp;",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                },
+
+
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'Tl >r>" +
+                        "t" +
+                        "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+                "oTableTools": {
+                    "aButtons": [
+
+                    "xls",
+                       {
+                           "sExtends": "pdf",
+                           "sTitle": "AllPayments",
+                           "sPdfMessage": "",
+                           "sPdfSize": "letter"
+                       },
+                       {
+                           "sExtends": "print",
+                           "sButtonText": "Impr.",
+                           "sMessage": "Gerado por AllPayments <i>(Esc para fechar)</i>"
+                       }
+                    ],
+                    "sSwfPath": "/Scripts/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+                },
+                "deferRender": true,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+                "pageLength": 50,
+                "autoWidth": false,
+                "preDrawCallback": function () {
+                    // Initialize the responsive datatables helper once.
+                    if (!responsiveHelper_datatable_tabletools) {
+                        responsiveHelper_datatable_tabletools = new ResponsiveDatatablesHelper($('#datatable_tabletools'), breakpointDefinition);
+                    }
+                },
+                "rowCallback": function (nRow) {
+                    responsiveHelper_datatable_tabletools.createExpandIcon(nRow);
+                },
+                "drawCallback": function (oSettings) {
+                    responsiveHelper_datatable_tabletools.respond();
+                }
+            });
+
+        });
+
+    </script>
+
+    @Scripts.Render("~/scripts/datatables/js")
+}

@@ -1,0 +1,107 @@
+﻿<div class="col-sm-12 col-md-12 col-lg-12">
+    <!-- new widget -->
+    <div class="jarviswidget jarviswidget-color-blueDark">
+        <header>
+            <h2> Add Consultas </h2>
+        </header>
+
+        <!-- widget div-->
+
+
+        <div class="widget-body">
+            <!-- content goes here -->
+
+            <form id="add-event-form">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label>Selecione um icone</label>
+                        <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
+                            <label class="btn btn-default active">
+                                <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
+                                <i class="fa fa-info text-muted"></i>
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
+                                <i class="fa fa-warning text-muted"></i>
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="iconselect" id="icon-3" value="fa-check">
+                                <i class="fa fa-check text-muted"></i>
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="iconselect" id="icon-4" value="fa-user">
+                                <i class="fa fa-user text-muted"></i>
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="iconselect" id="icon-5" value="fa-lock">
+                                <i class="fa fa-lock text-muted"></i>
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="iconselect" id="icon-6" value="fa-clock-o">
+                                <i class="fa fa-clock-o text-muted"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cliente </label>
+                        <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Nome do cliente">
+                    </div>
+                    <div class="form-group">
+                        <label>Consulta descrição</label>
+                        <textarea class="form-control" placeholder="Descreva o serviço" rows="3" maxlength="40" id="description"></textarea>
+                        <p class="note">Maximo 40 caracteres</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cor consulta</label>
+                        <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                            <label class="btn bg-color-darken active">
+                                <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
+                                <i class="fa fa-check txt-color-white"></i>
+                            </label>
+                            <label class="btn bg-color-blue">
+                                <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
+                                <i class="fa fa-check txt-color-white"></i>
+                            </label>
+                            <label class="btn bg-color-orange">
+                                <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
+                                <i class="fa fa-check txt-color-white"></i>
+                            </label>
+                            <label class="btn bg-color-greenLight">
+                                <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
+                                <i class="fa fa-check txt-color-white"></i>
+                            </label>
+                            <label class="btn bg-color-blueLight">
+                                <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
+                                <i class="fa fa-check txt-color-white"></i>
+                            </label>
+                            <label class="btn bg-color-red">
+                                <input type="radio" name="priority" id="option6" value="bg-color-red txt-color-white">
+                                <i class="fa fa-check txt-color-white"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-default" type="button" id="add-event">
+                                Add Consulta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- end content -->
+        </div>
+
+
+        <!-- end widget div -->
+    </div>
+    <!-- end widget -->
+    
+</div>

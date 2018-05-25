@@ -1,0 +1,133 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.conciliador.UseRede.ConciliacaoUseRedeEEFIAjustesDesagendamentoStructListar>
+
+@{
+    Layout = "~/Views/Shared/Genericas/_RelatorioGenerico.cshtml";
+    ViewBag.NomeDaJanela = "Relatório financeiro de ajustes de Desagendamento";
+    ViewBag.Relatorio = "RelatorioFinanceiroAjustesDesagendamento";
+}
+
+
+<thead>
+    <tr style="page-break-inside: avoid !important">
+        <th>
+            PV.Ajustado
+        </th>
+        <th>
+            RV.Ajustado
+        </th>
+        
+        <th>
+            Data.Ajuste
+        </th>
+        
+        <th>
+            Vl.Ajuste
+        </th>
+        
+        <th>
+            Motivo.Ajuste
+        </th>
+        <th>
+            Nr.Cartão
+        </th>
+        <th>
+            Dt.Transação
+        </th>
+        <th>
+            Número.Rv.Original
+        </th>
+        <th>
+            Nr.Referencia.Carta
+        </th>
+        <th>
+            Dt.Carta
+        </th>
+        <th>
+            Mes.Referencia
+        </th>
+
+        <th>
+            PV.Original
+        </th>
+
+        <th>
+            Dt.RV.Original
+        </th>
+        <th>
+            Identificador
+        </th>
+        <th>
+            Dt.Crédito
+        </th>
+        <th>
+            Novo.Valor.Parcela
+        </th>
+        <th>
+            Vl.Original.Parcela
+        </th>
+        <th>
+            Vl.Bruto.Resumo
+        </th>
+        <th>
+            Vl.Cancelado
+        </th>
+        <th>
+            NSU
+        </th>
+        <th>
+            Número.Autorizado
+        </th>
+        <th>
+            Vl.Débito.Total
+        </th>
+        <th>
+            Vl.Pendente
+        </th>
+        <th>
+            Vl.Transacao
+        </th>
+    </tr>
+</thead>
+<tbody>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            
+
+            <td>@Html.DisplayFor(modelItem => item.numero_pv_ajustado)</td>
+            <td>@Html.DisplayFor(modelItem => item.numero_rv_ajustado)</td>
+            
+            <td>@Html.DisplayFor(modelItem => item.data_ajuste)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_ajuste)</td>
+            <td>@Html.DisplayFor(modelItem => item.motivo_ajuste)</td>
+            <td>@Html.DisplayFor(modelItem => item.numero_cartao)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_transacao)</td>
+            
+            <td>@Html.DisplayFor(modelItem => item.numero_rv_original)</td>
+            <td>@Html.DisplayFor(modelItem => item.numero_referencia_carta)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_carta)</td>
+            <td>@Html.DisplayFor(modelItem => item.mes_referencia)</td>
+            
+            <td>@Html.DisplayFor(modelItem => item.numero_pv_original)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_rv_original)</td>
+            <td>@Html.DisplayFor(modelItem => item.identificador)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_credito)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.novo_valor_parcela)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_original_parcela)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_bruto_resumo)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_cancelado)</td>
+            <td>@Html.DisplayFor(modelItem => item.nsu)</td>
+            
+            <td>@Html.DisplayFor(modelItem => item.numero_autorizacao)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_debito_total)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_pendente)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_transacao)</td>
+            
+
+        </tr>
+    }
+
+</tbody>

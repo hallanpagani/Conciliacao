@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.cadastros.RedeListar>
+
+@{
+    ViewBag.NomeDaJanela = "Listar redes";
+    ViewBag.Action = "CadastrarRedes";
+    ViewBag.Controller = "Redes";
+    ViewBag.Title = "Redes cadastradas";
+    Layout = "~/Views/Shared/Genericas/_ConsultasSemCadastro.cshtml";
+    ViewBag.IconeTopo = "fa-list";
+    ViewBag.Tamanho = "col-lg-8";
+}
+
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_rede)
+        </th>
+       <!-- <th>
+            Html.DisplayNameFor(model => model.HabilitaConciliacaoAutomatica)
+        </th> -->
+        <!--<th>Opções</th>-->
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_rede)
+            </td>
+           <!-- <td>
+                Html.DisplayFor(modelItem => item.HabilitaConciliacaoAutomatica)
+            </td> -->
+           <!-- <td>
+                Html.ActionLink("Editar", "CadastrarRedes", "Redes", new { id = item.id_rede }, new { class = "btn btn-primary" }) 
+                Html.ActionLink("Deletar", "DeletarRedes", "Redes", new { id = item.id_rede }, new { class = "btn btn-danger deletar" })
+            </td> -->
+        </tr>
+
+    }
+</tbody>
+
+@section pagespecific {
+    <script>
+
+        $('.deletar').on('click', function (e) {
+            e.preventDefault();
+            var defaultAction = $('.deletar').prop("href");
+            $.SmartMessageBox({
+                title: "Deseja continuar?",
+                content: "O registro será perdido!",
+                buttons: '[Não, cancelar!][Sim, continuar!]'
+            }, function (ButtonPressed) {
+                if (ButtonPressed === "Sim, continuar!") {
+                    window.location.href = defaultAction;
+                }
+            });
+        })
+
+    </script>
+}

@@ -1,0 +1,13 @@
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoPersistencia.dll
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoPersistencia.pdb
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoFuncoes.dll
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoModelo.dll
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\MySql.Data.dll
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoFuncoes.pdb
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoModelo.pdb
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Release\ConciliacaoPersistencia.csprojResolveAssemblyReference.cache
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Release\ConciliacaoPersistencia.dll
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Release\ConciliacaoPersistencia.pdb
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoPersistencia.dll.config
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\Oracle.ManagedDataAccess.dll
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Release\ConciliacaoPersistencia.csproj.CoreCompileInputs.cache

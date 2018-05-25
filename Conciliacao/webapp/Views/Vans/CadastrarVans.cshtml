@@ -1,0 +1,111 @@
+﻿@model ConciliacaoModelo.model.cadastros.Vans
+@using Conciliacao.App_Helpers.Componentes
+
+@{
+    ViewBag.Title = "Cadastrar Vans";
+    Layout = "~/Views/Shared/Genericas/_Cadastro.cshtml";
+    ViewBag.Tamanho = " col-lg-6 ";
+}
+
+
+            @using (Html.BeginForm("CadastrarVans", "Vans", FormMethod.Post, new { @class = "form-horizontal smart-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Partial("_ValidationSummary")
+
+                @Html.HiddenFor(model => model.id_van)
+
+                <div class="row" style="padding-top: 20px;">
+
+                    <div class="row">
+
+                        <section class="col col-sm-12 col-md-12 col-lg-12">
+                            @Html.LabelFor(model => model.identificacao_van)
+                            @Html.TextBoxPadraoFor(model => model.identificacao_van)
+                        </section>
+
+                        <section class="col col-sm-12 col-md-6 col-lg-6">
+                            <label class="" for="Redes">Rede</label>
+                            <select id="Redes" name="id_rede" class="requerido" style="width:100%">
+                                @if ((Model.id_rede > 0) && (Model.ds_rede != null))
+                                {
+                                    <option value="@Model.id_rede">@Model.ds_rede</option>
+                                }
+                            </select>
+                        </section>
+
+                        <div class="row"></div>
+
+                        <section class="col col-sm-12 col-md-6 col-lg-6">
+                            <label for="rede_ftp">FTP IP</label>
+                            @Html.TextBoxFor(model => model.rede_ftp, new { @class = "form-control" })
+                        </section>
+
+                        <section class="col col-sm-12 col-md-2 col-lg-2">
+                            <label for="rede_porta">Porta</label>
+                            @Html.TextBoxFor(model => model.rede_porta, new { @class = "form-control", @type = "number" })
+                        </section>
+
+                        <section class="col col-sm-12 col-md-6 col-lg-6">
+                            <label for="usuario_rede">Usuário FTP</label>
+                            @Html.TextBoxFor(model => model.usuario_rede, new { @class = "form-control" })
+                        </section>
+
+                        <section class="col col-sm-12 col-md-6 col-lg-6">
+                            <label for="senha_rede">Senha FTP</label>
+                            @Html.TextBoxFor(model => model.senha_rede, new { @class = "form-control" })
+                        </section>
+                        
+                        <section class="col col-sm-12 col-md-12 col-lg-12">
+                            <label for="dir_base_arquivos_ftp">Diretório base dos arquivos</label>
+                            @Html.TextBoxFor(model => model.dir_base_arquivos_ftp, new { @class = "form-control" })
+                        </section>
+                        
+
+                    </div>
+
+
+                </div>
+
+                <footer>
+                    @Html.BotaoSalvar()
+                </footer>
+
+            }
+
+
+@section pagespecific {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var Url = '@Url.Action("GetRedes", "Redes")';
+            $("#Redes").select2({
+                placeholder: "Selecione uma rede",
+                minimumInputLength: 0,
+                language: "pt-BR",
+                ajax: {
+                    dataType: "json",
+                    url: Url,
+                    data: function (params) {
+                        return {
+                            term: params.term // search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (obj) {
+                                return { id: obj.id, text: obj.text };
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+        });
+
+    </script>
+
+}

@@ -1,0 +1,6 @@
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\bin\Release\ConciliacaoFuncoes.dll
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\bin\Release\ConciliacaoFuncoes.pdb
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Release\ConciliacaoFuncoes.dll
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Release\ConciliacaoFuncoes.pdb
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Release\ConciliacaoFuncoes.csproj.CoreCompileInputs.cache
+D:\CSharp\Conciliacao\ConciliacaoFuncoes\obj\Release\ConciliacaoFuncoes.csprojResolveAssemblyReference.cache

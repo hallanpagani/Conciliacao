@@ -1,0 +1,87 @@
+﻿@model List<ConciliacaoModelo.model.conciliador.ArquivoTransacao>
+
+@{
+    ViewBag.NomeDaJanela = "Resumo";
+   // ViewBag.Action = "CadastrarAgenda";
+  //  ViewBag.Controller = "Agenda";
+ //   ViewBag.Title = "Agenda cadastradas";
+    ViewBag.IconeTopo = "fa-list";
+}
+
+<table id="datatable_tabletools_transacao" class="table table-striped table-bordered table-hover" width="100%">
+    <thead>
+        <tr>
+
+            <th>
+                Registro
+            </th>
+            <th>
+                Estabelecimento
+            </th>
+            <th>
+                Num.Resumo
+            </th>
+            <th>
+                Num.Lógico
+            </th>
+            <th>
+                Dt.Venda
+            </th>
+            <th>
+                Cartão
+            </th>
+            <th>
+                Vl.Venda
+            </th>
+            <th>
+                Parcela
+            </th>
+            <th>
+                Autorização
+            </th>
+            <th>
+                NSU
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.registro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estabelecimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.num_resumo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.num_logico)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.dt_venda)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.cartao)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.vl_venda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.parcela)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.autorizacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nsu)
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+

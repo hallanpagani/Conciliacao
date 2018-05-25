@@ -1,0 +1,124 @@
+﻿@using Conciliacao.App_Helpers.Componentes
+
+<style>
+    .modal.fade {
+        z-index: 10000000 !important;
+    }
+   
+</style>
+
+<div class="modal fade modal-editar-resumo-eevc">
+    <div class="modal-dialog" style="width: 95%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Detalhes do resumo de venda - Crédito</h4>
+            </div>
+            <div class="">
+
+                <div style="padding-top: 20px;">
+                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+                        <!-- Widget ID (each widget will need unique ID)-->
+                        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-2"
+                             data-widget-editbutton="false"
+                             data-widget-fullscreenbutton="true"
+                             data-widget-sortable="false"
+                             data-widget-deletebutton="false"
+                             data-widget-togglebutton="false">
+                            <!-- widget options:
+                                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                                    data-widget-colorbutton="false"
+                                    data-widget-editbutton="false"
+                                    data-widget-togglebutton="false"
+                                    data-widget-deletebutton="false"
+                                    data-widget-fullscreenbutton="false"
+                                    data-widget-custombutton="false"
+                                    data-widget-collapsed="true"
+                                    data-widget-sortable="false"
+
+                                    -->
+                            <header>
+                                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                                <h2>Detalhes</h2>
+                            </header>
+                            <!-- widget div-->
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <table id="datatable_tabletools_detalhes_eevc" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+
+                                            <th>
+                                                Dt.Comprovante.venda&nbsp;&nbsp;
+                                            </th>
+                                            <th align="center">
+                                                &nbsp;&nbsp;Número.do.cartão&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </th>
+                                            <th>
+                                                Nº.Comprovante.venda
+                                            </th>
+                                            <th>
+                                                Nº.Filiação.ponto.venda
+                                            </th>
+                                            <th>
+                                                Nº.Resumo.venda
+                                            </th>
+                                            <th>
+                                                Nº.Terminal
+                                            </th>
+                                    
+                                            <th>
+                                                Tp.Registro
+                                            </th>
+                                            <th>
+                                                Vl.Bruto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </th>
+                                            <th>
+                                                Vl.Desconto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </th>
+                                            <th>
+                                                Valor.Liquído&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </th>
+                                            <th>
+                                                Taxa&nbsp;
+                                            </th>
+                                            <th>
+                                                Bandeira&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+
+
+                            </div>
+                            <!-- end widget content -->
+                            <!-- end widget div -->
+                        </div>
+                        <!-- end widget -->
+
+                    </article>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" id="btn-cancelar-edicao" class="btn btn-warning pull-left" data-dismiss="modal">Cancelar</button>
+                <input id="idresumo" style="display:none;" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

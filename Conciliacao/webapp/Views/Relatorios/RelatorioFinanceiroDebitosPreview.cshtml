@@ -1,0 +1,279 @@
+﻿@model Conciliacao.Models.Relatorios.TransacaoCreditosViewModel
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Relatório de débitos</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/invoice.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/lockscreen.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/site.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/smartadminproductionplugins.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/smartadminproduction.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/smartadminskins.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/sweetalert2.css">
+    <link rel="shortcut icon" href="~/content/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/content/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+    <link rel="apple-touch-icon" href="~/content/img/splash/sptouch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/content/img/splash/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/content/img/splash/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/content/img/splash/touch-icon-ipad-retina.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-startup-image" href="~/content/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="~/content/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="~/content/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+    <style>
+        /** SPINNER CREATION **/
+        .loader {
+            position: relative;
+            text-align: center;
+            margin: 15px auto 35px auto;
+            z-index: 9999;
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 10px solid rgba(0,0,0,.3);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
+
+        @@keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @@-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        /** MODAL STYLING **/
+        .modal-content {
+            border-radius: 0px;
+            box-shadow: 0 0 20px 8px rgba(0,0,0,0.7);
+        }
+
+        .modal-backdrop.show {
+            opacity: 0.75;
+        }
+    </style>
+    <style type="text/css">
+        .jqstooltip {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            visibility: hidden;
+            background: rgb(0, 0, 0) transparent;
+            background-color: rgba(0,0,0,0.6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+            white-space: nowrap;
+            padding: 5px;
+            border: 1px solid white;
+            z-index: 10000;
+        }
+
+        .jqsfield {
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+        }
+    </style>
+    <style>
+        #datatable_tabletools span {
+            display: none;
+        }
+
+        #datatable_tabletools_debitos span {
+            display: none;
+        }
+
+        .table {
+            width: 100%;
+            max-width: none;
+        }
+    </style>
+</head>
+<body class="dt-print-view">
+    <h1>Relatório de débitos</h1>
+    <div>Filtro utilizado-&gt; Data de lançamento: @ViewBag.DataInicio à @ViewBag.DataFinal</div>
+    <div>Resumo: @ViewBag.filtro_resumo</div>
+    <div>Administradora: @ViewBag.tp_administradora</div>
+    <div>Banco: @Model.filtro_nm_banco</div>
+
+    <div class="row no-padding no-margin">
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <ul id="sparks" class="">
+
+                <li class="">
+                    <h4> <span class="" style="text-align: center;" id="labeltotaiso">Totais: </span></h4>
+                </li>
+
+                <li class="sparks-info">
+                    <h5> &nbsp;&nbsp; Qtd. Débitos <span class="txt-color-black" style="text-align: right;" id="totqtd">@ViewBag.QtdRegistrosDebitos</span></h5>
+                </li>
+
+                <li class="sparks-info">
+                    <h5> &nbsp;&nbsp; Total Débitos <span class="txt-color-purple" style="text-align: right;" id="totbruto">@ViewBag.TotalLiqDebitos</span></h5>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover dataTable no-footer">
+        <thead>
+            <tr>
+                <th>
+                    Tipo
+                </th>
+                <th>
+                    Identificação
+                </th>
+                <th>
+                    Nº.Resumo.Venda
+                </th>
+                <th>
+                    Dt.Crédito.Venda
+                </th>
+                <th>
+                    Dt.Venda
+                </th>
+                <th>
+                    Valor.Bruto
+                </th>
+                <th>
+                    Valor.Liquído
+                </th>
+                <th>
+                    Taxa
+                </th>
+                <th>
+                    Bandeira&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </th>
+                <th>
+                    Cartão
+                </th>
+                <th>
+                    NSU.Rede
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ string data_group = ""; decimal valor_soma = 0; }
+
+            @foreach (var item in Model.ListDebitos)
+            {
+
+                if (data_group == "")
+                {
+                    data_group = item.data_credito;
+                }
+
+                if (data_group != item.data_credito)
+                {
+                    <tr class="group group-end">
+                        <td colspan="3" style="text-align: right">Total da data:</td>
+                        <td colspan="2" style="text-align: center">@data_group</td>
+                        <td style="text-align: right">R$ @valor_soma.ToString("#,##0.00")</td>
+                        <td colspan="10"></td>
+                    </tr>
+                    valor_soma = 0;
+                }
+
+                if (item.is_tipo_registro.Equals("COMPROVANTE"))
+                {
+                    valor_soma = valor_soma + item.is_valor_liquido;
+                }
+
+                <tr style="">
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.is_tipo_registro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.is_numero_filiacao_pv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.is_numero_resumo_vendas)
+                    </td>
+
+                    <td style="width: 74px; text-align: center ">
+                        @if (item.is_tipo_registro.Equals("COMPROVANTE"))
+                        {  @Html.Raw("") }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.data_credito)
+                        }
+                    </td>
+
+                    <td style="width: 74px; text-align: center ">
+                        @if (item.data_cv.Equals("01/01/0001"))
+                        {  @Html.Raw("") }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.data_cv)
+                        }
+                    </td>
+
+                    <td style="text-align: right">
+                        @Html.DisplayFor(modelItem => item.is_valor_bruto)
+                    </td>
+
+                    <td style="text-align: right">
+                        @Html.DisplayFor(modelItem => item.is_valor_liquido)
+                    </td>
+
+                    <td style="text-align: right">
+                        @Html.DisplayFor(modelItem => item.taxa_cobrada)
+                    </td>
+
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.is_bandeira)
+                    </td>
+                    <td style="text-align: center">
+                        @Html.DisplayFor(modelItem => item.numero_cartao)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.is_nsu_rede)
+                    </td>
+
+                </tr>
+
+                data_group = item.data_credito;
+
+            }
+
+            @if (valor_soma > 0)
+            {
+                <tr class="group group-end">
+                    <td colspan="3" style="text-align: right">Total da data:</td>
+                    <td colspan="2" style="text-align: center">@data_group</td>
+                    <td style="text-align: right">R$ @valor_soma.ToString("#,##0.00")</td>
+                    <td colspan="10"></td>
+                </tr>
+                valor_soma = 0;
+            }
+
+        </tbody>
+    </table>
+    <div>
+    </div>
+</body>
+</html>

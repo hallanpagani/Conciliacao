@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.conciliador.UseRede.ConciliacaoUseRedeEEFIDesagendamentoParcelasStructListar>
+
+@{
+    Layout = "~/Views/Shared/Genericas/_RelatorioGenerico.cshtml";
+    ViewBag.NomeDaJanela = "Relatório financeiro de desagendamento de parcelas";
+    ViewBag.Relatorio = "RelatorioFinanceiroDesagendamentoParcelas";
+}
+
+
+<thead>
+    <tr style="page-break-inside: avoid !important">
+        <th>
+            PV.Ajustado
+        </th>
+        <th>
+            RV.Ajustado
+        </th>
+        <th>
+            Dt.Crédito
+        </th>
+        <th>
+            Novo.Vl.parcela
+        </th>
+        <th>
+            Vl.parcela.original 
+        </th>
+        <th>
+            Vl.Ajuste
+        </th>
+        <th>
+            Dt.Cancelamento
+        </th>
+
+        <th>
+            Vl.RV.Original
+        </th>
+
+        <th>
+            Vl.Cancelamento.solicitado
+        </th>
+        <th>
+            Nr.Cartao
+        </th>
+        <th>
+            Dt.Transação
+        </th>
+        <th>
+            NSU
+        </th>
+        <th>
+            Nr.Parcela
+        </th>
+        <th>
+            Bandeira
+        </th>
+    </tr>
+</thead>
+<tbody>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+
+            <td>@Html.DisplayFor(modelItem => item.numero_pv_ajustado)</td>
+            <td>@Html.DisplayFor(modelItem => item.numero_rv_ajustado)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_credito)</td>
+            <td>@Html.DisplayFor(modelItem => item.novo_valor_pacela)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_original_pacela)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_ajuste)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_cancelamento)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_rv_original)</td>
+            <td>@Html.DisplayFor(modelItem => item.valor_cancelamento_solicitado)</td>
+            <td>@Html.DisplayFor(modelItem => item.numero_cartao)</td>
+            <td>@Html.DisplayFor(modelItem => item.data_transacao)</td>
+            <td>@Html.DisplayFor(modelItem => item.nsu)</td>
+            <td>@Html.DisplayFor(modelItem => item.numero_pacela)</td>
+            <td>@Html.DisplayFor(modelItem => item.bandeira_rv)</td>
+        </tr>
+    }
+
+</tbody>
+
+
+

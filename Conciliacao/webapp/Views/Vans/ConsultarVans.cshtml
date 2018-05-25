@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.cadastros.VansListar>
+
+@{
+    ViewBag.NomeDaJanela = "Consultar Van";
+    ViewBag.Action = "CadastrarVans";
+    ViewBag.Controller = "Vans";
+    ViewBag.Title = "Consultar cadastrados";
+    Layout = "~/Views/Shared/Genericas/_Consultas.cshtml";
+    ViewBag.IconeTopo = "fa-list";
+
+
+}
+
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.identificacao_van)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ds_rede)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rede_ftp)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.usuario_rede)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senha_rede)
+        </th>
+        <th>
+            Opções
+        </th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ds_rede)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.identificacao_van)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rede_ftp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuario_rede)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.senha_rede)
+            </td>
+
+            <td class="col-md-2 col-lg-2">
+                @Html.ActionLink("Editar", "CadastrarVans", "vans", new { id = item.id_van }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;
+                <!-- --Html.ActionLink("Deletar", "DeletarVan", "vans", new { id = item.id_rede }, new { --class = "btn btn-danger", --id = "deletar" }) -->
+            </td>
+
+        </tr>
+
+    }
+</tbody>

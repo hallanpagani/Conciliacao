@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.adm.Usuario>
+
+@{
+    ViewBag.Title = "Listar usuários";
+    Layout = "~/Views/Shared/Genericas/_Consultas.cshtml";
+    ViewBag.IconeTopo = "fa-comments";
+    ViewBag.NomeDaJanela = "Usuários cadastrados";
+    ViewBag.TamanhoCadastro = "col-lg-6";
+    ViewBag.Action = "CadastrarUsuario";
+    ViewBag.Controller = "Usuario";
+}
+
+<thead>
+    <tr>
+        <th>
+            Login
+        </th>
+        <th>
+            Nome do usuário
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Perfil
+        </th>
+        <th> Opção </th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeDoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.perfil)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "CadastrarUsuario", new { id = item.Id }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+</tbody>

@@ -1,0 +1,274 @@
+﻿    <!-- Left panel : Navigation area -->
+<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+<aside id="left-panel">
+
+    <!-- User info -->
+    @{ Html.RenderPartial("_CurrentUser"); }
+    <!-- end user info -->
+    <!-- NAVIGATION : This navigation is also responsive
+
+    To make this navigation dynamic please make sure to link the node
+    (the reference to the nav > ul) after page load. Or the navigation
+    will not initialize.
+    -->
+    <nav>
+        <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+        <ul id="ulMenuNav">
+
+            <li class="@Html.RouteIf("index", "active")">
+                <a href="@Url.Action("index", "home")" title="Visão Principal"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i><span class="menu-item-parent">Visão Principal</span></a>
+            </li>
+
+            <li class="@Html.RouteIf("conciliador", "active")">
+                <a href="#"><i class="fa fa-lg fa-fw fa-exchange text-roxo"></i><span class="menu-item-parent">Conciliação </span></a>
+                <ul>
+                    <li class="@Html.RouteIf("Processar", "active")">
+                        <!-- <a href="@Url.Action("Processar", "Conciliador")"><i class="fa fa-lg fa-fw fa-credit-card"></i><span class="menu-item-parent">&nbsp;&nbsp;Processamento</span></a> -->
+
+                        <a href="#"><i class="fa fa-lg fa-fw fa-newspaper-o"></i><span class="menu-item-parent">&nbsp;1 - Processamento </span></a>
+
+                        <ul>
+                            <li class="@Html.RouteIf("Processar", "active") @Html.RouteIf("ExtratoUserRede", "active") @Html.RouteIf("ExtratoBanese", "active") @Html.RouteIf("ExtratoBin", "active")">
+                                <a href="#"><span class="menu-item-parent">&nbsp;&nbsp;Extrato Rede</span></a>
+                                <ul>
+
+                                    <li class="@Html.RouteIf("ExtratoUserRede", "active")">
+                                        <a href="@Url.Action("Index", "ExtratoUserRede")">&nbsp;&nbsp;Userede</a>
+                                    </li>
+                                    <li class="@Html.RouteIf("ExtratoCielo", "active")">
+                                        <a href="@Url.Action("Processar", "ExtratoCielo")">&nbsp;&nbsp;Cielo</a>
+                                    </li>
+                                    <li class="@Html.RouteIf("ExtratoBanese", "active")">
+                                        <a href="@Url.Action("Processar", "ExtratoBanese")">&nbsp;&nbsp;Banese</a>
+                                    </li>
+                                    <li class="@Html.RouteIf("ExtratoBin", "active")">
+                                        <a href="@Url.Action("Processar", "ExtratoBin")">&nbsp;&nbsp;Bin/FirstData</a>
+                                    </li>
+
+
+                                  <!--  <li class="Html.RouteIf("Processar", "active")">
+                                        <a href="Url.Action("Processar", "Conciliador")">&nbsp;&nbsp;Outras</a>
+                                    </li> -->
+
+
+                                </ul>
+                            </li>
+                       @{ /*    <li class="@Html.RouteIf("ExtratoTEF", "active") @Html.RouteIf("IP", "active")">
+                                <a href="#"><span class="menu-item-parent">&nbsp;&nbsp;Extrato Cartão</span></a>
+
+                                <ul>
+                                    <li class="@Url.Action("ExtratoTEF", "active")">
+                                        <a href="@Url.Action("Index", "ExtratoTEF")">&nbsp;&nbsp;Arquivo</a>
+                                    </li>
+
+                                    <li class="@Html.RouteIf("IP", "active")">
+                                        <a href="@Url.Action("IP", "ExtratoTEF")">&nbsp;&nbsp;IP</a>
+                                    </li>
+
+                                </ul>
+
+                            </li> */ }
+                            <li class="@Html.RouteIf("ExtratoEstabelecimento", "active")">
+                                <a href="@Url.Action("Index", "ExtratoEstabelecimento")">&nbsp;&nbsp;Extrato Estabelecimento</a>
+                            </li>
+                            <li class="@Html.RouteIf("ExtratoBancario", "active")">
+                                <a href="@Url.Action("Index", "ExtratoBancario")">&nbsp;&nbsp;Extrato Bancário</a>
+                            </li>
+
+                        </ul>
+
+
+
+                    </li>
+
+                    <li class="#">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-file-text-o"></i><span class="menu-item-parent">&nbsp;2 - Relatórios</span></a>
+
+                        <ul>
+
+                            <li class="@Html.RouteIf("RelatoriosTransacoesRede", "active")">
+                                <a href="@Url.Action("RelatoriosTransacoesRede", "Relatorios")">&nbsp;&nbsp;Transações Rede</a>
+                            </li>
+
+                            <li class="@Html.RouteIf("RelatoriosTransacoesTEF", "active")">
+                                <a href="@Url.Action("RelatoriosTransacoesTEF", "Relatorios")">&nbsp;&nbsp;Transações Cartão</a>
+                            </li>
+
+                           <li class="@Html.RouteIf("RelatorioExtratoEstabelecimento", "active")">
+                                <a href="@Url.Action("RelatorioExtratoEstabelecimento", "Relatorios")">&nbsp;&nbsp;Estabelecimento</a>
+                            </li> 
+
+                            <li class="@Html.RouteIf("RelatoriosExtratoBancarios", "active")">
+                                <a href="@Url.Action("RelatoriosExtratoBancarios", "Relatorios")">&nbsp;&nbsp;Transações Bancárias </a>
+                            </li>
+
+                            <li>
+                                <a href="#">&nbsp;&nbsp;Financeiros</a>
+                                <ul>
+                                    <li class="@Html.RouteIf("RelatorioFinanceiroCredito", "active")">
+                                        <a href="@Url.Action("RelatorioFinanceiroCredito", "Relatorios")">Créditos</a>
+                                    </li>
+                                    <li class="@Html.RouteIf("RelatorioFinanceiroAntecipacao", "active")">
+                                        <a href="@Url.Action("RelatorioFinanceiroAntecipacao", "Relatorios")">Antecipados</a>
+                                    </li>
+                                    <li class="@Html.RouteIf("RelatorioFinanceiroAjustesDesagendamento", "active")">
+                                        <a href="@Url.Action("RelatorioFinanceiroAjustesDesagendamento", "Relatorios")">Ajustes</a>
+                                    </li>
+                                    <li class="@Html.RouteIf("RelatorioFinanceiroDesagendamentoParcelas", "active")">
+                                        <a href="@Url.Action("RelatorioFinanceiroDesagendamentoParcelas", "Relatorios")">Desagendamento</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+
+
+                            <!-- <li class="">
+                                <a href="#">&nbsp;&nbsp;Transações TEF</a>
+                            </li>
+
+                            <li class="Html.RouteIf("RelatoriosRedeVsTEF", "active")">
+                                <a href="Url.Action("RelatoriosRedeVsTEF", "Relatorios")">&nbsp;&nbsp;Rede X TEF</a>
+                            </li>
+
+                            <li class="Html.RouteIf("RelatoriosRedeVsExtratoBancario", "active")">
+                                <a href="Url.Action("RelatoriosRedeVsExtratoBancario", "Relatorios")">&nbsp;&nbsp;Rede X Extrato Bancário</a>
+                            </li>*/ -->
+
+
+
+                        </ul>
+
+                    </li>
+
+
+
+                  <!-- <li class="#">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-file-archive-o"></i><span class="menu-item-parent">&nbsp;Exportação</span></a>
+
+                        <ul>
+                            <li class="@Html.RouteIf("MovimentacoesVenda", "active")">
+                                <a href="@Url.Action("MovimentacoesVenda", "Exportar")">Venda conciliada</a>
+                            </li>
+
+                            <li class="@Html.RouteIf("MovimentacoesVendaResumo", "active")">
+                                <a href="@Url.Action("MovimentacoesVendaResumo", "Exportar")">Venda resumo</a>
+                            </li>
+                        
+                            <li class="@Html.RouteIf("MovimentacoesPagamento", "active")">
+                                <a href="@Url.Action("MovimentacoesPagamento", "Exportar")">Extrato Pagamento</a>
+                            </li>
+                        </ul>
+
+                    </li>  --> 
+
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="#"><i class="fa fa-lg fa-fw fa-gears text-primary"></i><span class="menu-item-parent">Cadastro</span></a>
+                <ul>
+                    <li>
+                        <a href="#"><i class="fa fa-lg fa-fw fa-bank"></i>&nbsp;Estabelecimentos</a>
+                        <ul>
+                            <li class="@Html.RouteIf("CadastrarEstabelecimento", "active")">
+                                <a href="@Url.Action("CadastrarEstabelecimento", "Estabelecimento")">&nbsp;&nbsp;Cadastro</a>
+                            </li>
+                            <li class="@Html.RouteIf("ConsultarEstabelecimento", "active")">
+                                <a href="@Url.Action("ConsultarEstabelecimento", "Estabelecimento")">&nbsp;&nbsp;Consulta</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="#">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-tags"></i><span class="menu-item-parent">&nbsp;Redes </span></a>
+                        <ul>
+                          <!--   <li class="Html.RouteIf("CadastrarRedes", "active")">
+                                <a href="Url.Action("CadastrarRedes", "Redes")">&nbsp;&nbsp;Cadastro</a>
+                            </li> -->
+                            <li class="@Html.RouteIf("ConsultarRedes", "active")">
+                                <a href="@Url.Action("ConsultarRedes", "Redes")">&nbsp;&nbsp;Consulta</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="#">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-newspaper-o"></i><span class="menu-item-parent">&nbsp;VAN </span></a>
+                        <ul>
+                            <li class="@Html.RouteIf("CadastrarVans", "active")">
+                                <a href="@Url.Action("CadastrarVans", "Vans")">&nbsp;&nbsp;Cadastro</a>
+                            </li>
+                            <li class="@Html.RouteIf("ConsultarVans", "active")">
+                                <a href="@Url.Action("ConsultarVans", "Vans")">&nbsp;&nbsp;Consulta</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="#">
+                        <a href="#"><i class="fa fa-lg fa-fw fa-database"></i><span class="menu-item-parent">&nbsp;TEF </span></a>
+                        <ul>
+                            <li class="@Html.RouteIf("CadastrarBancoTEF", "active")">
+                                <a href="@Url.Action("CadastrarBancoTEF", "BancoTEF")">&nbsp;&nbsp;Cadastro</a>
+                            </li>
+                            <li class="@Html.RouteIf("ConsultarBancoTEF", "active")">
+                                <a href="@Url.Action("ConsultarBancoTEF", "BancoTEF")">&nbsp;&nbsp;Consulta</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="#"><i class="fa fa-lg fa-fw fa-asterisk text-green"></i><span class="menu-item-parent">Sistema</span></a>
+                <ul>
+                    <li>
+                        <a href="#"><i class="fa fa-lg fa-fw fa-user"></i>&nbsp;Usuários</a>
+                        <ul>
+                            <li class="@Html.RouteIf("CadastrarUsuario", "active")">
+                                <a href="@Url.Action("CadastrarUsuario", "Usuario")">&nbsp;&nbsp;Cadastro</a>
+                            </li>
+                            <li class="@Html.RouteIf("ConsultarUsuario", "active")">
+                                <a href="@Url.Action("ConsultarUsuario", "Usuario")">&nbsp;&nbsp;Consulta</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    @if ((UsuarioLogado.SUser ?? string.Empty).ToUpper().Equals("TRUE"))
+                    {
+                        <li class="#">
+                            <a href="#"><i class="fa fa-lg fa-fw fa-users"></i><span class="menu-item-parent">&nbsp;Contas </span></a>
+                            <ul>
+                                <li class="@Html.RouteIf("CadastrarConta", "active")">
+                                    <a href="@Url.Action("CadastrarConta", "Conta")">&nbsp;&nbsp;Cadastro</a>
+                                </li>
+                                <li class="@Html.RouteIf("ConsultarConta", "active")">
+                                    <a href="@Url.Action("ConsultarConta", "Conta")">&nbsp;&nbsp;Consulta</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+
+
+
+                </ul>
+            </li>
+
+        </ul>
+
+
+    </nav>
+    <span class="minifyme" data-action="minifyMenu" data-click="false" id="minimenu">
+        <i class="fa fa-arrow-circle-left hit"></i>
+    </span>
+
+</aside>
+<!-- END NAVIGATION -->

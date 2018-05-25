@@ -1,0 +1,379 @@
+﻿@model ConciliacaoModelo.model.conciliador.ArquivoDeCartoesTEF
+@using Conciliacao.App_Helpers.Componentes
+
+@{
+    ViewBag.Title = "Extrato TEF";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Tamanho = "col-lg-12";
+}
+
+<div id="content">
+
+    <div class="row ">
+
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" style="margin-bottom:0px;">
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                    <h2>Exportação Transações de Cartões Previsto</h2>
+
+                </header>
+
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+                <div class="widget-body no-padding">
+
+                    @using (Html.BeginForm("TransacoesTEFPrevisto", "Exportar", FormMethod.Post, new { @id = "form-processar", @class = "form-horizontal smart-form", enctype = "multipart/form-data", @style = "padding-top:10px" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Partial("_ValidationSummary")
+
+                        // @Html.HiddenFor(model => model.id)
+
+
+                        <!--  <section class="col col-sm-12 col-md-2 col-lg-2">
+                                <label for="tp_agendamento">Período</label>
+                                <div>
+                                    Html.DropDownList("tp_data", null, new { class = "form-control" })
+                                </div>
+                            </section>
+                             -->
+                        <div class="col col-sm-12 col-md-4 col-lg-3">
+                            <label class="" for="filtro_data">Período de</label>
+                            <script>
+                                function Limpar() {
+                                    document.getElementById('datainicio').value = "";
+                                    document.getElementById('datafinal').value = "";
+                                }
+
+                                function SetDtInicial(dia, mes, ano) {
+                                    document.getElementById('datainicio').value = preencheZerosInt(dia, 2) + "/" + preencheZerosInt(mes, 2) + "/" + preencheZerosInt(ano, 4);
+                                }
+
+                                function SetDtFinal(dia, mes, ano) {
+                                    document.getElementById('datafinal').value = preencheZerosInt(dia, 2) + "/" + preencheZerosInt(mes, 2) + "/" + preencheZerosInt(ano, 4);
+                                }
+
+                                function SetHoje() {
+                                    var data = new Date();
+
+                                    SetDtInicial(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                    SetDtFinal(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                }
+
+                                function SetOntem() {
+                                    var data = new Date();
+
+                                    data.setDate(data.getDate() - 1);
+
+                                    SetDtInicial(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                    SetDtFinal(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                }
+
+                                function SetAmanha() {
+                                    var data = new Date();
+
+                                    data.setDate(data.getDate() + 1);
+
+                                    SetDtInicial(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                    SetDtFinal(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                }
+
+                                function SetMesPassado() {
+                                    //Inicial
+                                    var data = new Date();
+                                    data.setMonth(data.getMonth() - 1);
+                                    SetDtInicial(1, data.getMonth() + 1, data.getFullYear());
+                                    //Final
+                                    data = new Date(data.getFullYear(), data.getMonth() + 1, 0);
+                                    SetDtFinal(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                }
+
+                                function SetMesAtual() {
+                                    //Inicial
+                                    var data = new Date();
+                                    SetDtInicial(1, data.getMonth() + 1, data.getFullYear());
+                                    //Final
+                                    data = new Date(data.getFullYear(), data.getMonth() + 1, 0);
+                                    SetDtFinal(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                }
+
+                                function SetProximoMes() {
+                                    //Inicial
+                                    var data = new Date();
+                                    data.setMonth(data.getMonth() + 1);
+                                    SetDtInicial(1, data.getMonth() + 1, data.getFullYear());
+                                    //Final
+                                    data = new Date(data.getFullYear(), data.getMonth() + 1, 0);
+                                    SetDtFinal(data.getDate(), data.getMonth() + 1, data.getFullYear());
+                                }
+
+                                function preencheZeros(valor, tamanho) {
+                                    var result = valor;
+
+                                    if (result != '') {
+                                        var contador = result.length;
+
+                                        if (result.length < tamanho) {
+                                            do {
+                                                result = "0" + result;
+                                                contador += 1;
+                                            } while (contador < tamanho)
+                                        }
+                                    }
+
+                                    return result;
+                                }
+
+                                function preencheZerosInt(valor, tamanho) {
+                                    return preencheZeros(valor.toString(), tamanho);
+                                }
+
+                            </script>
+
+                            <div class="row">
+                                <section class="col col-sm-12 col-md-3 col-lg-5" style="padding-right: 1px !important;padding-left: 0px !important;">
+                                    @Html.TextBoxPadraoFor(model => model.DataInicio, new { @filtrar = "", @onclick = "this.focus();this.select()" })
+                                </section>
+
+                                <section class="col col-sm-12 col-md-3 col-lg-7" style="padding-left: 2px !important;">
+                                    <div class="input-group">
+                                        @Html.TextBoxPadraoFor(model => model.DataFinal, new { @filtrar = "", @onclick = "this.focus();this.select()" })
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default btn-primary dropdown-toggle" id="txtPeriodo_btnOpcoes" data-toggle="dropdown" type="button">
+                                                <i class="fa fa-list"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#" onclick="SetOntem();">Ontem</a></li>
+                                                <li><a href="#" onclick="SetHoje();">Hoje</a></li>
+                                                <li><a href="#" onclick="SetAmanha();">Amanhã</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#" onclick="SetMesPassado();">Mês passado</a></li>
+                                                <li><a href="#" onclick="SetMesAtual();">Mês atual</a></li>
+                                                <li><a href="#" onclick="SetProximoMes();">Próximo mês</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#" onclick="Limpar();">Limpar</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <!--   <section class="col col-sm-12 col-md-3 col-lg-2">
+                               <label class="" for="filtro_rede">TEF</label>
+                               <select id="tefs" name="filtro_tef" class="requerido" style="width:100%">
+                                   if (Model.filtro_tef != 0)
+                                   {
+                                       <option value="Model.filtro_tef">Model.filtro_nm_tef</option>
+                                   }
+                               </select>
+                               Html.HiddenFor(model => model.filtro_nm_tef)
+                           </section> -->
+
+                        <section class="col col-sm-12 col-md-3 col-lg-3">
+                            <label class="" for="filtro_rede">Rede</label>
+                            <select id="Redes" name="filtro_rede" class="requerido" style="width:100%">
+                                @if (@Model.filtro_rede != 0)
+                                {
+                                    <option value="@Model.filtro_rede">@Model.filtro_nm_rede</option>
+                                }
+                            </select>
+                            @Html.HiddenFor(model => model.filtro_nm_rede)
+                        </section>
+
+                        <section class="col col-sm-12 col-md-3 col-lg-3">
+                            <label class="" for="filtro_estabelecimento">Estabelecimento</label>
+                            <select id="Estabelecimentos" name="filtro_estabelecimento" class="requerido" style="width:100%">
+                                if (@Model.filtro_estabelecimento != 0)
+                                {
+                                <option value="@Model.filtro_estabelecimento">@Model.filtro_nm_estabelecimento</option>
+                                }
+                            </select>
+                            @Html.HiddenFor(model => model.filtro_nm_estabelecimento)
+                        </section>
+
+                        <section class="col col-sm-12 col-md-2 col-lg-2">
+                            <label for="tp_administradora">Bandeira</label>
+                            <div>
+                                @Html.DropDownList("tp_administradora", null, new { @class = "form-control" })
+                            </div>
+                        </section>
+
+                        <div class="row">
+                            <section class="col col-sm-12 col-md-3 col-lg-2">
+                                <label class="" for="filtro_resumo">Resumo</label>
+                                @Html.TextBoxPadraoFor(model => model.filtro_resumo, new { onclick = "this.focus();this.select()" })
+                            </section>
+
+
+                            <!--  <section class="col col-sm-12 col-md-3 col-lg-2">
+                                <label class="" for="filtro_valor">Valor</label>
+                                SHtml.TextBoxPadraoFor(model => model.filtro_valor, new { onclick = "this.focus();this.select()" })
+                            </section> -->
+                            <!--  <section class="col col-sm-12 col-md-3 col-lg-2">
+                                 <label class="" for="filtro_valor">Valor</label>
+                                 SHtml.TextBoxPadraoFor(model => model.filtro_valor, new { onclick = "this.focus();this.select()" })
+                             </section> -->
+
+
+                            <section class="col-sm-12 col-md-3 col-lg-4">
+                                <label class="label">Situação</label>
+                                <div class="inline-group">
+                                    <label class="radio" style="margin-top:0px !important">
+                                        @Html.RadioButton("tp_situacao", "0")
+                                        <i></i>Conciliados
+                                    </label>
+                                    <label class="radio">
+                                        @Html.RadioButton("tp_situacao", "1")
+                                        <i></i>Ñ.Conciliados
+                                    </label>
+                                    <label class="radio">
+                                        @Html.RadioButton("tp_situacao", "2")
+                                        <i></i>Todos
+                                    </label>
+                                </div>
+                            </section>
+
+                            <section class="col col-sm-12 col-md-1 col-lg-1">
+                                <label class="">&nbsp;</label>
+                                <div>
+                                    @Html.BotaoFiltrar("Exportar Txt")
+                                </div>
+                            </section>
+                        </div>
+                    }
+
+
+
+                </div>
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+        <!-- END COL -->
+
+    </div>
+
+</div>
+
+@section pagespecific {
+
+    <script src="~/scripts/terceiros/data.js" type="text/javascript"></script>
+    <script src="~/scripts/terceiros/maskmoney.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $("#datainicio").mask("99/99/9999");
+        $("#datafinal").mask("99/99/9999");
+
+        // formata valor
+        //  $("#filtro_valor").val($("#filtro_valor").val());
+        $("#filtro_valor").maskMoney({ allowNegative: false, thousands: '.', decimal: ',', affixesStay: false });
+
+        $(document).ready(function () {
+
+            $('#tefs').on("select2:select", function (e) {
+                console.log($('#tefs').select2('data')[0].text);
+                $('#filtro_nm_tef').val($('#tefs').select2('data')[0].text); // what you would like to happen
+            });
+
+            $('#Redes').on("select2:select", function (e) {
+                console.log($('#Redes').select2('data')[0].text);
+                $('#filtro_nm_rede').val($('#Redes').select2('data')[0].text); // what you would like to happen
+            });
+
+            var Url = '@Url.Action("GetRedes", "Redes")';
+            $("#Redes").select2({
+                placeholder: "Selecione uma rede",
+                minimumInputLength: 0,
+                allowClear: true,
+                language: $.extend({},
+                $.fn.select2.defaults.defaults.language, {
+                    noResults: function () {
+                        return $("<span>Nenhum resultado encontrado!</span>");
+                    },
+                    inputTooShort: function (e) { var t = e.minimum - e.input.length, n = "Digite " + t + " ou mais caracteres"; return n }
+                }),
+                ajax: {
+                    dataType: "json",
+                    url: Url,
+                    data: function (params) {
+                        return {
+                            term: params.term // search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (obj) {
+                                return { id: obj.id, text: obj.text };
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $('#Estabelecimentos').on("select2:select", function (e) {
+                console.log($('#Estabelecimentos').select2('data')[0].text);
+                $('#filtro_nm_estabelecimento').val($('#Estabelecimentos').select2('data')[0].text); // what you would like to happen
+            });
+
+            var Url = '@Url.Action("GetEstabelecimentos", "Estabelecimento")';
+            $("#Estabelecimentos").select2({
+                placeholder: "Selecione uma estabelecimento",
+                minimumInputLength: 0,
+                allowClear: true,
+                language: $.extend({},
+                $.fn.select2.defaults.defaults.language, {
+                    noResults: function () {
+                        return $("<span>Nenhum resultado encontrado!</span>");
+                    },
+                    inputTooShort: function (e) { var t = e.minimum - e.input.length, n = "Digite " + t + " ou mais caracteres"; return n }
+                }),
+                ajax: {
+                    dataType: "json",
+                    url: Url,
+                    data: function (params) {
+                        return {
+                            term: params.term // search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (obj) {
+                                return { id: obj.id, text: obj.text };
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+        });
+    </script>
+
+    @Scripts.Render("~/scripts/datatables/js")
+}

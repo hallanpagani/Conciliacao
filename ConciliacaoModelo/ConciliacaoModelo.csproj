@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A4F2204E-7F35-46ED-8E83-CCA342143391}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConciliacaoModelo</RootNamespace>
+    <AssemblyName>ConciliacaoModelo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="classes\Atributos.cs" />
+    <Compile Include="classes\Auxiliar.cs" />
+    <Compile Include="classes\Campo.cs" />
+    <Compile Include="classes\Fuso.cs" />
+    <Compile Include="model\adm\AccountViewModel.cs" />
+    <Compile Include="model\adm\Cidade.cs" />
+    <Compile Include="model\adm\Conta.cs" />
+    <Compile Include="model\adm\Loja.cs" />
+    <Compile Include="model\adm\UsuarioAuth.cs" />
+    <Compile Include="model\adm\Usuario.cs" />
+    <Compile Include="model\banco\Banco_Conta.cs" />
+    <Compile Include="model\banco\Banco_Historico.cs" />
+    <Compile Include="model\cadastros\BancoTEFListar.cs" />
+    <Compile Include="model\cadastros\EstabelecimentoListar.cs" />
+    <Compile Include="model\cadastros\Estabelecimento.cs" />
+    <Compile Include="model\cadastros\EstabelecimentoRedeListar.cs" />
+    <Compile Include="model\cadastros\EstabelecimentoRede.cs" />
+    <Compile Include="model\cadastros\RedeListar.cs" />
+    <Compile Include="model\cadastros\BancoTEF.cs" />
+    <Compile Include="model\cadastros\BancoExpressao.cs" />
+    <Compile Include="model\cadastros\VansListar.cs" />
+    <Compile Include="model\cadastros\Vans.cs" />
+    <Compile Include="model\cadastros\Rede.cs" />
+    <Compile Include="model\conciliador\ArquivoAntecipado.cs" />
+    <Compile Include="model\conciliador\ArquivoCompleto.cs" />
+    <Compile Include="model\conciliador\ArquivoDeCartoesEstabelecimento.cs" />
+    <Compile Include="model\conciliador\ArquivoDeCartoesUserRede.cs" />
+    <Compile Include="model\conciliador\ArquivoDeCartoesTEF.cs" />
+    <Compile Include="model\conciliador\ArquivoDeCartoes.cs" />
+    <Compile Include="model\conciliador\ArquivoDeCriticas.cs" />
+    <Compile Include="model\conciliador\ArquivoDetalhado.cs" />
+    <Compile Include="model\conciliador\ArquivoExtratoUserRede.cs" />
+    <Compile Include="model\conciliador\ArquivoMD5.cs" />
+    <Compile Include="model\conciliador\ArquivoResumo.cs" />
+    <Compile Include="model\conciliador\ArquivosTEF.cs" />
+    <Compile Include="model\conciliador\ArquivosEstabelecimentos.cs" />
+    <Compile Include="model\conciliador\ArquivosBancarios.cs" />
+    <Compile Include="model\conciliador\ArquivoTransacao.cs" />
+    <Compile Include="model\conciliador\ConciliacaoTransacaoRede.cs" />
+    <Compile Include="model\conciliador\RetornoTEF.cs" />
+    <Compile Include="model\conciliador\TotaisDashboardBanco.cs" />
+    <Compile Include="model\conciliador\TotaisDashboard.cs" />
+    <Compile Include="model\conciliador\TotaisDashboardPorData.cs" />
+    <Compile Include="model\conciliador\TotalizadorEstabelecimento.cs" />
+    <Compile Include="model\conciliador\TotaisDashboardProduto.cs" />
+    <Compile Include="model\conciliador\TotalizadorBanco.cs" />
+    <Compile Include="model\conciliador\TotalizadorProduto.cs" />
+    <Compile Include="model\conciliador\TransacaoEstabelecimentoListar.cs" />
+    <Compile Include="model\conciliador\TransacaoRede.cs" />
+    <Compile Include="model\conciliador\TransacaoEstabelecimento.cs" />
+    <Compile Include="model\conciliador\TransacaoBancaria.cs" />
+    <Compile Include="model\conciliador\TransacaoTEFListar.cs" />
+    <Compile Include="model\conciliador\TransacaoTEFTpTransacao .cs" />
+    <Compile Include="model\conciliador\TransacaoTEFLojas.cs" />
+    <Compile Include="model\conciliador\TransacoesTEF.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFIAjustesDesagendamentoStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFIAntecipacaoStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFICreditosStructReduzido.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFICreditosStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFIDesagendamentoParcelasStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFIResumoOperacaoStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFITotMatrizStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFITotCreditosStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVCComprovanteVendaStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVCResumoOperacaoStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVDComprovanteVendaStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVDResumoOperacaoStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeParcelasStructListar.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeParcelasStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVCComprovanteVendaStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVDComprovanteVendaStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVCResumoOperacaoStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVDResumoOperacaoStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVDTotalArquivoStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVDTotalMatrizStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEVDTotalPontoVendaStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFIAjustesDesagendamentoStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFIAntecipacaoStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFIDesagendamentoParcelasStruct.cs" />
+    <Compile Include="model\conciliador\UseRede\ConciliacaoUseRedeEEFICreditosStruct.cs" />
+    <Compile Include="model\dw\BarChart.cs" />
+    <Compile Include="model\dw\DashBoard.cs" />
+    <Compile Include="model\dw\DoughnutChart.cs" />
+    <Compile Include="model\entrada\Entrada.cs" />
+    <Compile Include="model\entrada\EntradaProduto.cs" />
+    <Compile Include="model\generico\BaseID.cs" />
+    <Compile Include="model\generico\BaseUGrav.cs" />
+    <Compile Include="model\generico\FinanceiroBaixa.cs" />
+    <Compile Include="model\generico\IBase.cs" />
+    <Compile Include="model\generico\Lista.cs" />
+    <Compile Include="model\banco\Banco_Movimento.cs" />
+    <Compile Include="model\generico\Respostas.cs" />
+    <Compile Include="model\flags\Financeiro_Flags.cs" />
+    <Compile Include="model\relatorio\TransacaoRedeVsExtratoBancarioListar.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="model\relatorio\TransacaoRedeVsTEFListar.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConciliacaoPersistencia.csproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

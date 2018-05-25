@@ -1,0 +1,48 @@
+﻿@model ConciliacaoModelo.model.cadastros.Estabelecimento
+
+@{
+  
+    ViewBag.NomeDaJanela = "Lista de estabelecimentos e redes";
+    ViewBag.TamanhoCadastro = "col-lg-6";
+
+}
+
+<thead>
+
+    <tr>
+        <th>
+            Indentificação na administradora
+        </th>
+        <th>
+            Código estabelecimento
+        </th>
+        <th>
+            Nome estabelecimento
+        </th>
+        <th>
+            Rede
+        </th>
+        <th>
+            Van
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    
+        @foreach (var item in Model.EstabelecimentoRedeListar)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.IdEstabelecimentoRede)</td>
+                <td>@Html.DisplayFor(modelItem => item.CodigoEstabelecimento)</td>
+                <td>@Html.DisplayFor(modelItem => item.NomeEstabelecimento)</td>
+                <td>@Html.DisplayFor(modelItem => item.ds_rede)</td>
+                <td>@Html.DisplayFor(modelItem => item.ds_van)</td>
+                
+
+                <td>@Html.ActionLink("Deletar", "Deletar", "Estabelecimento", new { id = item.Id }, new { @class = "btn btn-danger" })</td>
+            </tr>
+        }
+ 
+
+</tbody>

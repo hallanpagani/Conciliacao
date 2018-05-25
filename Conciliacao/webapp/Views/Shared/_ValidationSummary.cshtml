@@ -1,0 +1,9 @@
+﻿@if (ViewData.ModelState.Count(n => n.Value.Errors.Count>0) > 0  )
+{
+    <p class="alert alert-warning">
+        @foreach (var modelError in Html.ViewData.ModelState.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+        {
+                <strong><i class="fa fa-arrow-right"></i></strong> @modelError.ErrorMessage <br>
+        }
+    </p>
+}

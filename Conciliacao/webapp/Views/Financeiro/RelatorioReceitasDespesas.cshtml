@@ -1,0 +1,842 @@
+﻿<!-- MAIN CONTENT -->
+@section cssespecific{
+
+   <!-- <style>
+        #calendar-buttons_des {
+            position: absolute;
+            right: 14px;
+            top: 5px;
+        }
+
+        .jarviswidget #calendar_des {
+            margin-top: -18px;
+        }
+
+    </style> -->
+
+}
+
+<div id="content">
+
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+
+        <!-- row -->
+        <div class="row">
+
+            <article class="col-lg-3">
+                <div class="jarviswidget" id="wid-id-receber-hj" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+                    <header>
+                        <h2><strong>Receber </strong> <i>Hoje</i></h2>
+                    </header>
+                    <div class="row" style="padding-bottom: 13px;">
+                        <h6><strong>Valor Bruto</strong></h6>
+                        <section class="">
+                            <div class="text-right">
+                                <h1 id="receberhojeB" style="color: green">Carregando...</h1>
+                            </div>
+                        </section>
+                        <h6><strong>Valor Liquído</strong></h6>
+                        <section class="">
+
+                            <div class="text-right">
+                                <h1 id="receberhojeL" style="color: green">Carregando...</h1>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-lg-3">
+                <div class="jarviswidget" id="wid-id-receber-7" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+                    <header>
+                        <h2><strong>Receber </strong> Próx.<i> 7 dias</i></h2>
+                    </header>
+                    <div class="row" style="padding-bottom: 13px;">
+                        <h6><strong>Valor Bruto</strong></h6>
+                        <section class="">
+                            <div class="text-right">
+                                <h1 id="receber7diasB" style="color: green">Carregando...</h1>
+                            </div>
+                        </section>
+                        <h6><strong>Valor Liquído</strong></h6>
+                        <section class="">
+                            <div class=" text-right">
+                                <h1 id="receber7diasL" style="color: green">Carregando...</h1>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-lg-3">
+                <div class="jarviswidget" id="wid-id-receber-30" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+                    <header>
+                        <h2><strong>Receber </strong> Próx.<i> 30 dias</i></h2>
+                    </header>
+                    <div class="row" style="padding-bottom: 13px;">
+                        <h6><strong>Valor Bruto</strong></h6>
+                        <section class="">
+
+                            <div class="text-right">
+                                <h1 id="receber30diasB" style="color: green">Carregando...</h1>
+                            </div>
+                        </section>
+                        <h6><strong>Valor Liquído</strong></h6>
+                        <section class="">
+
+                            <div class="text-right">
+                                <h1 id="receber30diasL" style="color: green">Carregando...</h1>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-lg-3">
+                <div class="jarviswidget" id="wid-id-receber-total" data-widget-deletebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+                    <header>
+                        <h2><strong>Receber </strong> <i> Total</i></h2>
+                    </header>
+                    <div class="row" style="padding-bottom: 13px;">
+                        <h6><strong>Valor Bruto</strong></h6>
+                        <section class="">
+
+                            <div class="text-right">
+                                <h1 id="recebertotalB" style="color: green">Carregando...</h1>
+                                <!--   <a href="Url.Action("ReceberListar", "Financeiro")" class="btn btn-info btn-xs"><i class="fa fa-check"></i>&nbsp;Listar receber </a> -->
+                            </div>
+                        </section>
+                        <h6><strong>Valor Liquído</strong></h6>
+                        <section class="">
+
+                            <div class="text-right">
+                                <h1 id="recebertotalL" style="color: green">Carregando...</h1>
+                                <!--   <a href="Url.Action("ReceberListar", "Financeiro")" class="btn btn-info btn-xs"><i class="fa fa-check"></i>&nbsp;Listar receber </a> -->
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="row">
+
+            <article class="col-sm-12 col-md-6  col-lg-6">
+
+
+                <div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false" data-widget-custombutton="false" data-widget-sortable="false" role="widget">
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header role="heading">
+
+                        <ul class="nav nav-tabs pull-left in">
+
+                            <li class="active">
+                                <a data-toggle="tab" href="#hr1" aria-expanded="true"> <i class="fa fa-bank"></i> Bancos </a>
+                            </li>
+
+                            <li class="">
+                                <a data-toggle="tab" href="#hr2" aria-expanded="false"> <i class="fa fa-credit-card"></i> Prod-Últimos 30 dias</a>
+                            </li>
+
+                            <li class="">
+                                <a data-toggle="tab" href="#hr3" aria-expanded="false"> <i class="fa fa-credit-card"></i> Prod-Próx. 30 dias</a>
+                            </li>
+
+                        </ul>
+                        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                    </header>
+
+                    <!-- widget div-->
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="hr1">
+
+                                <div class="row">
+
+                                    <section id="listabancos" class="col col-sm-12 col-md-12 col-lg-12" style="padding: 15px">
+
+                                        <section class="col col-sm-2 col-md-2 col-lg-2">
+                                            <img src="~/Content/bancos/0.png" style="width: 50px;height: 50px;" />
+                                        </section>
+                                        <section class="col col-sm-5 col-md-4 col-lg-4">
+                                            <div class="text-right">
+                                                <strong>R$ Confirmados</strong><h5 id="valor" style="color: green">0,00</h5>
+                                            </div>
+                                        </section>
+                                        <section class="col col-sm-5 col-md-3 col-lg-3">
+                                            <div class="text-right">
+                                                <strong>R$ Pendentes</strong><h5 id="valor" style="color: red">0,00</h5>
+                                            </div>
+                                        </section>
+
+                                        <section class="col col-sm-4 col-md-3 col-lg-3">
+                                            <div class=" text-right">
+                                                <strong>R$ Hoje</strong><h5 id="valor" style="color: black">0,00</h5>
+                                            </div>
+                                        </section>
+
+                                    </section>
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="hr2">
+
+                                <section id="listaprodutos" class="col col-sm-12 col-md-12 col-lg-12" style="padding: 15px"></section>
+
+                            </div>
+
+                            <div class="tab-pane" id="hr3">
+
+                                <section id="listaprodutosproximos" class="col col-sm-12 col-md-12 col-lg-12" style="padding: 15px"></section>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- end widget div -->
+            </article>
+
+            @{ /* <article class="col-sm-12 col-md-6 col-lg-6">
+
+                <!-- new widget -->
+                <div class="jarviswidget jarviswidget-color-blueDark">
+
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
+                        <h2> Calendário de desagendamentos </h2>
+                        <div class="widget-toolbar">
+                            <!-- add: non-hidden - to disable auto hide -->
+                            <div class="btn-group">
+                                <button class="btn dropdown-toggle btn-xs btn-default" id="tp_calendario_des" value="Mês" data-toggle="dropdown">
+                                    Mês&nbsp;<i class="fa fa-caret-down"></i>
+                                </button>
+                                <ul class="dropdown-menu js-status-update pull-right">
+                                    <li>
+                                        <a href="javascript:void(0);" id="mt_des">Mês&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" id="ag_des">Agenda&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" id="td_des">Hoje&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" id="lh_des">Listar Dia&nbsp;</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+
+
+
+                    <div class="widget-body no-padding">
+                        <!-- content goes here -->
+                        <div class="widget-body-toolbar">
+
+                            <div id="calendar-buttons_des">
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev_des"><i class="fa fa-chevron-left"></i>&nbsp;Anterior</a>
+                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next_des">Próximo&nbsp;<i class="fa fa-chevron-right"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="calendar_des"></div>
+
+                        <!-- end content -->
+                    </div>
+
+                </div>
+                <!-- end widget div -->
+
+
+            </article> */ }
+
+            <article class="col-sm-12 col-md-6 col-lg-6">
+
+                <!-- new widget -->
+                <div class="jarviswidget jarviswidget-color-blueDark">
+
+                    <!-- widget options:
+                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                    data-widget-colorbutton="false"
+                    data-widget-editbutton="false"
+                    data-widget-togglebutton="false"
+                    data-widget-deletebutton="false"
+                    data-widget-fullscreenbutton="false"
+                    data-widget-custombutton="false"
+                    data-widget-collapsed="true"
+                    data-widget-sortable="false"
+
+                    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
+                        <h2> Calendário de recebimentos </h2>
+                        <div class="widget-toolbar">
+                            <!-- add: non-hidden - to disable auto hide -->
+                            <div class="btn-group">
+                                <button class="btn dropdown-toggle btn-xs btn-default" id="tp_calendario" value="Mês" data-toggle="dropdown">
+                                    Mês&nbsp;<i class="fa fa-caret-down"></i>
+                                </button>
+                                <ul class="dropdown-menu js-status-update pull-right">
+                                    <li>
+                                        <a href="javascript:void(0);" id="mt">Mês&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" id="ag">Agenda&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" id="td">Hoje&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" id="lh">Listar Dia&nbsp;</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+
+
+
+                    <div class="widget-body no-padding">
+                        <!-- content goes here -->
+                        <div class="widget-body-toolbar">
+
+                            <div id="calendar-buttons">
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i>&nbsp;Anterior</a>
+                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next">Próximo&nbsp;<i class="fa fa-chevron-right"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="calendar"></div>
+
+                        <!-- end content -->
+                    </div>
+
+                </div>
+                <!-- end widget div -->
+
+
+            </article>
+
+        </div>
+
+
+        <div class="row">
+
+        </div>
+
+    </section>
+    <!-- end widget grid -->
+</div>
+
+@section pagespecific {
+
+    <script src="/scripts/plugin/fullcalendar/locale/pt-br.js"></script>
+    <script type="text/javascript">
+
+
+        function moeda(valor, casas, separdor_decimal, separador_milhar) {
+
+            var valor_total = parseInt(valor * (Math.pow(10, casas)));
+            var inteiros = parseInt(parseInt(valor * (Math.pow(10, casas))) / parseFloat(Math.pow(10, casas)));
+            var centavos = parseInt(parseInt(valor * (Math.pow(10, casas))) % parseFloat(Math.pow(10, casas)));
+
+            if (centavos % 10 == 0 && centavos + "".length < 2) {
+                centavos = centavos + "0";
+            } else if (centavos < 10) {
+                centavos = "0" + centavos;
+            }
+
+            var fmilhar = milhar(inteiros, separador_milhar);
+
+            return fmilhar + "" + separdor_decimal + "" + centavos;
+
+        }
+
+        function milhar(inteiros, separador_milhar) {
+            var milhares = parseInt(inteiros / 1000);
+
+            if (milhares > 0) {
+                var inteiros = inteiros % 1000;
+                if (inteiros == 0) {
+                    inteiros = "000";
+                } else if (inteiros < 10) {
+                    inteiros = "00" + inteiros;
+                } else if (inteiros < 100) {
+                    inteiros = "0" + inteiros;
+                }
+                var retorno = milhar(milhares, separador_milhar) + "" + separador_milhar + "" + inteiros;
+                return retorno;
+            }
+            else {
+                return inteiros;
+            }
+
+        }
+
+        $(document).ready(function () {
+
+            $.ajax({
+                url: '@Url.Action("GetTotalizadores", "Dashboard")',
+                dataType: 'json'
+            }).done(function (results) {
+                console.log(results);
+
+                $("#receberhojeB").text('R$ ' + moeda(Number(results[0].total_bruto).toFixed(2), 2, ',', '.'));
+                $("#receberhojeL").text('R$ ' + moeda(Number(results[0].total_liquido).toFixed(2), 2, ',', '.'));
+                $("#receber7diasB").text('R$ ' + moeda(Number(results[1].total_bruto).toFixed(2), 2, ',', '.'));
+                $("#receber7diasL").text('R$ ' + moeda(Number(results[1].total_liquido).toFixed(2), 2, ',', '.'));
+                $("#receber30diasB").text('R$ ' + moeda(Number(results[2].total_bruto).toFixed(2), 2, ',', '.'));
+                $("#receber30diasL").text('R$ ' + moeda(Number(results[2].total_liquido).toFixed(2), 2, ',', '.'));
+                $("#recebertotalB").text('R$ ' + moeda(Number(results[3].total_bruto).toFixed(2), 2, ',', '.'));
+                $("#recebertotalL").text('R$ ' + moeda(Number(results[3].total_liquido).toFixed(2), 2, ',', '.'));
+
+
+
+                $.ajax({
+                    url: '@Url.Action("GetTotalizadoresPorBanco", "Dashboard")',
+                    dataType: 'json'
+                }).done(function (results) {
+                    console.log(results);
+
+                    var container = document.getElementById("listabancos");
+
+                    for (var i = 0; i < results.length; i++) {
+
+                        try {
+
+                            if (i == 0) {
+                                container.innerHTML = "";
+                            } else if ((i > 0) && (results[i].banco != -1)) {
+                                container.innerHTML = container.innerHTML + ' <hr class="col col-sm-12 col-md-12 col-lg-12" />';
+                            }
+
+                            container.innerHTML = container.innerHTML + '<section class="col col-sm-2 col-md-2 col-lg-2">' +
+                                '  <img src="@Url.Content("~/Content/bancos/")' + results[i].banco + '.png" style="width: 50px;height: 50px;" /> ' +
+                                ' </section> ' +
+                                ' <section class="col col-sm-4 col-md-4 col-lg-4">' +
+                                '     <div class=" text-right"> ' +
+                                '                       <strong>R$ Confirmados</strong><h5 id="valor" style="color: green">' + moeda(Number(results[i].total_bruto).toFixed(2), 2, ',', '.') + '</h5>' +
+                                '                   </div>' +
+                                '               </section>' +
+                                '                   </div>' +
+                                '                <section class="col col-sm-4 col-md-3 col-lg-3">' +
+                                '                    <div class=" text-right">' +
+                                '                        <strong>R$ Pendentes</strong><h5 id="valor" style="color: red">' + moeda(Number(results[i].total_pendente).toFixed(2), 2, ',', '.') + '</h5>' +
+                                '                    </div>' +
+                                '                </section>' +
+                                '                <section class="col col-sm-4 col-md-3 col-lg-3">' +
+                                '                    <div class=" text-right">' +
+                                '                        <strong>R$ Hoje</strong><h5 id="valor" style="color: black">' + moeda(Number(results[i].total_hoje).toFixed(2), 2, ',', '.') + '</h5>' +
+                                '                    </div>' +
+                                '                </section>';
+                        } catch (e) {
+                            return;
+                        }
+
+                    }
+
+
+                    $.ajax({
+                        url: '@Url.Action("GetTotalizadoresPorProduto", "Dashboard")',
+                        dataType: 'json'
+                    }).done(function (results) {
+                        console.log(results);
+
+                        var container = document.getElementById("listaprodutos");
+
+                        for (var i = 0; i < results.length; i++) {
+
+                            if (i == 0) {
+                                container.innerHTML = "";
+                            } else if (i > 0) {
+                                container.innerHTML = container.innerHTML + ' <hr class="col col-sm-12 col-md-12 col-lg-12" />';
+                            }
+
+                            try {
+                                container.innerHTML = container.innerHTML + '<section class="col col-sm-12 col-md-4 col-lg-4">' +
+                                    '  <p>' + results[i].ds_produto + '<p/> ' +
+                                    ' </section> ' +
+                                    ' <section class="col col-sm-12 col-md-3 col-lg-3">' +
+                                    '     <div class=" text-right"> ' +
+                                    '                       <strong>R$ Total bruto</strong><h5 id="valor" style="color: green">' + moeda(Number(results[i].total_bruto).toFixed(2), 2, ',', '.') + '</h5>' +
+                                    '                   </div>' +
+                                    '               </section>' +
+                                    '                   </div>' +
+                                    '                <section class="col col-sm-12 col-md-3 col-lg-3">' +
+                                    '                    <div class=" text-right">' +
+                                    '                        <strong>R$ Total liquído</strong><h5 id="valor" style="color: red">' + moeda(Number(results[i].total_liquido).toFixed(2), 2, ',', '.') + '</h5>' +
+                                    '                    </div>' +
+                                    '                </section>' +
+                                        '                <section class="col col-sm-12 col-md-2 col-lg-2">' +
+                                    '                    <div class=" text-right">' +
+                                    '                        <strong>% Taxa</strong><h5 id="valor" style="color: black">' + moeda(Number(results[i].valor_taxa).toFixed(2), 2, ',', '.') + '</h5>' +
+                                    '                    </div>' +
+                                    '                </section>';
+
+                            } catch (e) {
+                                return;
+                            }
+
+                        }
+
+                    });
+
+                    $.ajax({
+                        url: '@Url.Action("GetTotalizadoresPorProdutoProximos", "Dashboard")',
+                        dataType: 'json'
+                    }).done(function (results) {
+                        console.log(results);
+
+                        var container = document.getElementById("listaprodutosproximos");
+
+                        for (var i = 0; i < results.length; i++) {
+
+                            if (i == 0) {
+                                container.innerHTML = "";
+                            } else if (i > 0) {
+                                container.innerHTML = container.innerHTML + ' <hr class="col col-sm-12 col-md-12 col-lg-12" />';
+                            }
+
+                            try {
+                                container.innerHTML = container.innerHTML + '<section class="col col-sm-12 col-md-4 col-lg-4">' +
+                                    '  <p>' + results[i].ds_produto + '<p/> ' +
+                                    ' </section> ' +
+                                    ' <section class="col col-sm-12 col-md-3 col-lg-3">' +
+                                    '     <div class=" text-right"> ' +
+                                    '                       <strong>R$ Total bruto</strong><h5 id="valor" style="color: green">' + moeda(Number(results[i].total_bruto).toFixed(2), 2, ',', '.') + '</h5>' +
+                                    '                   </div>' +
+                                    '               </section>' +
+                                    '                   </div>' +
+                                    '                <section class="col col-sm-12 col-md-3 col-lg-3">' +
+                                    '                    <div class=" text-right">' +
+                                    '                        <strong>R$ Total liquído</strong><h5 id="valor" style="color: red">' + moeda(Number(results[i].total_liquido).toFixed(2), 2, ',', '.') + '</h5>' +
+                                    '                    </div>' +
+                                    '                </section>' +
+                                            '                </section>' +
+                                        '                <section class="col col-sm-12 col-md-2 col-lg-2">' +
+                                    '                    <div class=" text-right">' +
+                                    '                        <strong>% Taxa</strong><h5 id="valor" style="color: black">' + moeda(Number(results[i].valor_taxa).toFixed(2), 2, ',', '.') + '</h5>' +
+                                    '                    </div>' +
+                                    '                </section>';
+
+                            } catch (e) {
+                                return;
+                            }
+
+                        }
+
+                    });
+
+
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+            var hdr = {
+                left: 'title',
+                center: 'month,agendaWeek,agendaDay,basicDay',
+                right: 'prev,today,next'
+            };
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
+            var Url = '@Url.Action("GetTotalizadoresPorDia", "Dashboard")';
+            $('#calendar').fullCalendar({
+                events: //método responsável por listar os eventos
+                {
+                    url: Url,
+                    type: 'POST'
+
+                },
+
+
+                //ignoreTimezone: false,
+                axisFormat: 'H:mm',
+                timeFormat: {
+                    '': 'H:mm',
+                    agenda: 'H:mm',
+                    basic: 'H:mm',
+                    month: 'H:mm',
+                    day: 'H:mm'
+                },
+                columnFormat: 'ddd D/M',
+                //
+                header: hdr,
+                buttonText: {
+                    prev: '<i class="fa fa-chevron-left">Anterior</i>',
+                    next: '<i class="fa fa-chevron-right">Próximo</i>'
+                },
+                //  allDaySlot: false,
+                displayEventEnd: false,
+                //
+                allDayText: 'Dia',
+                defaultView: 'month',
+                minTime: '00:00:00',
+                maxTime: '00:00:00',
+
+                eventOverlap: false,
+
+                editable: false,
+                droppable: false,
+
+                eventRender: function (event, element, icon) {
+
+                    $('.fc-event-time').attr('style','display:none !important');
+                    if (!event.description == "") {
+                        element.find('.fc-event-title').append("<br/><span class='ultra-light'>" + event.description +
+                            "</span>");
+
+                    }
+                    if (!event.icon == "") {
+                        element.find('.fc-event-title').append("<i class='air air-top-right fa " + event.icon +
+                            " '></i>");
+                    }
+                },
+                eventClick: function (calEvent) {
+
+                    // var win = window.open(url, '_blank');
+                    // win.focus();
+
+
+                    // var url = "../relatorios/relatoriostransacoesrede?data=" + calEvent.data + "&debitocredito=" + calEvent.debitocredito;
+
+
+                    // $("<a>").attr("href", url).attr("target", "_blank")[0].click();
+
+                },
+                loading: function (isLoading, view) {
+                    if (isLoading) { // isLoading gives boolean value
+                        // alert('events are being rendered'); // Add your script to show loading //show your loader here
+                        $('#loading').show();
+                    } else {
+                        //  alert('all events are rendered'); //hide your loader here
+                        $('#loading').hide();
+                    }
+                },
+
+                windowResize: function (event, ui) {
+                    $('#calendar').fullCalendar('render');
+                }
+            });
+
+            /* hide default buttons */
+            $('.fc-header-right, .fc-header-center').hide();
+
+            $('#calendar-buttons #btn-prev').click(function () {
+                $('#calendar > table > tbody > tr > td.fc-header-right > span.fc-button.fc-button-prev.fc-state-default.fc-corner-left').click();
+                return false;
+            });
+
+            $('#calendar-buttons #btn-next').click(function () {
+                $('#calendar > table > tbody > tr > td.fc-header-right > span.fc-button.fc-button-next.fc-state-default.fc-corner-right').click();
+                return false;
+            });
+
+            $('#calendar-buttons #btn-today').click(function () {
+                $('#calendar > table > tbody > tr > td.fc-header-right > span.fc-button.fc-button-today.fc-state-default').click();
+                return false;
+            });
+
+            $('#mt').click(function () {
+                var y = $('#tp_calendario');
+                y[0].innerHTML = 'Mês <span class="caret"></span>'; // Append
+                $('#calendar').fullCalendar('changeView', 'month');
+            });
+
+            $('#ag').click(function () {
+                var y = $('#tp_calendario');
+                y[0].innerHTML = 'Agenda <span class="caret"></span>'; // Append
+                $('#calendar').fullCalendar('changeView', 'agendaWeek');
+            });
+
+            $('#td').click(function () {
+                var y = $('#tp_calendario');
+                y[0].innerHTML = 'Hoje <span class="caret"></span>'; // Append
+                $('#calendar').fullCalendar('changeView', 'agendaDay');
+            });
+
+            $('#lh').click(function () {
+                var y = $('#tp_calendario');
+                y[0].innerHTML = 'Dia <span class="caret"></span>'; // Append
+                $('#calendar').fullCalendar('changeView', 'basicDay');
+            });
+
+            /* hide default buttons */
+            $('.fc-header-right, .fc-header-center').hide();
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
+            /*  var Url = 'Url.Action("GetTotalizadoresPorDiaDes", "Dashboard")';
+             $('#calendar_des').fullCalendar({
+                 events: //método responsável por listar os eventos
+                 {
+                     url: Url,
+                     type: 'POST'
+
+                 },
+
+                 //ignoreTimezone: false,
+                 axisFormat: 'H:mm',
+                 timeFormat: {
+                     '': 'H:mm',
+                     agenda: 'H:mm',
+                     basic: 'H:mm',
+                     month: 'H:mm',
+                     day: 'H:mm'
+                 },
+                 columnFormat: 'ddd D/M',
+                 //
+                 header: hdr,
+                 buttonText: {
+                     prev: '<i class="fa fa-chevron-left">Anterior</i>',
+                     next: '<i class="fa fa-chevron-right">Próximo</i>'
+                 },
+                 //  allDaySlot: false,
+                 displayEventEnd: false,
+                 //
+                 allDayText: 'Dia',
+                 defaultView: 'month',
+                 minTime: '00:00:00',
+                 maxTime: '00:00:00',
+
+                 eventOverlap: false,
+
+                 editable: false,
+                 droppable: false,
+
+                 eventRender: function (event, element, icon) {
+
+                     $('.fc-event-time').hide();
+                     if (!event.description == "") {
+                         element.find('.fc-event-title').append("<br/><span class='ultra-light'>" + event.description +
+                             "</span>");
+
+                     }
+                     if (!event.icon == "") {
+                         element.find('.fc-event-title').append("<i class='air air-top-right fa " + event.icon +
+                             " '></i>");
+                     }
+                 },
+                 loading: function (isLoading, view) {
+                     if (isLoading) { // isLoading gives boolean value
+                         // alert('events are being rendered'); // Add your script to show loading //show your loader here
+                         $('#loading').show();
+                     } else {
+                         //  alert('all events are rendered'); //hide your loader here
+                         $('#loading').hide();
+                     }
+                 },
+
+                 windowResize: function (event, ui) {
+                     $('#calendar_des').fullCalendar('render');
+                 }
+             });
+
+             $('#calendar-buttons_des #btn-prev_des').click(function () {
+                 $('#calendar_des > table > tbody > tr > td.fc-header-right > span.fc-button.fc-button-prev.fc-state-default.fc-corner-left').click();
+                 return false;
+             });
+
+             $('#calendar-buttons_des #btn-next_des').click(function () {
+                 $('#calendar_des > table > tbody > tr > td.fc-header-right > span.fc-button.fc-button-next.fc-state-default.fc-corner-right').click();
+                 return false;
+             });
+
+             $('#calendar-buttons_des #btn-today').click(function () {
+                 $('#calendar_des > table > tbody > tr > td.fc-header-right > span.fc-button.fc-button-today.fc-state-default').click();
+                 return false;
+             });
+
+             $('#mt_des').click(function () {
+                 var y = $('#tp_calendario_des');
+                 y[0].innerHTML = val + ' <span class="caret"></span>'; // Append
+                 $('#calendar_des').fullCalendar('changeView', 'month');
+             });
+
+             $('#ag_des').click(function () {
+                 var y = $('#tp_calendario_des');
+                 y[0].innerHTML = val + ' <span class="caret"></span>'; // Append
+                 $('#calendar_des').fullCalendar('changeView', 'agendaWeek');
+             });
+
+             $('#td_des').click(function () {
+                 var y = $('#tp_calendario_des');
+                 y[0].innerHTML = val + ' <span class="caret"></span>'; // Append
+                 $('#calendar_des').fullCalendar('changeView', 'agendaDay');
+             });
+
+             $('#lh_des').click(function () {
+                 var y = $('#tp_calendario_des');
+                 y[0].innerHTML = val + ' <span class="caret"></span>'; // Append
+                 $('#calendar_des').fullCalendar('changeView', 'basicDay');
+             }); */
+
+            /* hide default buttons
+
+
+            $('#calendar_des > table > tbody > tr > td.fc-header-center').hide();
+
+            $('#calendar_des > table > tbody > tr > td.fc-header-right').hide();*/
+
+        });
+
+    </script>
+}
