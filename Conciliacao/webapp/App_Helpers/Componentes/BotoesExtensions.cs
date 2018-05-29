@@ -8,7 +8,7 @@ namespace Conciliacao.App_Helpers.Componentes
         #region botoes
         public static IHtmlString BotaoSalvar(this HtmlHelper html, string texto = "Gravar")
         {
-            return new HtmlString("<button type=\"submit\" id=\"btnsalvar\" class=\"btn btn-success\" onclick=\"Gravando(this);\"  ><i class=\"fa fa-check\"></i>  "+ texto +"</button>");
+            return new HtmlString("<button id=\"btnsalvar\" class=\"btn btn-success\" onclick=\"Gravando(this);\"  ><i class=\"fa fa-check\"></i>  "+ texto +"</button>");
         }
 
         public static IHtmlString BotaoCancelar(this HtmlHelper html)
@@ -18,7 +18,7 @@ namespace Conciliacao.App_Helpers.Componentes
 
         public static IHtmlString BotaoSubmit(this HtmlHelper html, string texto = "Gravar")
         {
-            return new HtmlString("<button type=\"submit\" class=\"btn btn-primary\" onclick=\"Gravando(this);\" ><i class=\"fa fa-check\"></i>  " + texto + "</button>");
+            return new HtmlString("<button class=\"btn btn-primary\" onclick=\"Gravando(this);\" ><i class=\"fa fa-check\"></i>  " + texto + "</button>");
         }
 
         public static IHtmlString BotaoVerde(this HtmlHelper html, string texto = "Adicionar novo", string rota = "#")
@@ -33,7 +33,7 @@ namespace Conciliacao.App_Helpers.Componentes
 
         public static IHtmlString BotaoFiltrar(this HtmlHelper html, string texto = "Filtrar")
         {
-            return new HtmlString("<button type=\"submit\" class=\"btn btn-primary\" onclick=\"Filtrando(this);\" ><i class=\"fa fa fa-search\"></i>  " + texto + "</button>");
+            return new HtmlString("<button class=\"btn btn-primary\" onclick=\"Filtrando(this);\" ><i class=\"fa fa fa-search\"></i>  " + texto + "</button>");
         }
 
         #endregion

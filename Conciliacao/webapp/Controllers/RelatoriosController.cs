@@ -619,6 +619,8 @@ namespace Conciliacao.Controllers
                 model.filtro_nm_banco = frm["filtro_nm_banco"];
             }
 
+            model.ListDebitos = model.ListDebitos.Where(x => x.is_tipo_registro.Equals("RESUMO")).ToList();
+
             return View(model);
         }
 

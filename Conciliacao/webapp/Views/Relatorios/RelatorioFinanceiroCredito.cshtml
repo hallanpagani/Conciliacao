@@ -448,19 +448,19 @@
                                             Nº.Resumo.Venda
                                         </th>
                                         <th>
-                                            Dt.Crédito.Venda
+                                            Dt.Venda
                                         </th>
                                         <th>
-                                            Dt.Venda
+                                            Dt.Crédito.Venda
                                         </th>
                                         <th>
                                             Valor.Bruto
                                         </th>
                                         <th>
-                                            Valor.Liquído
+                                            %Taxa
                                         </th>
                                         <th>
-                                            Taxa
+                                            Valor.Liquído
                                         </th>
                                         <th>
                                             Bandeira&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -493,15 +493,6 @@
                                             </td>
 
                                             <td style="width: 74px; text-align: center ">
-                                                @if (item.is_tipo_registro.Equals("COMPROVANTE"))
-                                                {  @Html.Raw("") }
-                                                else
-                                                {
-                                                    @Html.DisplayFor(modelItem => item.data_credito)
-                                                }
-                                            </td>
-
-                                            <td style="width: 74px; text-align: center ">
                                                 @if (item.data_cv.Equals("01/01/0001"))
                                                 {  @Html.Raw("") }
                                                 else
@@ -510,17 +501,30 @@
                                                 }
                                             </td>
 
+                                            <td style="width: 74px; text-align: center ">
+                                                @if (item.is_tipo_registro.Equals("COMPROVANTE"))
+                                                {  @Html.Raw("") }
+                                                else
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.data_credito)
+                                                }
+                                            </td>
+
+                                            
+
                                             <td style="text-align: right">
                                                 @Html.DisplayFor(modelItem => item.is_valor_bruto)
+                                            </td>
+
+                                            <td style="text-align: right">
+                                                @Html.DisplayFor(modelItem => item.taxa_cobrada)
                                             </td>
 
                                             <td style="text-align: right">
                                                 @Html.DisplayFor(modelItem => item.is_valor_liquido)
                                             </td>
 
-                                            <td style="text-align: right">
-                                                @Html.DisplayFor(modelItem => item.taxa_cobrada)
-                                            </td>
+                                            
 
                                             <td style="text-align: center">
                                                 @Html.DisplayFor(modelItem => item.is_bandeira)
@@ -740,18 +744,7 @@
 
             });
 
-            // Change the fixed ordering when the data source is updated
-            table.on('rowgroup-datasrc', function (e, dt, val) {
-                table.order.fixed({ pre: [[val, 'asc']] }).draw();
-            });
-
-            $('a.group-by').on('click', function (e) {
-                e.preventDefault();
-
-                table.rowGroup().dataSrc($(this).data('column'));
-            });
-
-            $('#datatable_tabletools_debitos').dataTable({
+            var table_debito = $('#datatable_tabletools_debitos').dataTable({
                 language: {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -839,7 +832,54 @@
                 "pageLength": 25,
                 "bAutoWidth": true,
                 "aaSorting": [],
-                "order": [[1, 'asc'], [2, 'asc'], [0, 'desc'], [5, 'desc']]
+                "order": [[4, 'asc'], [3, 'asc'], [0, 'desc'], [5, 'desc']],
+                exportOptions: {
+                    // Any other settings used
+                    grouped_array_index: [8]
+                },
+                rowGroup: {
+                    startRender: null,
+                    endRender: function (rows, group) {
+                        var salaryAvg = rows
+                            .data()
+                            .pluck(7)
+                            .reduce(function (a, b) {
+                                return a + b.replace(/[^\d]/g, '') * 1;
+                            }, 0);
+                        salaryAvg = formatReal(salaryAvg);
+
+
+                        /*  var ageAvg = rows
+                             .data()
+                             .pluck(3)
+                             .reduce(function (a, b) {
+                                 return a + b * 1;
+                             }, 0) / rows.count(); */
+
+                        return $('<tr/>')
+                            .append('<td colspan="2" style="text-align: right">Total:</td>')
+                            .append('<td style="text-align: center">' + group + '</td>')
+                            .append('<td style="text-align: right">R$ ' + salaryAvg + '</td>')
+                            .append('<td colspan="10"></td>');
+                    },
+                    dataSrc: 8
+                }
+            });
+
+            // Change the fixed ordering when the data source is updated
+            table.on('rowgroup-datasrc', function (e, dt, val) {
+                table.order.fixed({ pre: [[val, 'asc']] }).draw();
+            });
+
+            table_debito.on('rowgroup-datasrc', function (e, dt, val) {
+                table_debito.order.fixed({ pre: [[val, 'asc']] }).draw();
+            });
+
+            $('a.group-by').on('click', function (e) {
+                e.preventDefault();
+
+                table.rowGroup().dataSrc($(this).data('column'));
+                table_debito.rowGroup().dataSrc($(this).data('column'));
             });
 
             $('#Bancos').on("select2:select", function (e) {

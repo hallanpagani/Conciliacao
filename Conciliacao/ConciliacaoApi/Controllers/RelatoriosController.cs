@@ -212,8 +212,9 @@ namespace ConciliacaoAPI.Controllers
                                     er.nome_estabelecimento 
                             from conciliador_userede_eevd_resumooperacao a
                             left join cadastro_estabelecimento_rede er on er.id_estabelecimento_rede = cast(a.numero_filiacao_pv as decimal(20,0)) and (er.id_rede = coalesce(a.rede,1))
-                            " + filtro+ @"
-                            union all
+                            " + filtro+
+                            
+                            @"union all
                             select distinct
                                     2 as ordem,
 	                                'COMPROVANTE' as resumo,
