@@ -189,7 +189,7 @@
                 {
                     <tr class="group group-end">
                         <td colspan="3" style="text-align: right">Total da data:</td>
-                        <td colspan="2" style="text-align: center">@data_group</td>
+                        <td colspan="3" style="text-align: center">@data_group</td>
                         <td style="text-align: right">R$ @valor_soma.ToString("#,##0.00")</td>
                         <td colspan="10"></td>
                     </tr>
@@ -215,7 +215,7 @@
 
                     <td style="width: 74px; text-align: center ">
                         @if (item.is_tipo_registro.Equals("COMPROVANTE"))
-                        {  @Html.Raw("") }
+                        { @Html.DisplayFor(modelItem => item.data_credito) }
                         else
                         {
                             @Html.DisplayFor(modelItem => item.data_credito)
@@ -264,7 +264,7 @@
             {
                 <tr class="group group-end">
                     <td colspan="3" style="text-align: right">Total da data:</td>
-                    <td colspan="2" style="text-align: center">@data_group</td>
+                    <td colspan="3" style="text-align: center">@data_group</td>
                     <td style="text-align: right">R$ @valor_soma.ToString("#,##0.00")</td>
                     <td colspan="10"></td>
                 </tr>

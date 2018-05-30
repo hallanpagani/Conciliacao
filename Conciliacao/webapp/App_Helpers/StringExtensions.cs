@@ -39,6 +39,10 @@ namespace Conciliacao
             return value;
         }
 
+        public static string TrimZerosEquerda(this string source)
+        {
+            return source.TrimStart('0');
+        }
 
     }
 }

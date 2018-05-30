@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConciliacaoModelo.classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -72,6 +73,30 @@ namespace ConciliacaoModelo.model.conciliador
 
         [Column("conta_corrente")]
         public string conta_corrente { get; set; }
+
+        public string banco_trim
+        {
+            get
+            {
+                return banco.TrimStart('0');
+            }
+        }
+
+        public string agencia_trim
+        {
+            get
+            {
+                return agencia.TrimStart('0');
+            }
+        }
+
+        public string conta_corrente_trim
+        {
+            get
+            {
+                return conta_corrente.TrimStart('0');
+            }
+        }
 
         [Column("numero_cartao")]
         public string numero_cartao { get; set; }

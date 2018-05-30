@@ -595,6 +595,15 @@ namespace Conciliacao.Controllers
             model.ListCreditos = _restRelatorio.RelatorioFinanceiroCreditosListar(UsuarioLogado.ContaChave, frm["datainicio"].Replace("/", ""), frm["datafinal"].Replace("/", ""), frm["tp_administradora"].Trim(), frm["filtro_resumo"], frm["filtro_banco"]);
             model.ListDebitos = _restRelatorio.TransacaoRedeListar(0, 1, 1, datainicio, datafinal, frm["filtro_resumo"], frm["tp_administradora"].Trim(), frm["filtro_banco"]) ?? new List<ConciliacaoTransacaoRede>();
 
+            if (frm["filtro_estabelecimento"] != "")
+            {
+                model.filtro_estabelecimento = Convert.ToInt32(frm["filtro_estabelecimento"]);
+                model.filtro_nm_estabelecimento = frm["filtro_nm_estabelecimento"];
+
+                model.ListCreditos = model.ListCreditos.Where(x => x.nome_estabelecimento.ToUpper().Equals(model.filtro_nm_estabelecimento.Substring(model.filtro_nm_estabelecimento.IndexOf(" - ") + 3).Trim()) && x.codigo_estabelecimento == model.filtro_estabelecimento).ToList();
+                model.ListDebitos = model.ListDebitos.Where(x => x.nome_estabelecimento.ToUpper().Equals(model.filtro_nm_estabelecimento.Substring(model.filtro_nm_estabelecimento.IndexOf(" - ") + 3).Trim()) && x.codigo_estabelecimento == model.filtro_estabelecimento).ToList();
+            }
+
             ViewBag.DataInicio = frm["datainicio"];
             ViewBag.DataFinal = frm["datafinal"];
 
@@ -618,6 +627,8 @@ namespace Conciliacao.Controllers
                 model.filtro_banco = Convert.ToInt32(frm["filtro_banco"]);
                 model.filtro_nm_banco = frm["filtro_nm_banco"];
             }
+
+
 
             model.ListDebitos = model.ListDebitos.Where(x => x.is_tipo_registro.Equals("RESUMO")).ToList();
 

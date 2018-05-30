@@ -18,6 +18,9 @@ namespace Conciliacao.Models.Relatorios
         public int tp_cartao { get; set; }
         public int tp_movimento { get; set; }
 
+        public int? filtro_estabelecimento { get; set; }
+        public string filtro_nm_estabelecimento { get; set; }
+
         public int tp_data { get; set; } // 0 - Emissao
 
         [DataType(DataType.Date, ErrorMessage = "Data inicial em formato inválido")]

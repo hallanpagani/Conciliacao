@@ -594,11 +594,6 @@
                 $('#filtro_nm_rede').val($('#Redes').select2('data')[0].text); // what you would like to happen
             });
 
-            $('#Establecimentos').on("select2:select", function (e) {
-                console.log($('#Estabelecimentos').select2('data')[0].text);
-                $('#filtro_nm_estabelecimento').val($('#Estabelecimentos').select2('data')[0].text); // what you would like to happen
-            });
-
             var Url = '@Url.Action("GetRedes", "Redes")';
             $("#Redes").select2({
                 placeholder: "Selecione uma rede",
@@ -630,7 +625,8 @@
                 }
             });
 
-            $('#Estabelecimentos').on("select2:select", function (e) {
+          
+            $('#Establecimentos').on("select2:select", function (e) {
                 console.log($('#Estabelecimentos').select2('data')[0].text);
                 $('#filtro_nm_estabelecimento').val($('#Estabelecimentos').select2('data')[0].text); // what you would like to happen
             });

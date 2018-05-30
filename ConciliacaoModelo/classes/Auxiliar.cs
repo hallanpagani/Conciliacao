@@ -163,10 +163,10 @@ namespace ConciliacaoModelo.classes
                 {
                     return property.Name;
                 }
-                else if (ca.Name.IndexOf(" as ") > 0)
+                else if (ca.Name.IndexOf(") as ") > 0)
                 {
-                    var s = ca.Name.Substring(ca.Name.IndexOf(" as ")+4, (ca.Name.Length-4) - ca.Name.IndexOf(" as "));
-                    return s;
+                    var s = ca.Name.Substring(ca.Name.IndexOf(") as ") +4, (ca.Name.Length-4) - ca.Name.IndexOf(") as "));
+                    return s.Trim();
                 }
                 else return ca.Name;
             }

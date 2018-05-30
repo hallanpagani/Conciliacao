@@ -8,7 +8,6 @@ namespace ConciliacaoModelo.model.cadastros
     [Table("cadastro_estabelecimento")]
     public class EstabelecimentoListar
     {
-
         [Key]
         [AutoInc]
         [Required]

@@ -65,8 +65,8 @@
 
                         // @Html.HiddenFor(model => model.id)
 
-                        
-                        
+
+
                         <!--  <section class="col col-sm-12 col-md-2 col-lg-2">
                                   <label for="tp_agendamento">Período</label>
                                   <div>
@@ -196,12 +196,24 @@
                             </div>
                         </div>
 
-                            <section class="col col-sm-12 col-md-2 col-lg-2">
-                                <label for="tp_administradora">Bandeira</label>
-                                <div>
-                                    @Html.DropDownList("tp_administradora", null, new { @class = "form-control" })
-                                </div>
-                            </section>
+
+                        <section class="col col-sm-12 col-md-3 col-lg-3">
+                            <label class="" for="filtro_estabelecimento">Estabelecimento</label>
+                            <select id="Estabelecimentos" name="filtro_estabelecimento" class="requerido" style="width:100%">
+                                if (@Model.filtro_estabelecimento != 0)
+                                {
+                                <option value="@Model.filtro_estabelecimento">@Model.filtro_nm_estabelecimento</option>
+                                }
+                            </select>
+                            @Html.HiddenFor(model => model.filtro_nm_estabelecimento)
+                        </section>
+
+                        <section class="col col-sm-12 col-md-2 col-lg-2">
+                            <label for="tp_administradora">Bandeira</label>
+                            <div>
+                                @Html.DropDownList("tp_administradora", null, new { @class = "form-control" })
+                            </div>
+                        </section>
 
                             <section class="col col-sm-12 col-md-3 col-lg-2">
                                 <label class="" for="filtro_resumo">Resumo</label>
@@ -247,10 +259,10 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="group-by" data-column="2">Agrupa por Data</a>
+                        <a class="group-by" data-column="4">Agrupa por Data</a>
                     </li>
                     <li>
-                        <a class="group-by" data-column="10">Agrupa por Bandeira</a>
+                        <a class="group-by" data-column="12">Agrupa por Bandeira</a>
                     </li>
                 </ul>
             </div>
@@ -348,6 +360,12 @@
                                             Ponto.Venda
                                         </th>
                                         <th>
+                                            Estab.
+                                        </th>
+                                        <th>
+                                            Nm.Estabelecimento
+                                        </th>
+                                        <th>
                                             Documento
                                         </th>
                                         <th>
@@ -403,12 +421,23 @@
                                             <td style="width: 80px;">
                                                 @Html.DisplayFor(modelItem => item.numero_pv_centralizador)
                                             </td>
+                                            <td>
+                                                @if (item.codigo_estabelecimento == 0)
+                                                { @Html.Raw("") }
+                                                else
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.codigo_estabelecimento)
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.nome_estabelecimento)
+                                            </td>
                                             <td>@Html.DisplayFor(modelItem => item.numero_documento)</td>
                                             <td style="text-align: center"> @Html.DisplayFor(modelItem => item.data_lancamento)</td>
                                             <td style="text-align: right">@Html.DisplayFor(modelItem => item.valor_lancamento)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.banco)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.agencia)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.conta_corrente)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.banco_trim)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.agencia_trim)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.conta_corrente_trim)</td>
                                             <td style="text-align: center">@Html.DisplayFor(modelItem => item.data_movimento)</td>
                                             <td>@Html.DisplayFor(modelItem => item.numero_rv)</td>
                                             <td style="text-align: center">@Html.DisplayFor(modelItem => item.data_rv)</td>
@@ -438,20 +467,33 @@
                             <table id="datatable_tabletools_debitos" class="table table-striped table-bordered table-hover" width="100%">
                                 <thead>
                                     <tr>
+
                                         <th>
-                                            Tipo
+                                            Ponto.Venda
                                         </th>
                                         <th>
-                                            Identificação
+                                            Estab.
                                         </th>
                                         <th>
-                                            Nº.Resumo.Venda
+                                            Nm.Estabelecimento
                                         </th>
                                         <th>
                                             Dt.Venda
                                         </th>
                                         <th>
                                             Dt.Crédito.Venda
+                                        </th>
+                                        <th>
+                                            Resumo.Venda
+                                        </th>
+                                        <th>
+                                            Banco
+                                        </th>
+                                        <th>
+                                            Agência
+                                        </th>
+                                        <th>
+                                            Conta
                                         </th>
                                         <th>
                                             Valor.Bruto
@@ -465,13 +507,13 @@
                                         <th>
                                             Bandeira&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </th>
-                                        <th>
-                                            Cartão
-                                        </th>
+                                        <!-- <th>
+                                             Cartão
+                                         </th>
 
-                                        <th>
-                                            NSU.Rede
-                                        </th>
+                                         <th>
+                                             NSU.Rede
+                                         </th> -->
 
                                     </tr>
                                 </thead>
@@ -482,14 +524,20 @@
 
                                         <tr style="">
 
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.is_tipo_registro)
-                                            </td>
+
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.is_numero_filiacao_pv)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.is_numero_resumo_vendas)
+                                                @if (item.codigo_estabelecimento == 0)
+                                                { @Html.Raw("") }
+                                                else
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.codigo_estabelecimento)
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.nome_estabelecimento)
                                             </td>
 
                                             <td style="width: 74px; text-align: center ">
@@ -500,7 +548,6 @@
                                                     @Html.DisplayFor(modelItem => item.data_cv)
                                                 }
                                             </td>
-
                                             <td style="width: 74px; text-align: center ">
                                                 @if (item.is_tipo_registro.Equals("COMPROVANTE"))
                                                 {  @Html.Raw("") }
@@ -510,7 +557,14 @@
                                                 }
                                             </td>
 
-                                            
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.is_numero_resumo_vendas)
+                                            </td>
+
+                                            <td>@Html.DisplayFor(modelItem => item.banco_trim)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.agencia_trim)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.conta_corrente_trim)</td>
+
 
                                             <td style="text-align: right">
                                                 @Html.DisplayFor(modelItem => item.is_valor_bruto)
@@ -524,18 +578,17 @@
                                                 @Html.DisplayFor(modelItem => item.is_valor_liquido)
                                             </td>
 
-                                            
-
                                             <td style="text-align: center">
                                                 @Html.DisplayFor(modelItem => item.is_bandeira)
                                             </td>
-                                            <td style="text-align: center">
-                                                @Html.DisplayFor(modelItem => item.numero_cartao)
+
+                                            <!-- td style="text-align: center">
+                                                Html.DisplayFor(modelItem => item.numero_cartao)
                                             </td>
 
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.is_nsu_rede)
-                                            </td>
+                                                Html.DisplayFor(modelItem => item.is_nsu_rede)
+                                            </td-->
 
                                         </tr>
                                     }
@@ -567,6 +620,42 @@
     <script type="text/javascript">
 
         // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $('#Estabelecimentos').on("select2:select", function (e) {
+                console.log($('#Estabelecimentos').select2('data')[0].text);
+                $('#filtro_nm_estabelecimento').val($('#Estabelecimentos').select2('data')[0].text); // what you would like to happen
+        });
+
+        var Url = '@Url.Action("GetEstabelecimentosRede", "Estabelecimento")';
+        $("#Estabelecimentos").select2({
+            placeholder: "Selecione um estabelecimento",
+            minimumInputLength: 0,
+            allowClear: true,
+            language: $.extend({},
+            $.fn.select2.defaults.defaults.language, {
+                noResults: function () {
+                    return $("<span>Nenhum resultado encontrado!</span>");
+                },
+                inputTooShort: function (e) { var t = e.minimum - e.input.length, n = "Digite " + t + " ou mais caracteres"; return n }
+            }),
+            ajax: {
+                dataType: "json",
+                url: Url,
+                data: function (params) {
+                    return {
+                        term: params.term // search term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (obj) {
+                            return { id: obj.id, text: obj.text };
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
 
         $("#creditos").click(function () {
 
@@ -703,23 +792,21 @@
                         ]
                     }
                 ],
-                "lengthMenu": [[ -1], [ "Todos"]],
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
                 "sScrollX": "100%",
                 "pageLength": -1,
                 "bAutoWidth": true,
-
-
-                order: [[2, 'asc']],
+                order: [[4, 'asc']],
                 exportOptions: {
                     // Any other settings used
-                    grouped_array_index: [2]
+                    grouped_array_index: [4]
                 },
                 rowGroup: {
                     startRender: null,
                     endRender: function (rows, group) {
                         var salaryAvg = rows
                             .data()
-                            .pluck(3)
+                            .pluck(5)
                             .reduce(function (a, b) {
                                 return a + b.replace(/[^\d]/g, '') * 1;
                             }, 0);
@@ -737,14 +824,14 @@
                             .append('<td colspan="2" style="text-align: right">Total:</td>')
                             .append('<td style="text-align: center">' + group + '</td>')
                             .append('<td style="text-align: right">R$ ' + salaryAvg + '</td>')
-                            .append('<td colspan="10"></td>');
+                            .append('<td colspan="12"></td>');
                     },
-                    dataSrc: 2
+                    dataSrc: 4
                 }
 
             });
 
-            var table_debito = $('#datatable_tabletools_debitos').dataTable({
+            var table_debito = $('#datatable_tabletools_debitos').DataTable({
                 language: {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -829,20 +916,20 @@
                     }
                 ],
                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
-                "pageLength": 25,
+                "pageLength": -1,
                 "bAutoWidth": true,
                 "aaSorting": [],
-                "order": [[4, 'asc'], [3, 'asc'], [0, 'desc'], [5, 'desc']],
+                "order": [[4, 'asc']],
                 exportOptions: {
                     // Any other settings used
-                    grouped_array_index: [8]
+                    grouped_array_index: [4]
                 },
                 rowGroup: {
                     startRender: null,
                     endRender: function (rows, group) {
                         var salaryAvg = rows
                             .data()
-                            .pluck(7)
+                            .pluck(11)
                             .reduce(function (a, b) {
                                 return a + b.replace(/[^\d]/g, '') * 1;
                             }, 0);
@@ -862,7 +949,7 @@
                             .append('<td style="text-align: right">R$ ' + salaryAvg + '</td>')
                             .append('<td colspan="10"></td>');
                     },
-                    dataSrc: 8
+                    dataSrc: 4
                 }
             });
 

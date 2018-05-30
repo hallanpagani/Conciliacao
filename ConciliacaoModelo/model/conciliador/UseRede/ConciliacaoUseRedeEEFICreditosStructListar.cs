@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConciliacaoModelo.model.generico;
 
 namespace ConciliacaoModelo.model.conciliador.UseRede
 {
@@ -17,6 +12,12 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
 
         [Column("numero_pv_centralizador")]
         public string numero_pv_centralizador { get; set; }
+
+        [Column("(select codigo_estabelecimento from cadastro_estabelecimento_rede er where er.id_estabelecimento_rede = cast(a.numero_pv_centralizador as decimal(20,0)) and(er.id_rede = coalesce(a.rede, 1))) as codigo_estabelecimento")]
+        public long codigo_estabelecimento { get; set; }
+
+        [Column("(select nome_estabelecimento from cadastro_estabelecimento_rede er where er.id_estabelecimento_rede = cast(a.numero_pv_centralizador as decimal(20,0)) and(er.id_rede = coalesce(a.rede, 1))) as nome_estabelecimento")]
+        public string nome_estabelecimento { get; set; }
 
         [Column("numero_documento")]
         public string numero_documento { get; set; }
@@ -36,6 +37,30 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
 
         [Column("conta_corrente")]
         public long conta_corrente { get; set; }
+
+        public string banco_trim
+        {
+            get
+            {
+                return banco.ToString().TrimStart('0');
+            }
+        }
+
+        public string agencia_trim
+        {
+            get
+            {
+                return agencia.ToString().TrimStart('0');
+            }
+        }
+
+        public string conta_corrente_trim
+        {
+            get
+            {
+                return conta_corrente.ToString().TrimStart('0');
+            }
+        }
 
         [Column("data_movimento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

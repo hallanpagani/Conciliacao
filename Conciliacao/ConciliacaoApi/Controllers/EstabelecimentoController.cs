@@ -88,6 +88,27 @@ namespace ConciliacaoAPI.Controllers
         }
 
 
+        [Route("api/Estabelecimento/GetEstabelecimentosRedeAll/{idconta:long}")]
+        public IEnumerable<EstabelecimentoRedeListar> GetEstabelecimentosRedeAll(long idconta)
+        {
+            return GetEstabelecimentosRedeAll(idconta, "");
+        }
+
+        [Route("api/Estabelecimento/GetEstabelecimentosRedeAll/{idconta:long}/{termo}")]
+        public IEnumerable<EstabelecimentoRedeListar> GetEstabelecimentosRedeAll(long idconta, string termo)
+        {
+            var u = new EstabelecimentoRedeListar();
+            var f = new Filtros(u);
+            string filtro = "";
+            if (!string.IsNullOrEmpty(termo))
+            {
+                f.AddLike(() => u.NomeEstabelecimento, termo, "");
+                filtro = " and " + f;
+            }
+            return DAL.ListarObjetos<EstabelecimentoRedeListar>(string.Format("id_conta={0} {1}", idconta, filtro), "nome_estabelecimento");
+        }
+
+
         [Route("api/Estabelecimento/GetEstabelecimentoRedePorId/{idconta:long}/{id:int}")]
         public List<EstabelecimentoRedeListar> GetEstabelecimentoRedePorId(long idconta, int id)
         {

@@ -78,5 +78,20 @@ namespace Conciliacao.Helper.Rest
 
             return a.Data;
         }
+
+
+
+        public IEnumerable<EstabelecimentoRedeListar> GetEstabelecimentosRedeAll(string term)
+        {
+            var request = new RestRequest("api/Estabelecimento/GetEstabelecimentosRedeAll/{idconta}/{termo}", Method.GET) { RequestFormat = DataFormat.Json };
+            var obj = new BaseID();
+            request.AddParameter("idconta", obj.IdConta, ParameterType.UrlSegment);
+            request.AddParameter("termo", term, ParameterType.UrlSegment);
+            var a = _client.Execute<List<EstabelecimentoRedeListar>>(request);
+            if (a.StatusCode != HttpStatusCode.OK)
+                a.Data = new List<EstabelecimentoRedeListar>();
+            return a.Data;
+        }
+
     }
 }
