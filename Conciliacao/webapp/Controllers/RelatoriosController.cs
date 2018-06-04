@@ -600,7 +600,7 @@ namespace Conciliacao.Controllers
                 model.filtro_estabelecimento = Convert.ToInt32(frm["filtro_estabelecimento"]);
                 model.filtro_nm_estabelecimento = frm["filtro_nm_estabelecimento"];
 
-                model.ListCreditos = model.ListCreditos.Where(x => x.nome_estabelecimento.ToUpper().Equals(model.filtro_nm_estabelecimento.Substring(model.filtro_nm_estabelecimento.IndexOf(" - ") + 3).Trim()) && x.codigo_estabelecimento == model.filtro_estabelecimento).ToList();
+                model.ListCreditos = model.ListCreditos.Where(x => (x.nome_estabelecimento ?? "" ).ToUpper().Equals(model.filtro_nm_estabelecimento.Substring(model.filtro_nm_estabelecimento.IndexOf(" - ") + 3).Trim()) && x.codigo_estabelecimento == model.filtro_estabelecimento).ToList();
                 model.ListDebitos = model.ListDebitos.Where(x => x.nome_estabelecimento.ToUpper().Equals(model.filtro_nm_estabelecimento.Substring(model.filtro_nm_estabelecimento.IndexOf(" - ") + 3).Trim()) && x.codigo_estabelecimento == model.filtro_estabelecimento).ToList();
             }
 

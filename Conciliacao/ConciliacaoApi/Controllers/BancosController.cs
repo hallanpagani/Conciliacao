@@ -34,6 +34,14 @@ namespace ConciliacaoAPI.Controllers
                                                                           `conciliador_userede_eevc_resumooperacao` r
                                                                         where
                                                                           r.`id_conta` = {0}
+                                                                        group by 1
+                                                                        union all
+                                                                        select
+                                                                          CAST(banco AS UNSIGNED)
+                                                                        from 
+                                                                          `conciliador_userede_eevd_resumooperacao` r
+                                                                        where
+                                                                          r.`id_conta` = {0}
                                                                         group by 1) as x))
                                                                         ", idconta));
         }
