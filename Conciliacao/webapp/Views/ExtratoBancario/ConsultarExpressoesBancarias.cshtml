@@ -51,7 +51,7 @@
 
         $('.deletar').on('click', function (e) {
             e.preventDefault();
-            var defaultAction = $('.deletar').prop("href");
+            var defaultAction = $(this).prop("href");
             $.SmartMessageBox({
                 title: "Deseja continuar?",
                 content: "O registro será perdido!",

@@ -51,12 +51,15 @@ namespace Conciliacao.Controllers.Conciliador
             if (!ModelState.IsValid)
                 return View(obj);
 
-            obj.nm_expressao = obj.nm_expressao.ToUpper();
-            var existe = DAL.GetObjeto<BancoExpressao>(string.Format("nm_expressao='{0}'", obj.nm_expressao.Trim()));
-            if (existe != null)
+            if (obj.id == 0)
             {
-                ModelState.AddModelError("", "Expressão já cadastrada!");
-                return View(obj);
+                obj.nm_expressao = obj.nm_expressao.ToUpper();
+                var existe = DAL.GetObjeto<BancoExpressao>(string.Format("nm_expressao='{0}'", obj.nm_expressao.Trim()));
+                if (existe != null)
+                {
+                    ModelState.AddModelError("", "Expressão já cadastrada!");
+                    return View(obj);
+                }
             }
             
             obj.bandeira = obj.bandeira.ToUpper();
