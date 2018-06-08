@@ -17,7 +17,7 @@ namespace ConciliacaoModelo.model.cadastros
 
         [Column("nm_expressao")]
         [Required]
-        [Display(Name = "Expressao")]
+        [Display(Name = "Expressão")]
         public string nm_expressao { get; set; }
 
         [Column("bandeira")]
