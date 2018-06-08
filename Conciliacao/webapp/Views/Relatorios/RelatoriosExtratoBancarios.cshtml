@@ -28,7 +28,7 @@
 <div id="content">
 
     <div class="well padding-5 " style="margin-bottom: 0px!important;">
-        <form class="smart-form" id="pesquisar" method="POST">
+        <form class="smart-form" id="pesquisar" method="POST" autocomplete="off">
             @Html.Partial("_ValidationSummary")
             <div class="row">
 
@@ -169,6 +169,10 @@
     <div class="row no-padding no-margin">
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        
+            <div class="pull-left">
+                @Html.ActionLink("Consultar expressões bancárias", "ConsultarExpressoesBancarias", "ExtratoBancario", null, new { @class = "btn btn-danger", @style= "margin: 10px 0 0;",  target = "_blank" })
+            </div>
             <ul id="sparks" class="">
 
                 <li class="">

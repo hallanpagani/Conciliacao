@@ -642,7 +642,7 @@ namespace Conciliacao.Controllers
             DateTime datainicio = DateTime.ParseExact(data, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             DateTime datafinal = DateTime.ParseExact(data, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
-            BancoExpressao bancoexpressao = DAL.GetObjeto<BancoExpressao>(string.Format("nm_expressao=trim('{0}')", historico.Trim()))?? new BancoExpressao();
+            BancoExpressao bancoexpressao = DAL.GetObjeto<BancoExpressao>(string.Format("nm_expressao=trim('{0}')", historico.Trim().Replace("  "," ").Replace("  ", " "))) ?? new BancoExpressao();
 
             var model = new TransacaoCreditosViewModel();
 

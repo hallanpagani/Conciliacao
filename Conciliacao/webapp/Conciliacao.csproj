@@ -529,6 +529,8 @@
     <Content Include="Views\Relatorios\RelatorioFinanceiroDebitosPreview.cshtml" />
     <Content Include="Views\Conciliador\ListarCompletoArquivoBin.cshtml" />
     <Content Include="Views\Relatorios\RelatoriosExtratoBancarios.cshtml" />
+    <Content Include="Views\ExtratoBancario\CadastrarExpressoes.cshtml" />
+    <Content Include="Views\ExtratoBancario\ConsultarExpressoesBancarias.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

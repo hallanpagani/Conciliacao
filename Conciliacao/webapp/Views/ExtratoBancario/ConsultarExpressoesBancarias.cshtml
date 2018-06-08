@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ConciliacaoModelo.model.cadastros.BancoExpressao>
+
+@{
+    ViewBag.NomeDaJanela = "Cadastro Expressões";
+    ViewBag.Action = "CadastrarExpressoes";
+    ViewBag.Controller = "ExtratoBancario";
+    ViewBag.Title = "Cadastro Expressões Bancárias";
+    Layout = "~/Views/Shared/Genericas/_Consultas.cshtml";
+    ViewBag.IconeTopo = "fa-list";
+}
+
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nm_expressao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bandeira)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tp_credito_debito)
+        </th>
+        <th>Ações</th>
+    </tr>
+
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nm_expressao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bandeira)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tp_credito_debito)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "CadastrarExpressoes", new { id = item.id }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;
+                @Html.ActionLink("Deletar", "DeletarExpressoes", new { id = item.id }, new { @class = "btn btn-danger deletar" })
+            </td>
+        </tr>
+    }
+</tbody>
+
+
+@section pagespecific {
+    <script>
+
+        $('.deletar').on('click', function (e) {
+            e.preventDefault();
+            var defaultAction = $('.deletar').prop("href");
+            $.SmartMessageBox({
+                title: "Deseja continuar?",
+                content: "O registro será perdido!",
+                buttons: '[Não, cancelar!][Sim, continuar!]'
+            }, function (ButtonPressed) {
+                if (ButtonPressed === "Sim, continuar!") {
+                    window.location.href = defaultAction;
+                }
+            });
+        })
+
+    </script>
+}

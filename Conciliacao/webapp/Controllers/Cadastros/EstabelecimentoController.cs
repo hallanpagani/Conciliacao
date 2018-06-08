@@ -99,7 +99,6 @@ namespace Conciliacao.Controllers.Cadastros
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-
         class ItemEqualityComparer : IEqualityComparer<Lista>
         {
             public bool Equals(Lista x, Lista y)
@@ -113,7 +112,6 @@ namespace Conciliacao.Controllers.Cadastros
             }
         }
 
-
         [HttpGet]
         [OutputCache(Duration = 30)]
         public JsonResult GetEstabelecimentosRede(string term)
@@ -121,7 +119,6 @@ namespace Conciliacao.Controllers.Cadastros
             List<Lista> list = _restClient.GetEstabelecimentosRedeAll(term ?? "").Select(i => new Lista { id = i.CodigoEstabelecimento, text = i.CodigoEstabelecimento+" - "+i.NomeEstabelecimento.ToUpper() }).ToList();
             return Json(list.Distinct(new ItemEqualityComparer()).OrderBy(c => c.text).ThenBy(c => c.id).ToList(), JsonRequestBehavior.AllowGet);
         }
-
 
         [HttpPost]
         public ActionResult CadastrarEstabelecimentoRede(EstabelecimentoRede EstabelecimentoRede, FormCollection form)

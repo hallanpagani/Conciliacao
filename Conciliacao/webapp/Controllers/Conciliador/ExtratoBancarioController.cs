@@ -7,15 +7,90 @@ using ConciliacaoModelo.model.conciliador;
 using ConciliacaoPersistencia.banco;
 using Conciliacao.Controllers.Generico;
 using Conciliacao.App_Helpers.Componentes;
-using System.Text;
 using OFXSharp;
-using System.Collections.Generic;
 using ConciliacaoModelo.model.generico;
+using ConciliacaoModelo.model.cadastros;
 
 namespace Conciliacao.Controllers.Conciliador
 {
     public class ExtratoBancarioController : AppController
     {
+        public ActionResult ConsultarExpressoesBancarias()
+        {
+            var lista = DAL.ListarObjetos<BancoExpressao>();
+            return View(lista);
+        }
+
+        [HttpGet]
+        public ActionResult CadastrarExpressoes(int id = 0)
+        {
+            var model = new BancoExpressao();
+            if (id > 0)
+            {
+                model = DAL.GetObjetoById<BancoExpressao>(id);
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult DeletarExpressoes(int id = 0)
+        {
+            var model = new BancoExpressao();
+            if (id > 0)
+            {
+                model = DAL.GetObjetoById<BancoExpressao>(id);
+                DAL.Excluir(model);
+            }
+            return RedirectToAction("ConsultarExpressoesBancarias");
+        }
+
+        [HttpPost]
+        public ActionResult CadastrarExpressoes(BancoExpressao obj)
+        {
+            ViewBag.Notification = "";
+            if (!ModelState.IsValid)
+                return View(obj);
+
+            obj.nm_expressao = obj.nm_expressao.ToUpper();
+            var existe = DAL.GetObjeto<BancoExpressao>(string.Format("nm_expressao='{0}'", obj.nm_expressao.Trim()));
+            if (existe != null)
+            {
+                ModelState.AddModelError("", "Expressão já cadastrada!");
+                return View(obj);
+            }
+            
+            obj.bandeira = obj.bandeira.ToUpper();
+            obj.tp_credito_debito = obj.tp_credito_debito.ToUpper();
+
+            if ((obj.tp_credito_debito != "C") && (obj.tp_credito_debito != "D"))
+            {
+                ModelState.AddModelError("", "Tipo de crédito e débito deve ser 'C' ou 'D' !");
+                return View(obj);
+            }
+
+            try
+            {
+                var resp = DAL.Gravar(obj);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex);
+                
+            }
+            if (obj.id > 0)
+            {
+                this.AddNotification("Expressão bancária alterada.", NotificationType.Sucesso);
+            }
+            else
+            {
+                this.AddNotification("Expressão bancária incluída.", NotificationType.Sucesso);
+            }
+
+            var model = new BancoExpressao();
+            return View(model);
+        }
+
+
         // GET: ExtratoBancario
         public ActionResult Index()
         {
