@@ -231,6 +231,28 @@
                                 @Html.HiddenFor(model => model.filtro_nm_banco)
                             </section>
 
+                            <section class="col col-sm-12 col-md-4 col-lg-3">
+                                <label class="" for="filtro_agencia">Agência</label>
+                                <select id="Agencias" name="filtro_agencia" class="requerido" style="width:100%">
+                                    @if (@Model.filtro_agencia != 0)
+                                    {
+                                        <option value="@Model.filtro_agencia">@Model.filtro_agencia</option>
+                                    }
+                                </select>
+                                @Html.HiddenFor(model => model.filtro_agencia)
+                            </section>
+
+                            <section class="col col-sm-12 col-md-4 col-lg-3">
+                                <label class="" for="filtro_conta">Conta</label>
+                                <select id="Contas" name="filtro_banco" class="requerido" style="width:100%">
+                                    @if (@Model.filtro_conta != 0)
+                                    {
+                                        <option value="@Model.filtro_conta">@Model.filtro_conta</option>
+                                    }
+                                </select>
+                                @Html.HiddenFor(model => model.filtro_conta)
+                            </section>
+
                             <section class="col col-sm-12 col-md-1 col-lg-1">
                                 <label class="">&nbsp;</label>
                                 <div>
@@ -977,6 +999,66 @@
             var Url = '@Url.Action("GetBancos", "Banco")';
             $("#Bancos").select2({
                 placeholder: "Selecione um banco",
+                minimumInputLength: 0,
+                language: "pt-BR",
+                allowClear: true,
+                ajax: {
+                    dataType: "json",
+                    url: Url,
+                    data: function (params) {
+                        return {
+                            term: params.term // search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (obj) {
+                                return { id: obj.id, text: obj.text };
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $('#Agencias').on("select2:select", function (e) {
+                console.log($('#Agencias').select2('data')[0].text);
+                $('#filtro_agencia').val($('#Agencias').select2('data')[0].text); // what you would like to happen
+            });
+
+            var Url = '@Url.Action("GetAgencia", "Banco")';
+            $("#Agencias").select2({
+                placeholder: "Selecione uma agência",
+                minimumInputLength: 0,
+                language: "pt-BR",
+                allowClear: true,
+                ajax: {
+                    dataType: "json",
+                    url: Url,
+                    data: function (params) {
+                        return {
+                            term: params.term // search term
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (obj) {
+                                return { id: obj.id, text: obj.text };
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+
+            $('#Contas').on("select2:select", function (e) {
+                console.log($('#Contas').select2('data')[0].text);
+                $('#filtro_conta').val($('#Contas').select2('data')[0].text); // what you would like to happen
+            });
+
+            var Url = '@Url.Action("GetContas", "Banco")';
+            $("#Contas").select2({
+                placeholder: "Selecione uma conta",
                 minimumInputLength: 0,
                 language: "pt-BR",
                 allowClear: true,
