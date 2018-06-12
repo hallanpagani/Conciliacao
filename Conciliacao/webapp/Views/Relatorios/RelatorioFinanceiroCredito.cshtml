@@ -211,7 +211,7 @@
                         <section class="col col-sm-12 col-md-2 col-lg-2">
                             <label for="tp_administradora">Bandeira</label>
                             <div>
-                                @Html.DropDownList("tp_administradora", null, new { @class = "form-control" })
+                                @Html.DropDownList("tp_administradora", null, new { @class = "form-control", data_placeholder = "Please select a product" })
                             </div>
                         </section>
 
@@ -231,7 +231,7 @@
                                 @Html.HiddenFor(model => model.filtro_nm_banco)
                             </section>
 
-                            <section class="col col-sm-12 col-md-4 col-lg-3">
+                            <section class="col col-sm-12 col-md-1 col-lg-2">
                                 <label class="" for="filtro_agencia">Agência</label>
                                 <select id="Agencias" name="filtro_agencia" class="requerido" style="width:100%">
                                     @if (@Model.filtro_agencia != 0)
@@ -242,9 +242,9 @@
                                 @Html.HiddenFor(model => model.filtro_agencia)
                             </section>
 
-                            <section class="col col-sm-12 col-md-4 col-lg-3">
+                            <section class="col col-sm-12 col-md-1 col-lg-2">
                                 <label class="" for="filtro_conta">Conta</label>
-                                <select id="Contas" name="filtro_banco" class="requerido" style="width:100%">
+                                <select id="Contas" name="filtro_conta" class="requerido" style="width:100%">
                                     @if (@Model.filtro_conta != 0)
                                     {
                                         <option value="@Model.filtro_conta">@Model.filtro_conta</option>
@@ -1026,7 +1026,7 @@
                 $('#filtro_agencia').val($('#Agencias').select2('data')[0].text); // what you would like to happen
             });
 
-            var Url = '@Url.Action("GetAgencia", "Banco")';
+            var Url = '@Url.Action("GetAgencias", "Banco")';
             $("#Agencias").select2({
                 placeholder: "Selecione uma agência",
                 minimumInputLength: 0,

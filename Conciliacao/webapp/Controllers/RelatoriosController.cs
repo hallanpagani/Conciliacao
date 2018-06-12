@@ -610,24 +610,31 @@ namespace Conciliacao.Controllers
             ViewBag.QtdRegistros = model.ListCreditos.Count();
             ViewBag.QtdRegistrosDebitos = model.ListDebitos.Count(x => x.is_tipo_registro.Equals("COMPROVANTE"));
 
-            var TotalLiqDebitos = model.ListDebitos.Where(x => x.is_tipo_registro.Equals("COMPROVANTE")).Sum(x => x.is_valor_liquido);
-            var TotalLiqCreditos = model.ListCreditos.Sum(x => x.valor_lancamento);
-
-            ViewBag.TotalLiqCreditos = TotalLiqCreditos.ToString("#,##0.00");
-            ViewBag.TotalLiqDebitos = TotalLiqDebitos.ToString("#,##0.00");
-            ViewBag.TotalGeralLiq = (TotalLiqDebitos + TotalLiqCreditos).ToString("#,##0.00");
-
-            var conta = new BaseID();
-            
-
             ViewBag.tp_administradora = Models.AdministradoraTypes.getAdministradoras(frm["tp_administradora"].Trim());
             ViewBag.filtro_resumo = frm["filtro_resumo"];
 
-            if (frm["filtro_banco"] != "") {
+            if (!string.IsNullOrEmpty(frm["filtro_banco"])) {
                 model.filtro_banco = Convert.ToInt32(frm["filtro_banco"]);
                 model.filtro_nm_banco = frm["filtro_nm_banco"];
             }
+            if (!string.IsNullOrEmpty(frm["filtro_conta"]))
+            {
+                model.filtro_conta = Convert.ToInt32(frm["filtro_conta"]);
+                model.ListCreditos = model.ListCreditos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
+                model.ListDebitos = model.ListDebitos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
+            }
+            if (!string.IsNullOrEmpty(frm["filtro_agencia"]))
+            {
+                model.filtro_agencia = Convert.ToInt32(frm["filtro_agencia"]);
+                model.ListCreditos = model.ListCreditos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
+                model.ListDebitos = model.ListDebitos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
+            }
 
+            var TotalLiqDebitos = model.ListDebitos.Where(x => x.is_tipo_registro.Equals("COMPROVANTE")).Sum(x => x.is_valor_liquido);
+            var TotalLiqCreditos = model.ListCreditos.Sum(x => x.valor_lancamento);
+            ViewBag.TotalLiqCreditos = TotalLiqCreditos.ToString("#,##0.00");
+            ViewBag.TotalLiqDebitos = TotalLiqDebitos.ToString("#,##0.00");
+            ViewBag.TotalGeralLiq = (TotalLiqDebitos + TotalLiqCreditos).ToString("#,##0.00");
 
 
             model.ListDebitos = model.ListDebitos.Where(x => x.is_tipo_registro.Equals("RESUMO")).ToList();

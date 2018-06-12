@@ -78,7 +78,7 @@ namespace ConciliacaoModelo.model.conciliador
         {
             get
             {
-                return banco.TrimStart('0');
+                return (banco ?? "0").TrimStart('0');
             }
         }
 
@@ -86,7 +86,7 @@ namespace ConciliacaoModelo.model.conciliador
         {
             get
             {
-                return agencia.TrimStart('0');
+                return (agencia ?? "0").TrimStart('0');
             }
         }
 
@@ -94,7 +94,7 @@ namespace ConciliacaoModelo.model.conciliador
         {
             get
             {
-                return conta_corrente.TrimStart('0');
+                return (conta_corrente??"0").TrimStart('0');
             }
         }
 

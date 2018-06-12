@@ -665,7 +665,7 @@ namespace ConciliacaoPersistencia.banco
 
                                 if ((valor != null) && (!(valor is DBNull)))
                                 {
-                                    property.SetValue(item,
+                                    property.SetValue(item, valor.GetType().Name.Equals("UInt64") ? Convert.ToInt64(valor.ToString()) : 
                                                 valor.GetType().Name.Equals("TimeSpan") ? valor.ToString() : valor.GetType().Name.Equals("SByte") ? (((sbyte)valor == 1) ? true : false) : valor, null);
                                 }
                             }

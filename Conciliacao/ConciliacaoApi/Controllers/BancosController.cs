@@ -49,12 +49,12 @@ namespace ConciliacaoAPI.Controllers
         [Route("api/Bancos/GetContasAll/{idconta:long}")]
         public IEnumerable<Lista> GetContasAll(long idconta)
         {
-            return DAL.ListarObjetosFromSql<Lista>(String.Format(@"select 
-                                                              `agencia` as id,
-                                                              `agencia` as text
-                                                            FROM ((select agencia from(
+            return DAL.ListarObjetosFromSql<Lista>(String.Format(@"select distinct
+                                                              conta as id,
+                                                              cast(conta as char) as text
+                                                            FROM (select conta from(
                                                                         select
-                                                                          CAST(conta AS UNSIGNED) as agencia
+                                                                          CAST(e.conta_corrente AS UNSIGNED) as conta
                                                                         from 
                                                                           `conciliador_userede_eefi_credito` e
                                                                         where
@@ -62,7 +62,7 @@ namespace ConciliacaoAPI.Controllers
                                                                         group by 1
                                                                         union all
                                                                         select
-                                                                          CAST(conta AS UNSIGNED)
+                                                                          CAST(r.conta_corrente AS UNSIGNED)
                                                                         from 
                                                                           `conciliador_userede_eevc_resumooperacao` r
                                                                         where
@@ -70,22 +70,21 @@ namespace ConciliacaoAPI.Controllers
                                                                         group by 1
                                                                         union all
                                                                         select
-                                                                          CAST(conta AS UNSIGNED)
+                                                                          CAST(r.conta_corrente AS UNSIGNED)
                                                                         from 
                                                                           `conciliador_userede_eevd_resumooperacao` r
                                                                         where
                                                                           r.`id_conta` = {0}
-                                                                        group by 1) as x))
-                                                                        ", idconta));
+                                                                        group by 1) as x) as z ", idconta));
         }
 
         [Route("api/Bancos/GetAgenciasAll/{idconta:long}")]
         public IEnumerable<Lista> GetAgenciasAll(long idconta)
         {
-            return DAL.ListarObjetosFromSql<Lista>(String.Format(@"select 
-                                                              `agencia` as id,
-                                                              `agencia` as text
-                                                            FROM ((select agencia from(
+            return DAL.ListarObjetosFromSql<Lista>(String.Format(@"select distinct
+                                                              agencia as id,
+                                                              cast(agencia as char) as text
+                                                            FROM (select agencia from(
                                                                         select
                                                                           CAST(agencia AS UNSIGNED) as agencia
                                                                         from 
@@ -108,8 +107,7 @@ namespace ConciliacaoAPI.Controllers
                                                                           `conciliador_userede_eevd_resumooperacao` r
                                                                         where
                                                                           r.`id_conta` = {0}
-                                                                        group by 1) as x))
-                                                                        ", idconta));
+                                                                        group by 1) as x) as z", idconta));
         }
 
     }

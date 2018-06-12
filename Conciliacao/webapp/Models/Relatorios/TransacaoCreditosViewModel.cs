@@ -1,6 +1,5 @@
 ﻿using ConciliacaoModelo.model.conciliador;
 using ConciliacaoModelo.model.conciliador.UseRede;
-using ConciliacaoModelo.model.relatorio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +14,9 @@ namespace Conciliacao.Models.Relatorios
         public int? filtro_banco { get; set; }
         public string filtro_nm_banco { get; set; }
 
+        public int? filtro_agencia { get; set; }
+        public int? filtro_conta { get; set; }
+        
         public int tp_cartao { get; set; }
         public int tp_movimento { get; set; }
 

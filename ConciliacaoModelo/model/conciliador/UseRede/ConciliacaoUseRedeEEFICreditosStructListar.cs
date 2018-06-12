@@ -50,7 +50,7 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
         {
             get
             {
-                return agencia.ToString().TrimStart('0');
+                return (agencia ?? "0").ToString().TrimStart('0');
             }
         }
 
