@@ -236,10 +236,10 @@
                                 <select id="Agencias" name="filtro_agencia" class="requerido" style="width:100%">
                                     @if (@Model.filtro_agencia != 0)
                                     {
-                                        <option value="@Model.filtro_agencia">@Model.filtro_agencia</option>
+                                        <option value="@Model.filtro_agencia">@Model.filtro_nm_agencia</option>
                                     }
                                 </select>
-                                @Html.HiddenFor(model => model.filtro_agencia)
+                                @Html.HiddenFor(model => model.filtro_nm_agencia)
                             </section>
 
                             <section class="col col-sm-12 col-md-1 col-lg-2">
@@ -247,10 +247,10 @@
                                 <select id="Contas" name="filtro_conta" class="requerido" style="width:100%">
                                     @if (@Model.filtro_conta != 0)
                                     {
-                                        <option value="@Model.filtro_conta">@Model.filtro_conta</option>
+                                        <option value="@Model.filtro_conta">@Model.filtro_nm_conta</option>
                                     }
                                 </select>
-                                @Html.HiddenFor(model => model.filtro_conta)
+                                @Html.HiddenFor(model => model.filtro_nm_conta)
                             </section>
 
                             <section class="col col-sm-12 col-md-1 col-lg-1">
@@ -1023,7 +1023,7 @@
 
             $('#Agencias').on("select2:select", function (e) {
                 console.log($('#Agencias').select2('data')[0].text);
-                $('#filtro_agencia').val($('#Agencias').select2('data')[0].text); // what you would like to happen
+                $('#filtro_nm_agencia').val($('#Agencias').select2('data')[0].text); // what you would like to happen
             });
 
             var Url = '@Url.Action("GetAgencias", "Banco")';
@@ -1053,7 +1053,7 @@
 
             $('#Contas').on("select2:select", function (e) {
                 console.log($('#Contas').select2('data')[0].text);
-                $('#filtro_conta').val($('#Contas').select2('data')[0].text); // what you would like to happen
+                $('#filtro_nm_conta').val($('#Contas').select2('data')[0].text); // what you would like to happen
             });
 
             var Url = '@Url.Action("GetContas", "Banco")';

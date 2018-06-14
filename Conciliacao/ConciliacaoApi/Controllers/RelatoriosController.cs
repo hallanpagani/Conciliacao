@@ -120,6 +120,9 @@ namespace ConciliacaoAPI.Controllers
                          new DateTime(datainicio).ToString("yyyy-MM-dd"),
                          new DateTime(datafinal).ToString("yyyy-MM-dd"));
 
+            filtro1 = filtro1 + " and a.taxa_cobrada > 0  ";
+            filtro = filtro + " and a.taxa_cobrada > 0  ";
+
 
             if (!bandeira.Equals("0") && (!bandeira.Equals("\"\"")))
             {
@@ -213,7 +216,7 @@ namespace ConciliacaoAPI.Controllers
                             from conciliador_userede_eevd_resumooperacao a
                             left join cadastro_estabelecimento_rede er on er.id_estabelecimento_rede = cast(a.numero_filiacao_pv as decimal(20,0)) and (er.id_rede = coalesce(a.rede,1))
                             " + filtro+
-                            
+
                             @"union all
                             select distinct
                                     2 as ordem,
@@ -376,6 +379,8 @@ namespace ConciliacaoAPI.Controllers
              {
                  filtro = filtro + " and coalesce((select 1 from conciliador_tef t where t.ds_rede = a.ds_rede and t.dt_transacao = a.dt_transacao and t.nsu_rede = a.nsu_rede),0) = 0";
              }*/
+
+            filtro = filtro + " taxa_cobrada > 0  ";
 
             filtro = filtro +
                      String.Format(" and {0} between '{1}' and '{2}' ",

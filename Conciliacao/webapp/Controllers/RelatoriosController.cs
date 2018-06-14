@@ -620,12 +620,14 @@ namespace Conciliacao.Controllers
             if (!string.IsNullOrEmpty(frm["filtro_conta"]))
             {
                 model.filtro_conta = Convert.ToInt32(frm["filtro_conta"]);
+                model.filtro_nm_conta = frm["filtro_nm_conta"];
                 model.ListCreditos = model.ListCreditos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
                 model.ListDebitos = model.ListDebitos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
             }
             if (!string.IsNullOrEmpty(frm["filtro_agencia"]))
             {
                 model.filtro_agencia = Convert.ToInt32(frm["filtro_agencia"]);
+                model.filtro_nm_agencia = frm["filtro_nm_agencia"];
                 model.ListCreditos = model.ListCreditos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
                 model.ListDebitos = model.ListDebitos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
             }
