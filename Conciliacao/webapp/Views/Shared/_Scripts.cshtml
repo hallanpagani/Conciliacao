@@ -1,8 +1,5 @@
-﻿<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script> if (!window.jQuery) { document.write('<script src="/scripts/libs/jquery-2.1.1.min.js"><\/script>'); } </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script> if (!window.jQuery.ui) { document.write('<script src="/scripts/libs/jquery-ui-1.10.3.min.js"><\/script>'); } </script>
+﻿<script>document.write('<script src="/scripts/libs/jquery-2.1.1.min.js"><\/script>'); </script>
+<script>document.write('<script src="/scripts/libs/jquery-ui-1.10.3.min.js"><\/script>'); </script>
 
 <!-- IMPORTANT: SmartAdmin Core -->
 @Scripts.Render("~/scripts/smartadmin/js")
@@ -15,14 +12,14 @@
 <!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip, Morris, Sparkline, EasyPie -->
 @Scripts.Render("~/scripts/charts/js")
 
-@Scripts.Render("~/scripts/jq-grid/js")
+<!-- Scripts.Render("~/scripts/jq-grid/js") -->
 <!-- DO NOT REMOVE : GLOBAL FUNCTIONS! -->
 <script>
 
     // manter ou não o menu aberto
     var block = localStorage.getItem('minimenu');
     if (block == 'true') {
-       
+
         $("#minimenu.minifyme").attr("data-click","true");
         $("body").addClass("minified");
     }
@@ -47,11 +44,11 @@
 
 
     function Gravando(this1) {
-        
+
         this1.disabled = true;
         this1.innerHTML = '<i class="fa fa-refresh fa-spin"></i> Gravando…';
         this1.form.submit();
-        
+
     }
 
     function Filtrando(this1) {
@@ -82,7 +79,7 @@
         });
 
         this1.form.submit();
-       
+
         $("#loadMe").modal('hide');
 
         this1.innerHTML = string;
