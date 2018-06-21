@@ -382,7 +382,7 @@ namespace Conciliacao.Models
                 parcela = is_linha_atual.Substring(35, 2).Equals("") ? "01" : is_linha_atual.Substring(35, 2).Trim(); //
                 bruto_rv = lvalor_bruto;
                 produto_ro = resumo.produto;
-
+/**
                 var resumo_banese = new ConciliacaoUseRedeEEVCResumoOperacaoStruct()
                 {
                     is_tipo_registro = 1,
@@ -407,15 +407,6 @@ namespace Conciliacao.Models
                     is_bandeira = "Banese",
                     rede = 3
                 };
-
-                TimeSpan date = dataprevista - data_rv;
-
-                if ((date.Days) > 10)
-                {
-                    io_arl_ro_credito_banese.Add(resumo_banese);
-                }
-
-/**
 
                 var resumo_debito_banese = new ConciliacaoUseRedeEEVDResumoOperacaoStruct()
                 {
@@ -678,7 +669,6 @@ namespace Conciliacao.Models
                 
                 if (Convert.ToInt32(is_linha_atual.Substring(144, 2).Trim().Equals("") ? "0" : is_linha_atual.Substring(144, 2).Trim()) != 10)
                 {
-                    /*
                     var resumo_banese = new ConciliacaoUseRedeEEVCResumoOperacaoStruct()
                     {
                         is_tipo_registro = 1,
@@ -704,7 +694,6 @@ namespace Conciliacao.Models
                         rede = 3
                     };
                     io_arl_ro_credito_banese.Add(resumo_banese);
-                    */
 
                     var comprovante = new ConciliacaoUseRedeEEVCComprovanteVendaStruct()
                     {
@@ -778,7 +767,7 @@ namespace Conciliacao.Models
                         tipo_transacao = tipo_transacao,
                         valor_bruto_rv = bruto_rv,
                         valor_taxa_desconto = taxa,
-                        numero_parcela = comprovante.is_parcela + "/" + comprovante.is_numero_parcelas,
+                        numero_parcela = comprovante.is_parcela+"/"+comprovante.is_numero_parcelas,
                         situacao = "",
                         numero_pv_original = Convert.ToInt64(comprovante.is_numero_filiacao_pv),
                         rede = 3

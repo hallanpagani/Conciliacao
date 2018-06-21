@@ -573,7 +573,7 @@
     <Compile Include="Controllers\Conciliador\ExtratoBinController.cs" />
     <Compile Include="Controllers\Conciliador\ExtratoEstabelecimentoController.cs" />
     <Compile Include="Controllers\Conciliador\ExtratoTEFController.cs" />
-    <Compile Include="Controllers\Conciliador\ExtratoBaneseController .cs" />
+    <Compile Include="Controllers\Conciliador\ExtratoBaneseController.cs" />
     <Compile Include="Controllers\Conciliador\ExtratoUserRedeController.cs" />
     <Compile Include="Controllers\Conciliador\ProcessarArquivosController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
