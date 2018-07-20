@@ -10,4 +10,3 @@ D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Release\ConciliacaoPersistenci
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Release\ConciliacaoPersistencia.pdb
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\ConciliacaoPersistencia.dll.config
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Release\Oracle.ManagedDataAccess.dll
-D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Release\ConciliacaoPersistencia.csproj.CoreCompileInputs.cache

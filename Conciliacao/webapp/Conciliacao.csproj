@@ -589,6 +589,7 @@
     <Compile Include="Helper\Rest\VansRestClient.cs" />
     <Compile Include="Models\AdministradoraTypes.cs" />
     <Compile Include="Models\Banese\ConciliacaoBaneseDesmontar.cs" />
+    <Compile Include="Models\Bin\ConciliacaoBinDesmontar.cs" />
     <Compile Include="Models\MovimentacaoTypes.cs" />
     <Compile Include="Models\CartaoTypes.cs" />
     <Compile Include="Models\BancoTypes.cs" />
@@ -666,7 +667,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Mensagem\" />
     <Folder Include="Models\Banrisul\" />
-    <Folder Include="Models\Bin\" />
     <Folder Include="Models\Hipercard\" />
     <Folder Include="Scripts\plugin\bootstrap-duallistbox\" />
     <Folder Include="Scripts\plugin\bootstrap-progressbar\" />
