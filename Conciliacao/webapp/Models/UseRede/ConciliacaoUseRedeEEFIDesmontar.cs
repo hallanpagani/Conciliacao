@@ -179,7 +179,7 @@ namespace Conciliacao.Models.UseRede
                     valor_lancamento = Convert.ToDecimal(a.Substring(31, 15)) / 100,
                     banco = Convert.ToInt32(a.Substring(47, 3)),
                     agencia = a.Substring(50, 6),
-                    conta_corrente = Convert.ToInt64(a.Substring(56, 11)),
+                    conta_corrente = a.Substring(56, 11),
                     data_movimento = a.Substring(67, 8).Equals("00000000") ? DateTime.Now : Convert.ToDateTime(a.Substring(67, 2) + "/" + a.Substring(69, 2) + "/" + a.Substring(71, 4)),
                     numero_rv = Convert.ToInt32(a.Substring(75, 9)),
                     data_rv = a.Substring(84, 8).Equals("00000000") ? DateTime.Now : Convert.ToDateTime(a.Substring(84, 2) + "/" + a.Substring(86, 2) + "/" + a.Substring(88, 4)),
@@ -318,7 +318,7 @@ namespace Conciliacao.Models.UseRede
                     valor_venda = antecipados.valor_credito_original,
                     banco = antecipados.banco,
                     agencia = antecipados.agencia,
-                    conta_corrente = Convert.ToInt64(antecipados.conta_corrente)
+                    conta_corrente = antecipados.conta_corrente
                 };
 
                 io_arl_resumo_op.Add(resumo);
@@ -345,7 +345,7 @@ namespace Conciliacao.Models.UseRede
                     valor_total_credito = Convert.ToDecimal(a.Substring(27, 15)) / 100,
                     banco = Convert.ToInt32(a.Substring(43, 3)),
                     agencia = Convert.ToInt32(a.Substring(46, 6)),
-                    conta = Convert.ToInt64(a.Substring(52, 11)),
+                    conta = a.Substring(52, 11),
                     data_arquivo = Convert.ToDateTime(a.Substring(63, 2) + "/" + a.Substring(65, 2) + "/" + a.Substring(67, 4)),
 
                     valor_total_antecipado = Convert.ToDecimal(a.Substring(79, 15)) / 100,

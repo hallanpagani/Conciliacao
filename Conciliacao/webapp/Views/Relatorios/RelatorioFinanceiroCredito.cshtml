@@ -239,18 +239,18 @@
                                         <option value="@Model.filtro_agencia">@Model.filtro_agencia</option>
                                     }
                                 </select>
-                                @Html.HiddenFor(model => model.filtro_agencia)
+                     
                             </section>
 
                             <section class="col col-sm-12 col-md-1 col-lg-2">
                                 <label class="" for="filtro_conta">Conta</label>
                                 <select id="Contas" name="filtro_conta" class="requerido" style="width:100%">
-                                    @if (@Model.filtro_conta != 0)
+                                    @if (!(@Model.filtro_conta??"").Equals(""))
                                     {
                                         <option value="@Model.filtro_conta">@Model.filtro_conta</option>
                                     }
                                 </select>
-                                @Html.HiddenFor(model => model.filtro_conta)
+                                
                             </section>
 
                             <section class="col col-sm-12 col-md-1 col-lg-1">
@@ -781,13 +781,6 @@
                                 }
                             },
                             {
-                                extend: 'csvHtml5',
-                                text: 'CSV',
-                                exportOptions: {
-                                    columns: [':visible']
-                                }
-                            },
-                            {
                                 extend: 'excelHtml5',
                                 text: 'XLS',
                                 exportOptions: {
@@ -795,7 +788,7 @@
                                     format: {
                                         body: function (data, row, column, node) {
                                             // Replace , with . in column 3
-                                            return column === 3 || column === 11 || column === 12 ?
+                                            return column === 5 || column === 13 || column === 14 ?
                                                 data.replace(',', '.') :
                                                 data;
                                         }
@@ -881,7 +874,7 @@
                 "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-9'f>TlB>" +
                 "t" +
                 "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
-
+                "sScrollX": "100%",
                 "buttons":
                 [
                     {
@@ -904,13 +897,6 @@
                                 }
                             },
                             {
-                                extend: 'csvHtml5',
-                                text: 'CSV',
-                                exportOptions: {
-                                    columns: [':visible']
-                                }
-                            },
-                            {
                                 extend: 'excelHtml5',
                                 text: 'XLS',
                                 exportOptions: {
@@ -918,7 +904,7 @@
                                     format: {
                                         body: function (data, row, column, node) {
                                             // Replace , with . in column 3
-                                            return column === 5 || column === 6 || column === 7 ?
+                                            return column === 9 || column === 10 || column === 11 ?
                                                 data.replace(',', '.') :
                                                 data;
                                         }

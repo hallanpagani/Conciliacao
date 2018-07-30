@@ -36,7 +36,7 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
         public string agencia { get; set; }
 
         [Column("conta_corrente")]
-        public long conta_corrente { get; set; }
+        public string conta_corrente { get; set; }
 
         public string banco_trim
         {

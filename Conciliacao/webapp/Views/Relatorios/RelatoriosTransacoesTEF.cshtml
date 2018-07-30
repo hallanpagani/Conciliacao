@@ -750,13 +750,13 @@
                                     columns: [':visible']
                                 }
                             },
-                            {
+                           /*, {
                                 extend: 'csvHtml5',
                                 text: 'CSV',
                                 exportOptions: {
                                     columns: [':visible']
                                 }
-                            },
+                            }, */
                             {
                                 extend: 'excelHtml5',
                                 text: 'XLS',
@@ -765,7 +765,7 @@
                                     format: {
                                         body: function (data, row, column, node) {
                                             // Replace , with . in column 3
-                                            return column === 7 || column === 8 || column === 9 ?
+                                            return column === 3 || column === 8 || column === 9 ?
                                                 data.replace(',', '.') :
                                                 data;
                                         }

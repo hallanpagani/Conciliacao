@@ -708,7 +708,7 @@ namespace Conciliacao.Models
                         valor_lancamento = comprovante.is_valor_liquido,
                         banco = Convert.ToInt32(banco_ro),
                         agencia = agencia,
-                        conta_corrente = Convert.ToInt64(conta),
+                        conta_corrente = conta,
                         data_movimento = Convert.ToDateTime(data_movimento),
                         numero_rv = Convert.ToInt32(comprovante.is_numero_resumo_vendas.ToString()),
                         data_rv = comprovante.is_data_cv,

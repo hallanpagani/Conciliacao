@@ -15,7 +15,7 @@ namespace Conciliacao.Models.Relatorios
         public string filtro_nm_banco { get; set; }
 
         public int? filtro_agencia { get; set; }
-        public int? filtro_conta { get; set; }
+        public string filtro_conta { get; set; }
         
         public int tp_cartao { get; set; }
         public int tp_movimento { get; set; }
@@ -46,10 +46,12 @@ namespace Conciliacao.Models.Relatorios
         public TransacaoCreditosViewModel()
         {
             filtro_rede = null;
+            filtro_agencia = null;
             filtro_resumo = "";
             filtro_nm_rede = "";
             filtro_banco = 0;
             filtro_nm_banco = "";
+            filtro_conta = "";
             var date = DateTime.Now; // inicio do mês até hoje
             DataInicio = new DateTime(date.Year, date.Month, 1);
             DataFinal = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(-1);

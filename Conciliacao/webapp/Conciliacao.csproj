@@ -531,6 +531,7 @@
     <Content Include="Views\Relatorios\RelatoriosExtratoBancarios.cshtml" />
     <Content Include="Views\ExtratoBancario\CadastrarExpressoes.cshtml" />
     <Content Include="Views\ExtratoBancario\ConsultarExpressoesBancarias.cshtml" />
+    <Content Include="Views\ExtratoGetNet\Processar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -570,6 +571,7 @@
     <Compile Include="Controllers\Cadastros\TEFBancoController.cs" />
     <Compile Include="Controllers\Cadastros\VansController.cs" />
     <Compile Include="Controllers\Conciliador\ExtratoBancarioController.cs" />
+    <Compile Include="Controllers\Conciliador\ExtratoGetNetController.cs" />
     <Compile Include="Controllers\Conciliador\ExtratoBinController.cs" />
     <Compile Include="Controllers\Conciliador\ExtratoEstabelecimentoController.cs" />
     <Compile Include="Controllers\Conciliador\ExtratoTEFController.cs" />

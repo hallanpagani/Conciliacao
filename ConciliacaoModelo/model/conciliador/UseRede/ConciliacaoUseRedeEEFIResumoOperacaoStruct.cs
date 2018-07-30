@@ -28,7 +28,7 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
     
         public string agencia { get; set; }
 
-        public long conta_corrente { get; set; }
+        public string conta_corrente { get; set; }
 
         public string nsu { get; set; }
 

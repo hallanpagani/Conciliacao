@@ -35,7 +35,7 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
         public string agencia { get; set; }
 
         [Column("conta_corrente")]
-        public long conta_corrente { get; set; }
+        public string conta_corrente { get; set; }
 
         [Column("data_movimento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

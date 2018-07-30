@@ -619,13 +619,13 @@ namespace Conciliacao.Controllers
             }
             if (!string.IsNullOrEmpty(frm["filtro_conta"]))
             {
-                model.filtro_conta = Convert.ToInt32(frm["filtro_conta"]);
+                model.filtro_conta = frm["filtro_conta"];
                 model.ListCreditos = model.ListCreditos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
                 model.ListDebitos = model.ListDebitos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
             }
-            if (!string.IsNullOrEmpty(frm["filtro_agencia"]))
+            if (!string.IsNullOrEmpty(frm["filtro_agencia"].Replace(",","")))
             {
-                model.filtro_agencia = Convert.ToInt32(frm["filtro_agencia"]);
+                model.filtro_agencia = Convert.ToInt32(frm["filtro_agencia"].Replace(",", ""));
                 model.ListCreditos = model.ListCreditos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
                 model.ListDebitos = model.ListDebitos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
             }
@@ -768,7 +768,7 @@ namespace Conciliacao.Controllers
             ViewBag.QtdRegistros = "0";
             ViewBag.TotalBruto = "0,00";
 
-            return View(list);
+            return View(list); 
         }
 
         [HttpPost]

@@ -25,7 +25,7 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
         public int agencia { get; set; }
 
         [Column("conta_corrente")]
-        public long conta { get; set; }
+        public string conta { get; set; }
 
         [Column("data_arquivo")]
         public DateTime data_arquivo { get; set; }
