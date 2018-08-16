@@ -53,7 +53,7 @@ namespace OFXSharp
 
          try
          {
-            Amount = Convert.ToDecimal(node.GetValue(".//TRNAMT"), CultureInfo.InvariantCulture);
+            Amount = Convert.ToDecimal(node.GetValue(".//TRNAMT"), System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
          }
          catch (Exception ex)
          {

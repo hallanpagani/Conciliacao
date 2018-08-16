@@ -72,7 +72,7 @@ namespace Conciliacao.Controllers
                     start = e.rede.ToUpper().Equals("USEREDE") ? new DateTime(e.data_prevista.Year, e.data_prevista.Month, e.data_prevista.Day, 13,0,0) : e.rede.ToUpper().Equals("CIELO") ? new DateTime(e.data_prevista.Year, e.data_prevista.Month, e.data_prevista.Day, 12,0,0) : new DateTime(e.data_prevista.Year, e.data_prevista.Month, e.data_prevista.Day, 11, 0, 0),
                     end = e.rede.ToUpper().Equals("USEREDE") ? new DateTime(e.data_prevista.Year, e.data_prevista.Month, e.data_prevista.Day, 14, 0, 0) : e.rede.ToUpper().Equals("CIELO") ? new DateTime(e.data_prevista.Year, e.data_prevista.Month, e.data_prevista.Day, 13, 0, 0) : new DateTime(e.data_prevista.Year, e.data_prevista.Month, e.data_prevista.Day, 12, 0, 0),
                     allDay = false,
-                    color = e.rede.ToUpper().Equals("USEREDE") ? "#c15d0b" : e.rede.ToUpper().Equals("CIELO") ? "#0b51c1" : e.rede.ToUpper().Equals("BANESE") ? "#3CB371" : "#000000",
+                    color = e.rede.ToUpper().Equals("USEREDE") ? "#c15d0b" : e.rede.ToUpper().Equals("CIELO") ? "#0b51c1" : e.rede.ToUpper().Equals("BANESE") ? "#3CB371" : e.rede.ToUpper().Equals("GETNET") ? "#b2443b" :  "#000000",
                     data = e.data_prevista.ToString("ddMMyyyy"),
                     debitocredito = "T" // e.tipo.Equals("Crédito") ? "C" : "D"
                 };

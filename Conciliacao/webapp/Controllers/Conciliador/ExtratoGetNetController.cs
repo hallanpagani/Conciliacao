@@ -1,14 +1,15 @@
 ﻿using Conciliacao.App_Helpers.Componentes;
-using Conciliacao.Controllers.Generico;
 using Conciliacao.Models;
+using Conciliacao.Models.UseRede;
 using ConciliacaoModelo.model.conciliador;
-using ConciliacaoModelo.model.generico;
 using ConciliacaoPersistencia.banco;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Web;
 using System.Web.Mvc;
+using Conciliacao.Controllers.Generico;
+using ConciliacaoModelo.model.generico;
+using System.Web;
 
 namespace Conciliacao.Controllers.Conciliador
 {
@@ -45,7 +46,6 @@ namespace Conciliacao.Controllers.Conciliador
         {
             try
             {
-
                 model.ArquivoResumo = new List<ArquivoResumo>();
                 model.ArquivoCompleto = new List<ArquivoCompleto>();
                 model.ArquivoDetalhado = new List<ArquivoDetalhado>();
@@ -72,8 +72,9 @@ namespace Conciliacao.Controllers.Conciliador
                             String first_line = arquivo.LerLinha(true);
 
 
-                            if ((first_line.ToUpper().Contains("FINANCEIRA")) && (first_line.ToUpper().Contains("FD DO BRASIL PROCESSAMENTO DE DADOS LTDA."))) //&& (arquivo.ProcessarArquivobanese(first_line))) //Opção de extrato - saldo em aberto
+                            if (first_line.ToUpper().Contains("GETNET")) //&& (arquivo.ProcessarArquivobanese(first_line))) //Opção de extrato - saldo em aberto
                             {
+
                                 bool md5_encontrado = false;
                                 string lsArquivomd5 = "";
                                 string is_linha_atual = "";
@@ -109,6 +110,7 @@ namespace Conciliacao.Controllers.Conciliador
                                 if (!md5_encontrado)
                                 {
                                     DAL.GravarList(getnet.GetCreditos());
+
                                     DAL.GravarList(getnet.GetResumoEEVDOperacao());
                                     DAL.GravarList(getnet.GetComprovanteEEVDVenda());
 
@@ -120,8 +122,8 @@ namespace Conciliacao.Controllers.Conciliador
                                     DAL.GravarList(getnet.TotalizadorProdutoGet());
                                     DAL.GravarList(getnet.TotalizadorBancoGet());
                                     DAL.GravarList(getnet.TotalizadorEstabelecimentoGet());
-                                    DAL.Gravar(md5);
 
+                                    DAL.Gravar(md5);
                                 }
                                 ViewBag.BotaoProcessar = "Buscar";
                             }
@@ -132,9 +134,7 @@ namespace Conciliacao.Controllers.Conciliador
             }
             catch (Exception e)
             {
-                this.AddNotification(e.Message, "Alerta");
-                return View(model);
-                
+                throw e;
             }
 
             return View(model);

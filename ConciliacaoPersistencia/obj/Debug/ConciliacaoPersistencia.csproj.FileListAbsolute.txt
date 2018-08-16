@@ -21,3 +21,4 @@ D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Debug\ConciliacaoModelo.pdb
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.csprojResolveAssemblyReference.cache
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.dll
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.pdb
+D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.csproj.CoreCompileInputs.cache

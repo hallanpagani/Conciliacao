@@ -46,7 +46,7 @@
                 -->
                 <header>
                     <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                    <h2>Escolha o arquivo a ser conciliado - Extrato GetNet</h2>
+                    <h2>Escolha o arquivo a ser conciliado - Extrato GETNET</h2>
 
                 </header>
 
@@ -73,7 +73,7 @@
 
                                     @if (Model.ds_arquivo.IsNullOrWhiteSpace())
                                     {
-                                        @Html.Raw(@"Arquivo BIN a ser processado" +
+                                        @Html.Raw(@"Arquivo GETNET a ser processado" +
                                                       "<label class='input'> " +
                                                       "    <i class='icon-prepend fa fa-file-text'></i>" +
                                                         "    <input type='file' id='arquivo' multiple='multiple' name='arquivo' onchange='readText(this)' /> " +
@@ -84,7 +84,7 @@
                                     else
                                     {
 
-                                        @Html.Raw(@"Arquivo GetNet a ser processado" +
+                                        @Html.Raw(@"Arquivo GETNET a ser processado" +
                                                       "<label class='input'> " +
                                                       "    <i class='icon-prepend fa fa-file-text'></i>" +
                                                       "    <input type='file' id='arquivo' multiple='multiple' name='arquivo' onchange='readText(this)'  value='" + @Model.ds_arquivo + "' /> " +
@@ -110,10 +110,21 @@
                                 </section>
 
                                 <section class="col col-sm-12 col-md-6 col-lg-6">
+                                    @Html.LabelFor(model => model.datainicial)
+                                    @Html.TextBoxPadraoFor(model => model.datainicial, new { @readonly = "readonly" })
+                                </section>
+
+                                <section class="col col-sm-12 col-md-6 col-lg-6">
                                     @Html.LabelFor(model => model.tp_arquivo)
 
                                     @Html.TextBoxPadraoFor(model => model.tp_arquivo, new { @readonly = "readonly" })
 
+                                </section>
+
+
+                                <section class="col col-sm-12 col-md-6 col-lg-6">
+                                    @Html.LabelFor(model => model.datafinal)
+                                    @Html.TextBoxPadraoFor(model => model.datafinal, new { @readonly = "readonly" })
                                 </section>
 
                             </div>
@@ -421,7 +432,7 @@
                                         <!-- widget content -->
                                         <div class="widget-body no-padding">
 
-                                            @{  Html.RenderPartial("~/Views/Conciliador/ListarCompletoArquivoGetNet.cshtml", @Model.ArquivoCompleto); }
+                                            @{  Html.RenderPartial("~/Views/Conciliador/ListarCompletoArquivo.cshtml", @Model.ArquivoCompleto); }
 
                                         </div>
                                         <!-- end widget content -->
@@ -487,7 +498,7 @@
                 try {
                     reader = new ActiveXObject("Scripting.FileSystemObject");
                     var file = reader.OpenTextFile(filePath, 1); //ActiveX File Object
-                    output = file.ReadAllText(); //text contents of file
+                    output = file.ReadAll(); //text contents of file
                     file.Close(); //close file "input stream"
                     displayContents(output);
                 } catch (e) {
@@ -508,8 +519,10 @@
          * display content using a basic HTML replacement
          */
         function displayContents(txt) {
-            document.getElementById('tp_arquivo').value = "Movimentação "+txt.substr(68, 10);
-            document.getElementById('dataarquivo').value = FormataData(txt.substr(4, 8));
+            document.getElementById('tp_arquivo').value = "Arquivo de pagamentos";
+            document.getElementById('dataarquivo').value = FormataData(txt.substr(1, 8));
+            document.getElementById('datainicial').value = FormataData(txt.substr(15, 8));
+            document.getElementById('datafinal').value = FormataData(txt.substr(15, 8));
         }
 
         $(document).ready(function () {

@@ -145,7 +145,10 @@ namespace Conciliacao.Controllers.Conciliador
                                 tp_mvto = item.TransType.ToString(), 
                                 dt_mvto = item.Date
                             }
-                            ).Where(c => c.tp_mvto.Substring(0,1) == "C").ToList();
+                            ).Where(c => (c.tp_mvto.Substring(0,1) == "C") || // CREDITO
+                                    (c.tp_mvto.Substring(0,1) == "O" &&   // OU OTHER E CONTEM A PALAVRA CARTAO
+                                    c.ds_historico.Contains("CARTAO"))
+                            ).ToList();
 
                             model.ArquivoBancario = list;
                             model.datainicio = ofxDocument.StatementStart;
@@ -162,12 +165,12 @@ namespace Conciliacao.Controllers.Conciliador
                             model.ArquivoBancario = bancario.GetListTransacaoBancaria();
                         }
 
-                      //  if (md5.arquivo_md5.Equals(""))
-                      //  {
+                        if (md5.arquivo_md5.Equals(""))
+                        {
                             md5.arquivo_md5 = lsretornomd5;
                             DAL.GravarList(model.ArquivoBancario);
-                          //  DAL.Gravar(md5);
-                       // }
+                            DAL.Gravar(md5);
+                        }
 
 
                         ViewBag.BotaoProcessar = "Gravar";
