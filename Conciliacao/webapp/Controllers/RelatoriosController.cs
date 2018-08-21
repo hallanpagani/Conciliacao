@@ -616,29 +616,16 @@ namespace Conciliacao.Controllers
             }
             if (!string.IsNullOrEmpty(frm["filtro_conta"]))
             {
-<<<<<<< HEAD
                 model.filtro_conta = frm["filtro_conta"];
                 model.ListCreditos = model.ListCreditos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
                 model.ListDebitos = model.ListDebitos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta)).ToList();
-=======
-                model.filtro_conta = Convert.ToInt64(frm["filtro_conta"]);
-                model.filtro_nm_conta = frm["filtro_nm_conta"];
-                model.ListCreditos = model.ListCreditos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta.ToString())).ToList();
-                model.ListDebitos = model.ListDebitos.Where(x => x.conta_corrente_trim.Equals(model.filtro_conta.ToString())).ToList();
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
             }
+
             if (!string.IsNullOrEmpty(frm["filtro_agencia"].Replace(",","")))
             {
-<<<<<<< HEAD
                 model.filtro_agencia = Convert.ToInt32(frm["filtro_agencia"].Replace(",", ""));
                 model.ListCreditos = model.ListCreditos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
                 model.ListDebitos = model.ListDebitos.Where(x => x.agencia_trim.Equals(model.filtro_agencia)).ToList();
-=======
-                model.filtro_agencia = Convert.ToInt64(frm["filtro_agencia"]);
-                model.filtro_nm_agencia = frm["filtro_nm_agencia"];
-                model.ListCreditos = model.ListCreditos.Where(x => x.agencia_trim.Equals(model.filtro_agencia.ToString())).ToList();
-                model.ListDebitos = model.ListDebitos.Where(x => x.agencia_trim.Equals(model.filtro_agencia.ToString())).ToList();
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
             }
 
             var TotalLiqDebitos = model.ListDebitos.Where(x => x.is_tipo_registro.Equals("COMPROVANTE")).Sum(x => x.is_valor_liquido);

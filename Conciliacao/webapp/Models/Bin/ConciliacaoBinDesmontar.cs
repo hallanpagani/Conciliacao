@@ -1105,11 +1105,7 @@ namespace Conciliacao.Models
                     valor_lancamento = comprovante.is_valor_liquido,
                     banco = Convert.ToInt32(banco_ro),
                     agencia = agencia,
-<<<<<<< HEAD
                     conta_corrente = conta,
-=======
-                    conta_corrente = Convert.ToInt64(conta),
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                     data_movimento = Convert.ToDateTime(data_movimento),
                     numero_rv = Convert.ToInt64(comprovante.is_numero_resumo_vendas.ToString()),
                     data_rv = comprovante.is_data_cv,
@@ -1625,11 +1621,7 @@ namespace Conciliacao.Models
                     valor_lancamento = comprovante.is_valor_liquido,
                     banco = Convert.ToInt32(banco_ro),
                     agencia = agencia,
-<<<<<<< HEAD
                     conta_corrente = conta,
-=======
-                    conta_corrente = Convert.ToInt64(conta),
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                     data_movimento = Convert.ToDateTime(data_movimento),
                     numero_rv = Convert.ToInt64(comprovante.is_numero_resumo_vendas.ToString()),
                     data_rv = comprovante.is_data_cv,
@@ -1842,11 +1834,7 @@ namespace Conciliacao.Models
                     valor_lancamento = comprovante.is_valor_liquido,
                     banco = Convert.ToInt32(banco_ro),
                     agencia = agencia,
-<<<<<<< HEAD
                     conta_corrente = conta,
-=======
-                    conta_corrente = Convert.ToInt64(conta),
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                     data_movimento = Convert.ToDateTime(data_movimento),
                     numero_rv = Convert.ToInt64(comprovante.is_numero_resumo_vendas.ToString()),
                     data_rv = comprovante.is_data_cv,
@@ -2839,11 +2827,7 @@ namespace Conciliacao.Models
                     valor_lancamento = comprovante.is_valor_liquido,
                     banco = Convert.ToInt32(banco_ro),
                     agencia = agencia,
-<<<<<<< HEAD
                     conta_corrente = conta,
-=======
-                    conta_corrente = Convert.ToInt64(conta),
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                     data_movimento = Convert.ToDateTime(data_movimento),
                     numero_rv = Convert.ToInt64(comprovante.is_numero_resumo_vendas.ToString()),
                     data_rv = comprovante.is_data_cv,
@@ -3337,11 +3321,7 @@ namespace Conciliacao.Models
                     valor_lancamento = comprovante.is_valor_liquido,
                     banco = Convert.ToInt32(banco_ro),
                     agencia = agencia,
-<<<<<<< HEAD
                     conta_corrente = conta,
-=======
-                    conta_corrente = Convert.ToInt64(conta),
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                     data_movimento = Convert.ToDateTime(data_movimento),
                     numero_rv = Convert.ToInt64(comprovante.is_numero_resumo_vendas.ToString()),
                     data_rv = comprovante.is_data_cv,

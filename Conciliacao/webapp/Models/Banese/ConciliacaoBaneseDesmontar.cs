@@ -344,11 +344,7 @@ namespace Conciliacao.Models
 
             try
             {
-<<<<<<< HEAD
                 data_rv = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(27, 8), "ddMMyyyy", "dd/MM/yyyy"));
-=======
-                data_rv = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(27, 8), "ddMMyyyy", "dd/MM/yyyy")); 
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                 dataprevista = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(123, 8), "ddMMyyyy", "dd/MM/yyyy"));
                 lvalor_bruto = FormatoValorExecutarDouble(is_linha_atual.Substring(37, 12));
                 lvalor_liquido = FormatoValorExecutarDouble(is_linha_atual.Substring(49, 12));
@@ -412,8 +408,6 @@ namespace Conciliacao.Models
                     rede = 3
                 };
 
-<<<<<<< HEAD
-=======
                 TimeSpan date = dataprevista - data_rv;
 
                 if ((date.Days) > 10)
@@ -1384,11 +1378,7 @@ namespace Conciliacao.Models
             io_hsm_tabela_IV.Add("PF", "Pagamento Futuro (vendas)");
             io_hsm_tabela_IV.Add("PG", "Pagamento Normal (Repasse financeiro)");
             io_hsm_tabela_IV.Add("ES", "Estorno de Venda realizada no dia");
-<<<<<<< HEAD
             io_hsm_tabela_IV.Add("CT", "Compra de Títulos");
-=======
-            io_hsm_tabela_IV.Add("CT", "Compra de Títulos");            
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
             io_hsm_tabela_IV.Add("AL", "Aluguel de POS");
             io_hsm_tabela_IV.Add("AG", "Agen.Crédito/Débito");
             io_hsm_tabela_IV.Add("AC", "Antecipação de Crédito");
@@ -1417,11 +1407,7 @@ namespace Conciliacao.Models
             io_hsm_tabela_VII.Add("024", "Acerto de debito");
             io_hsm_tabela_VII.Add("066", "Estorno de Venda");
             io_hsm_tabela_VII.Add("067", "Aluguel Lojista");
-<<<<<<< HEAD
             io_hsm_tabela_VII.Add("080", "Cancelamento de Compra de Títulos");
-=======
-            io_hsm_tabela_VII.Add("080", "Cancelamento de Compra de Títulos");            
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
             io_hsm_tabela_VII.Add("081", "Taxa de Administração compras estornadas");
             io_hsm_tabela_VII.Add("333", "Agendamento de Débito Equipamento");
         }

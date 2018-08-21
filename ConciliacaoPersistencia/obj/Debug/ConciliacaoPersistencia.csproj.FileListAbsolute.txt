@@ -18,7 +18,6 @@ D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Debug\MySql.Data.dll
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Debug\Oracle.ManagedDataAccess.dll
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Debug\ConciliacaoFuncoes.pdb
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\bin\Debug\ConciliacaoModelo.pdb
-D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.csprojResolveAssemblyReference.cache
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.dll
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.pdb
 D:\CSharp\Conciliacao\ConciliacaoPersistencia\obj\Debug\ConciliacaoPersistencia.csproj.CoreCompileInputs.cache
