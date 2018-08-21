@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Antlr.Runtime.Tree;
 using Conciliacao.Models.conciliacao;
 using ConciliacaoModelo.model.conciliador;
 using OFXSharp;
@@ -95,20 +96,20 @@ namespace Conciliacao.Models
             return io_arl_creditos;
         }
 
-        /*  public List<ConciliacaoUseRedeEEFIAjustesDesagendamentoStruct> GetAjustesDesagendamento()
-          {
-              return io_arl_ajustes_desagendamento;
-          }
+      /*  public List<ConciliacaoUseRedeEEFIAjustesDesagendamentoStruct> GetAjustesDesagendamento()
+        {
+            return io_arl_ajustes_desagendamento;
+        }
 
-          public List<ConciliacaoUseRedeEEFIAntecipacaoStruct> GetAjustesAntecipacao()
-          {
-              return io_arl_ajustes_antecipacao;
-          }
+        public List<ConciliacaoUseRedeEEFIAntecipacaoStruct> GetAjustesAntecipacao()
+        {
+            return io_arl_ajustes_antecipacao;
+        }
 
-          public List<ConciliacaoUseRedeEEFIDesagendamentoParcelasStruct> GetDesagendamentoParcelas()
-          {
-              return io_arl_desagendamento_parcela;
-          }*/
+        public List<ConciliacaoUseRedeEEFIDesagendamentoParcelasStruct> GetDesagendamentoParcelas()
+        {
+            return io_arl_desagendamento_parcela;
+        }*/
 
         /*
         Estrutura CV.
@@ -328,8 +329,6 @@ namespace Conciliacao.Models
         private string rv_ajuste_conta;
         private string rv_ajuste_sinal_bruto;
 
-        private DateTime dataprevista;
-        private DateTime data_rv;
 
         /**
 	    Desmonta o resumo de vendas.
@@ -344,22 +343,18 @@ namespace Conciliacao.Models
 
             try
             {
-<<<<<<< HEAD
-                data_rv = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(27, 8), "ddMMyyyy", "dd/MM/yyyy"));
-=======
-                data_rv = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(27, 8), "ddMMyyyy", "dd/MM/yyyy")); 
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
-                dataprevista = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(123, 8), "ddMMyyyy", "dd/MM/yyyy"));
+                DateTime data_rv = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(27, 8), "ddMMyyyy", "dd/MM/yyyy")); 
+                DateTime dataprevista = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(123, 8), "ddMMyyyy", "dd/MM/yyyy"));
                 lvalor_bruto = FormatoValorExecutarDouble(is_linha_atual.Substring(37, 12));
                 lvalor_liquido = FormatoValorExecutarDouble(is_linha_atual.Substring(49, 12));
-                ltaxa = Math.Abs(((lvalor_liquido * 100 / lvalor_bruto) - 100));
+                ltaxa = Math.Abs(((lvalor_liquido*100/lvalor_bruto)-100));
 
                 resumo = new ArquivoResumo()
                 {
                     resumo = is_linha_atual.Substring(18, 9), //
                     estabelecimento = is_linha_atual.Substring(1, 15), // 
-                    parcela = is_linha_atual.Substring(35, 2).Equals("") ? "01" : is_linha_atual.Substring(35, 2).Trim(), //
-                    transacao = (string)io_hsm_tabela_IV[is_linha_atual.Substring(143, 2)], //
+                    parcela = is_linha_atual.Substring(35, 2).Equals("") ? "1" : is_linha_atual.Substring(35, 2).Trim(), //
+                    transacao = (string)io_hsm_tabela_III[is_linha_atual.Substring(23, 2)], //
                     prev_pagamento = FormatoDataExecutar(is_linha_atual.Substring(123, 8), "ddMMyyyy", "dd/MM/yyyy"), //
                     valor_bruto = lvalor_bruto, //
                     taxa_comissao = ltaxa.ToString("#,##0.00"), // is_linha_atual.Substring(57, 1),
@@ -370,7 +365,7 @@ namespace Conciliacao.Models
                     produto = (string)io_hsm_tabela_I[is_linha_atual.Substring(16, 2)], //
                     terminal = "",
                     chave = ""
-
+                    
                 };
 
                 taxa = ltaxa;
@@ -383,7 +378,7 @@ namespace Conciliacao.Models
                 banco_ro = is_linha_atual.Substring(73, 3); //
                 agencia = is_linha_atual.Substring(76, 6); //
                 conta = is_linha_atual.Substring(82, 11); // 
-                parcela = is_linha_atual.Substring(35, 2).Equals("") ? "01" : is_linha_atual.Substring(35, 2).Trim(); //
+                parcela = is_linha_atual.Substring(35, 2).Equals("") ? "1" : is_linha_atual.Substring(35, 2).Trim(); //
                 bruto_rv = lvalor_bruto;
                 produto_ro = resumo.produto;
 
@@ -412,17 +407,6 @@ namespace Conciliacao.Models
                     rede = 3
                 };
 
-<<<<<<< HEAD
-=======
-                TimeSpan date = dataprevista - data_rv;
-
-                if ((date.Days) > 10)
-                {
-                    io_arl_ro_credito_banese.Add(resumo_banese);
-                }
-
-/**
-
                 var resumo_debito_banese = new ConciliacaoUseRedeEEVDResumoOperacaoStruct()
                 {
                     is_tipo_registro = 1,
@@ -444,55 +428,17 @@ namespace Conciliacao.Models
                     rede = 3
                 };
 
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                 TimeSpan date = dataprevista - data_rv;
 
-                if ((date.Days) > 10)
+                if ( (date.Days) > 10)
                 {
                     io_arl_ro_credito_banese.Add(resumo_banese);
                 }
-<<<<<<< HEAD
-
-                /**
-
-                                var resumo_debito_banese = new ConciliacaoUseRedeEEVDResumoOperacaoStruct()
-                                {
-                                    is_tipo_registro = 1,
-                                    nm_tipo_registro = tipo_transacao,
-                                    is_numero_filiacao_pv = Convert.ToDecimal(is_linha_atual.Substring(1, 15)),
-                                    is_numero_resumo_venda = is_linha_atual.Substring(18, 9),
-                                    is_banco = banco_ro,
-                                    is_agencia = agencia,
-                                    is_conta_corrente = conta,
-                                    is_data_resumo_venda = Convert.ToDateTime(data_movimento),
-
-                                    is_quantidade_resumo_vendas = "0",
-                                    is_valor_bruto = bruto_rv,
-                                    is_valor_desconto = bruto_rv - lvalor_liquido,
-                                    is_valor_liquido = lvalor_liquido,
-
-                                    is_data_credito = dataprevista,
-                                    is_bandeira = "Banese",
-                                    rede = 3
-                                };
-
-                                TimeSpan date = dataprevista - data_rv;
-
-                                if ( (date.Days) > 10)
-                                {
-                                    io_arl_ro_credito_banese.Add(resumo_banese);
-                                }
-                                else
-                                {
-                                    io_arl_ro_debito_banese.Add(resumo_debito_banese);
-                                }
-=======
                 else
                 {
                     io_arl_ro_debito_banese.Add(resumo_debito_banese);
                 }
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
-*/
+
 
                 Decimal valor_total = 0;
                 Decimal valor_total_liquido = 0;
@@ -643,7 +589,7 @@ namespace Conciliacao.Models
                     comissao = resumo.vl_comissao.ToString(),
                     sinal_rejeitado = "",
                     valor_rejeitado = resumo.vl_rejeitado,
-                    sinal_liquido = "",
+                    sinal_liquido ="",
                     valor_liquido = resumo.vl_liquido.ToString(),
                     valor_total_venda = "",
                     valor_prox_parcela = "",
@@ -667,7 +613,7 @@ namespace Conciliacao.Models
                     bandeira = "",
                     registro_unico_RO = resumo.resumo,
                     taxas_comissao = FormatoValorExecutar(is_linha_atual.Substring(61, 12)),
-                    tarifa = Math.Abs(((resumo.vl_liquido * 100) / (resumo.valor_bruto) - 100)).ToString(),
+                    tarifa = Math.Abs(((resumo.vl_liquido * 100) / (resumo.valor_bruto) -100)).ToString()  ,
                     meio_captura = "",
                     terminal = ""
                 };
@@ -719,54 +665,10 @@ namespace Conciliacao.Models
 
                 io_arl_cv.Add(lo_cv);
                 io_arl_just_cv.Add(lo_cv);
-                
-                if (Convert.ToInt32(is_linha_atual.Substring(144, 2).Trim().Equals("") ? "0" : is_linha_atual.Substring(144, 2).Trim()) != 10)
+
+
+                if (Convert.ToInt32(is_linha_atual.Substring(106, 2).Trim().Equals("") ? "0" : is_linha_atual.Substring(106, 2).Trim()) > 1)
                 {
-                    /*
-                    var resumo_banese = new ConciliacaoUseRedeEEVCResumoOperacaoStruct()
-                    {
-                        is_tipo_registro = 1,
-                        nm_tipo_registro = "Resumo de Crédito",
-                        is_numero_filiacao_pv = Convert.ToDecimal(is_linha_atual.Substring(1, 15)),
-                        is_numero_resumo_venda = is_linha_atual.Substring(16, 9),
-                        is_banco = banco_ro,
-                        is_agencia = agencia,
-                        is_conta_corrente = conta,
-                        is_data_resumo_venda = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(37, 8), "ddMMyyyy", "dd/MM/yyyy")),
-
-<<<<<<< HEAD
-                if (Convert.ToInt32(is_linha_atual.Substring(144, 2).Trim().Equals("") ? "0" : is_linha_atual.Substring(144, 2).Trim()) != 10)
-                {
-                    /*
-                    var resumo_banese = new ConciliacaoUseRedeEEVCResumoOperacaoStruct()
-                    {
-                        is_tipo_registro = 1,
-                        nm_tipo_registro = "Resumo de Crédito",
-                        is_numero_filiacao_pv = Convert.ToDecimal(is_linha_atual.Substring(1, 15)),
-                        is_numero_resumo_venda = is_linha_atual.Substring(16, 9),
-                        is_banco = banco_ro,
-                        is_agencia = agencia,
-                        is_conta_corrente = conta,
-                        is_data_resumo_venda = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(37, 8), "ddMMyyyy", "dd/MM/yyyy")),
-
-=======
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
-                        is_quantidade_resumo_vendas = "0",
-                        is_valor_bruto = Convert.ToDecimal(is_linha_atual.Substring(70, 12)) / 100,
-
-                        is_valor_gorjeta = 0,
-
-                        is_valor_rejeitado = 0,
-                        is_valor_desconto = (Convert.ToDecimal(is_linha_atual.Substring(94, 12)) / 100),
-                        is_valor_liquido = (Convert.ToDecimal(is_linha_atual.Substring(82, 12)) / 100),
-
-                        is_data_credito = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(122, 8), "ddMMyyyy", "dd/MM/yyyy")),
-                        is_bandeira = "Banese",
-                        rede = 3
-                    };
-                    io_arl_ro_credito_banese.Add(resumo_banese);
-                    */
-
                     var comprovante = new ConciliacaoUseRedeEEVCComprovanteVendaStruct()
                     {
                         is_tipo_registro = 2,
@@ -780,7 +682,7 @@ namespace Conciliacao.Models
                         is_data_cv =
                             Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(37, 8), "ddMMyyyy", "dd/MM/yyyy")),
 
-                        is_valor_bruto = Convert.ToDecimal(is_linha_atual.Substring(70, 12)) / 100,
+                        is_valor_bruto = Convert.ToDecimal(is_linha_atual.Substring(70, 12))/100,
                         is_valor_gorjeta = 0, //Convert.ToDecimal(is_linha_atual.Substring(52, 15)) / 100,
                         is_numero_cartao = is_linha_atual.Substring(51, 19),
 
@@ -792,7 +694,7 @@ namespace Conciliacao.Models
 
                         is_numero_referencia = "0", //a.Substring(100, 13),
 
-
+                        
                         is_valor_desconto = (Convert.ToDecimal(is_linha_atual.Substring(94, 12)) / 100),
 
                         is_numero_autorizacao = is_linha_atual.Substring(130, 10),
@@ -804,14 +706,14 @@ namespace Conciliacao.Models
                         is_tipo_captura = (string)io_hsm_tabela_VI[is_linha_atual.Substring(140, 3)],
 
                         is_valor_liquido =
-                            (Convert.ToDecimal(is_linha_atual.Substring(82, 12)) / 100),
+                            (Convert.ToDecimal(is_linha_atual.Substring(82, 12))/100),
                         // Convert.ToDecimal(a.Substring(205, 15)) / 100,#VER
 
-                        //   is_valor_liquido_primeira_parc =  Convert.ToDecimal(is_linha_atual.Substring(113, 13)) / 100,
-                        //   is_valor_liquido_demais_parc = Convert.ToDecimal(is_linha_atual.Substring(126, 13)) / 100,
-                        //   numero_nota_fiscal = is_linha_atual.Substring(139, 9),
+                     //   is_valor_liquido_primeira_parc =  Convert.ToDecimal(is_linha_atual.Substring(113, 13)) / 100,
+                     //   is_valor_liquido_demais_parc = Convert.ToDecimal(is_linha_atual.Substring(126, 13)) / 100,
+                     //   numero_nota_fiscal = is_linha_atual.Substring(139, 9),
                         numero_unico_transacao = is_linha_atual.Substring(16, 9),
-                        //  is_numero_terminal = is_linha_atual.Substring(52, 8),
+                      //  is_numero_terminal = is_linha_atual.Substring(52, 8),
 
                         is_bandeira = bandeira, //TabelaI(a.Substring(261, 1)), #VER
 
@@ -831,7 +733,7 @@ namespace Conciliacao.Models
                         valor_lancamento = comprovante.is_valor_liquido,
                         banco = Convert.ToInt32(banco_ro),
                         agencia = agencia,
-                        conta_corrente = conta,
+                        conta_corrente = Convert.ToInt64(conta),
                         data_movimento = Convert.ToDateTime(data_movimento),
                         numero_rv = Convert.ToInt32(comprovante.is_numero_resumo_vendas.ToString()),
                         data_rv = comprovante.is_data_cv,
@@ -839,7 +741,7 @@ namespace Conciliacao.Models
                         tipo_transacao = tipo_transacao,
                         valor_bruto_rv = bruto_rv,
                         valor_taxa_desconto = taxa,
-                        numero_parcela = comprovante.is_parcela + "/" + comprovante.is_numero_parcelas,
+                        numero_parcela = parcela,
                         situacao = "",
                         numero_pv_original = Convert.ToInt64(comprovante.is_numero_filiacao_pv),
                         rede = 3
@@ -868,25 +770,6 @@ namespace Conciliacao.Models
                 }
                 else
                 {
-                    var resumo_debito_banese = new ConciliacaoUseRedeEEVDResumoOperacaoStruct()
-                    {
-                        is_tipo_registro = 1,
-                        nm_tipo_registro = "Resumo de Débito",
-                        is_numero_filiacao_pv = Convert.ToDecimal(is_linha_atual.Substring(1, 15)),
-                        is_numero_resumo_venda = is_linha_atual.Substring(16, 9),
-                        is_banco = banco_ro,
-                        is_agencia = agencia,
-                        is_conta_corrente = conta,
-                        is_data_resumo_venda = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(37, 8), "ddMMyyyy", "dd/MM/yyyy")),
-                        is_valor_bruto = Convert.ToDecimal(is_linha_atual.Substring(70, 12)) / 100,
-                        is_valor_desconto = (Convert.ToDecimal(is_linha_atual.Substring(94, 12)) / 100),
-                        is_valor_liquido = (Convert.ToDecimal(is_linha_atual.Substring(82, 12)) / 100),
-                        is_data_credito = Convert.ToDateTime(data_pagamento),
-                        is_bandeira = "Banese",
-                        rede = 3
-                    };
-                    io_arl_ro_debito_banese.Add(resumo_debito_banese);
-
                     var resumo = new ConciliacaoUseRedeEEVDComprovanteVendaStruct()
                     {
                         is_tipo_registro = 2,
@@ -896,7 +779,7 @@ namespace Conciliacao.Models
                         is_data_cv = Convert.ToDateTime(FormatoDataExecutar(is_linha_atual.Substring(37, 8), "ddMMyyyy", "dd/MM/yyyy")),
                         is_valor_bruto = Convert.ToDecimal(is_linha_atual.Substring(70, 12)) / 100,
                         is_valor_liquido = (Convert.ToDecimal(is_linha_atual.Substring(82, 12)) / 100),
-                        is_valor_desconto = (Convert.ToDecimal(is_linha_atual.Substring(94, 12)) / 100),
+                        is_valor_desconto = (Convert.ToDecimal(is_linha_atual.Substring(94, 12)) / 100) ,
 
                         is_parcela = is_linha_atual.Substring(108, 2),
                         is_numero_parcelas = Convert.ToInt32(is_linha_atual.Substring(106, 2).Trim().Equals("") ? "0" : is_linha_atual.Substring(106, 2).Trim()),
@@ -910,7 +793,7 @@ namespace Conciliacao.Models
                         is_numero_terminal = "",
                         is_numero_autorizacao = is_linha_atual.Substring(130, 10),
                         is_tipo_captura = meio_captura,
-                        is_reservado = "",
+                        is_reservado ="",
                         is_valor_compra = Convert.ToDecimal(is_linha_atual.Substring(70, 12)) / 100,
                         is_valor_liquido_primeira_parc = Convert.ToDecimal(is_linha_atual.Substring(82, 12)) / 100,
                         is_valor_liquido_demais_parc = Convert.ToDecimal(is_linha_atual.Substring(94, 12)) / 100,
@@ -919,7 +802,7 @@ namespace Conciliacao.Models
                         is_valor_saque = 0,
                         is_bandeira = bandeira,
                         taxa_cobrada = taxa,
-
+                        
                         rede = 3
 
                         //   is_codigo_tef = achou.Codigt
@@ -927,8 +810,8 @@ namespace Conciliacao.Models
 
                     io_arl_cv_debito_banese.Add(resumo);
                 }
-
-
+                
+                
                 //io_hsm_cv.Add(is_ultimo_ro, io_arl_cv);
 
                 var lo_detalhado1 = new ArquivoDetalhado()
@@ -964,13 +847,13 @@ namespace Conciliacao.Models
                     envio_banco = "",
                     cartao = lo_cv.cartao,
                     sinal_valor_bruto = "",
-                    valor_bruto = lvalor_bruto.ToString(),
+                    valor_bruto = (Convert.ToDecimal(is_linha_atual.Substring(70, 12)) / 100).ToString(),
                     sinal_comissao = "",
                     comissao = ltaxa.ToString(),
                     sinal_rejeitado = "",
                     valor_rejeitado = "",
                     sinal_liquido = "",
-                    valor_liquido = lvalor_liquido.ToString(),
+                    valor_liquido = (Convert.ToDecimal(is_linha_atual.Substring(82, 12)) / 100).ToString(),
                     valor_total_venda = lvalor_bruto.ToString(),
                     valor_prox_parcela = "",
                     taxas = "",
@@ -1040,87 +923,87 @@ namespace Conciliacao.Models
             io_arl_parcelas.Add(parcelas);
 
             /* 14  */
-            /*  try
-              {
-                  var data_pagamento = Convert.ToDateTime(a.Substring(110, 2) + "/" + a.Substring(112, 2) + "/" + a.Substring(114, 4));
-                  var estabelecimento = a.Substring(1, 15);
-                  if (io_hsm_totalizador_estabelecimento.Contains(estabelecimento + data_pagamento))
-                  {
-                      TotalizadorEstabelecimento totalizador_estabelecimento = (TotalizadorEstabelecimento)io_hsm_totalizador_estabelecimento[estabelecimento + data_pagamento];
-                      io_hsm_totalizador_estabelecimento.Remove(estabelecimento + data_pagamento);
-                      io_hsm_totalizador_estabelecimento.Add(estabelecimento + data_pagamento, new TotalizadorEstabelecimento
-                      {
-                          prev_pagamento = Convert.ToDateTime(data_pagamento),
-                          total_realizado = totalizador_estabelecimento.total_realizado + (Convert.ToDecimal(a.Substring(82, 12)) / 100),
-                          estabelecimento = Convert.ToInt32(estabelecimento)
-                      });
-                  }
-                  else
-                  {
-                      io_hsm_totalizador_estabelecimento.Add(estabelecimento + data_pagamento, new TotalizadorEstabelecimento
-                      {
-                          prev_pagamento = Convert.ToDateTime(data_pagamento),
-                          total_realizado = (Convert.ToDecimal(a.Substring(82, 12)) / 100),
-                          estabelecimento = Convert.ToInt32(estabelecimento)
-                      });
-                  }
+          /*  try
+            {
+                var data_pagamento = Convert.ToDateTime(a.Substring(110, 2) + "/" + a.Substring(112, 2) + "/" + a.Substring(114, 4));
+                var estabelecimento = a.Substring(1, 15);
+                if (io_hsm_totalizador_estabelecimento.Contains(estabelecimento + data_pagamento))
+                {
+                    TotalizadorEstabelecimento totalizador_estabelecimento = (TotalizadorEstabelecimento)io_hsm_totalizador_estabelecimento[estabelecimento + data_pagamento];
+                    io_hsm_totalizador_estabelecimento.Remove(estabelecimento + data_pagamento);
+                    io_hsm_totalizador_estabelecimento.Add(estabelecimento + data_pagamento, new TotalizadorEstabelecimento
+                    {
+                        prev_pagamento = Convert.ToDateTime(data_pagamento),
+                        total_realizado = totalizador_estabelecimento.total_realizado + (Convert.ToDecimal(a.Substring(82, 12)) / 100),
+                        estabelecimento = Convert.ToInt32(estabelecimento)
+                    });
+                }
+                else
+                {
+                    io_hsm_totalizador_estabelecimento.Add(estabelecimento + data_pagamento, new TotalizadorEstabelecimento
+                    {
+                        prev_pagamento = Convert.ToDateTime(data_pagamento),
+                        total_realizado = (Convert.ToDecimal(a.Substring(82, 12)) / 100),
+                        estabelecimento = Convert.ToInt32(estabelecimento)
+                    });
+                }
 
-                  if (io_hsm_totalizador_banco.Contains(banco_ro + data_pagamento))
-                  {
-                      TotalizadorBanco totalizador_banco = (TotalizadorBanco)io_hsm_totalizador_banco[banco_ro + data_pagamento];
-                      io_hsm_totalizador_banco.Remove(banco_ro + data_pagamento);
-                      io_hsm_totalizador_banco.Add(banco_ro + data_pagamento, new TotalizadorBanco
-                      {
-                          data_prevista = Convert.ToDateTime(data_pagamento),
-                          total_realizado = totalizador_banco.total_realizado + (Convert.ToDecimal(a.Substring(82, 12)) / 100),
-                          id_banco = Convert.ToInt32(banco_ro)
-                      });
-                  }
-                  else
-                  {
-                      io_hsm_totalizador_banco.Add(banco_ro + data_pagamento, new TotalizadorBanco
-                      {
-                          data_prevista = Convert.ToDateTime(data_pagamento),
-                          total_realizado = (Convert.ToDecimal(a.Substring(82, 12)) / 100),
-                          id_banco = Convert.ToInt32(banco_ro)
-                      });
-                  }
+                if (io_hsm_totalizador_banco.Contains(banco_ro + data_pagamento))
+                {
+                    TotalizadorBanco totalizador_banco = (TotalizadorBanco)io_hsm_totalizador_banco[banco_ro + data_pagamento];
+                    io_hsm_totalizador_banco.Remove(banco_ro + data_pagamento);
+                    io_hsm_totalizador_banco.Add(banco_ro + data_pagamento, new TotalizadorBanco
+                    {
+                        data_prevista = Convert.ToDateTime(data_pagamento),
+                        total_realizado = totalizador_banco.total_realizado + (Convert.ToDecimal(a.Substring(82, 12)) / 100),
+                        id_banco = Convert.ToInt32(banco_ro)
+                    });
+                }
+                else
+                {
+                    io_hsm_totalizador_banco.Add(banco_ro + data_pagamento, new TotalizadorBanco
+                    {
+                        data_prevista = Convert.ToDateTime(data_pagamento),
+                        total_realizado = (Convert.ToDecimal(a.Substring(82, 12)) / 100),
+                        id_banco = Convert.ToInt32(banco_ro)
+                    });
+                }
 
-                  Decimal valor_total = 0;
-                  Decimal valor_total_liquido = 0;
+                Decimal valor_total = 0;
+                Decimal valor_total_liquido = 0;
 
-                  if (io_hsm_totalizador_produto.Contains(produto_ro + data_pagamento))
-                  {
-                      TotalizadorProduto totalizador_produto = (TotalizadorProduto)io_hsm_totalizador_produto[produto_ro + data_pagamento];
-                      valor_total = totalizador_produto.valor_bruto + (Convert.ToDecimal(a.Substring(70, 12)) / 100);
-                      valor_total_liquido = totalizador_produto.valor_liquido + (Convert.ToDecimal(a.Substring(82, 12)) / 100);
-                      io_hsm_totalizador_produto.Remove(produto_ro + data_pagamento);
-                      io_hsm_totalizador_produto.Add(produto_ro + data_pagamento, new TotalizadorProduto
-                      {
-                          data_prevista = Convert.ToDateTime(data_pagamento),
-                          valor_bruto = valor_total,
-                          valor_liquido = valor_total_liquido,
-                          ds_produto = produto_ro,
-                          rede = "Banese"
-                      });
-                  }
-                  else
-                  {
-                      io_hsm_totalizador_produto.Add(produto_ro + data_pagamento, new TotalizadorProduto
-                      {
-                          data_prevista = Convert.ToDateTime(data_pagamento),
-                          valor_bruto = (Convert.ToDecimal(a.Substring(70, 12)) / 100),
-                          valor_liquido = (Convert.ToDecimal(a.Substring(82, 12)) / 100),
-                          ds_produto = produto_ro,
-                          rede = "Banese"
-                      });
-                  } 
+                if (io_hsm_totalizador_produto.Contains(produto_ro + data_pagamento))
+                {
+                    TotalizadorProduto totalizador_produto = (TotalizadorProduto)io_hsm_totalizador_produto[produto_ro + data_pagamento];
+                    valor_total = totalizador_produto.valor_bruto + (Convert.ToDecimal(a.Substring(70, 12)) / 100);
+                    valor_total_liquido = totalizador_produto.valor_liquido + (Convert.ToDecimal(a.Substring(82, 12)) / 100);
+                    io_hsm_totalizador_produto.Remove(produto_ro + data_pagamento);
+                    io_hsm_totalizador_produto.Add(produto_ro + data_pagamento, new TotalizadorProduto
+                    {
+                        data_prevista = Convert.ToDateTime(data_pagamento),
+                        valor_bruto = valor_total,
+                        valor_liquido = valor_total_liquido,
+                        ds_produto = produto_ro,
+                        rede = "Banese"
+                    });
+                }
+                else
+                {
+                    io_hsm_totalizador_produto.Add(produto_ro + data_pagamento, new TotalizadorProduto
+                    {
+                        data_prevista = Convert.ToDateTime(data_pagamento),
+                        valor_bruto = (Convert.ToDecimal(a.Substring(70, 12)) / 100),
+                        valor_liquido = (Convert.ToDecimal(a.Substring(82, 12)) / 100),
+                        ds_produto = produto_ro,
+                        rede = "Banese"
+                    });
+                } 
 
-              }
-              catch (Exception e)
-              {
-                  throw e;
-              }*/
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }*/
 
         }
 
@@ -1143,7 +1026,7 @@ namespace Conciliacao.Models
             }
         }
 
-        private void ARDesmontar()
+            private void ARDesmontar()
         {
             try
             {
@@ -1363,10 +1246,11 @@ namespace Conciliacao.Models
             /*
             Tabela II.
             */
-            io_hsm_tabela_II.Add("01", "Ajuste à Crédito (Referente ao agendamento de crédito)");
-            io_hsm_tabela_II.Add("02", "Ajuste à Débito (Referente ao agendamento de Débito)");
-            io_hsm_tabela_II.Add("03", "Aluguel de POS");
-            io_hsm_tabela_II.Add("04", "Compra de Títulos");
+            io_hsm_tabela_II.Add("01", "Venda");
+            io_hsm_tabela_II.Add("02", "Ajuste a Crédito");
+            io_hsm_tabela_II.Add("03", "Ajuste a Débito");
+            io_hsm_tabela_II.Add("04", "Pacote banese");
+            io_hsm_tabela_II.Add("05", "Reagendamento");
 
             /*
             Tabela III.
@@ -1381,49 +1265,144 @@ namespace Conciliacao.Models
             /*
             Tabela IV - Forma de pagamento.
             */
-            io_hsm_tabela_IV.Add("PF", "Pagamento Futuro (vendas)");
-            io_hsm_tabela_IV.Add("PG", "Pagamento Normal (Repasse financeiro)");
-            io_hsm_tabela_IV.Add("ES", "Estorno de Venda realizada no dia");
-<<<<<<< HEAD
-            io_hsm_tabela_IV.Add("CT", "Compra de Títulos");
-=======
-            io_hsm_tabela_IV.Add("CT", "Compra de Títulos");            
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
+            io_hsm_tabela_IV.Add("PF", "Pagamento Futuro");
+            io_hsm_tabela_IV.Add("PG", "Pagamento Normal");
+            io_hsm_tabela_IV.Add("ES", "Estorno de Venda");
             io_hsm_tabela_IV.Add("AL", "Aluguel de POS");
             io_hsm_tabela_IV.Add("AG", "Agen.Crédito/Débito");
-            io_hsm_tabela_IV.Add("AC", "Antecipação de Crédito");
+            io_hsm_tabela_IV.Add("AC", "Antec.deCrédito");
             /*
             Tabela V.
             */
-            io_hsm_tabela_V.Add("01", "Rotativo");
-            io_hsm_tabela_V.Add("02", "CDC2 (Compras parceladas sem juros)");
-            io_hsm_tabela_V.Add("03", "CDC1 (Compras parceladas com juros da administradora)");
-            io_hsm_tabela_V.Add("04", "CDC3 (Compras parceladas com juros do lojista)");
-            io_hsm_tabela_V.Add("10", "Débito");
+            io_hsm_tabela_V.Add("01", "Acerto de Correção Monetária");
+            io_hsm_tabela_V.Add("02", "Acerto de data de pagamento");
+            io_hsm_tabela_V.Add("03", "Acerto de taxa de comissão");
+            io_hsm_tabela_V.Add("04", "Acerto de valores não processados");
+            io_hsm_tabela_V.Add("05", "Acerto de valores não recebidos");
+            io_hsm_tabela_V.Add("06", "Acerto de valores não reconhecidos");
+            io_hsm_tabela_V.Add("07", "Acerto de valores negociados");
+            io_hsm_tabela_V.Add("08", "Acerto de valores processados indevidamente");
+            io_hsm_tabela_V.Add("09", "Acerto lancamento nao compensado em conta corrente");
+            io_hsm_tabela_V.Add("10", "Acerto referente a valores contestados");
+            io_hsm_tabela_V.Add("11", "Acerto temporário de valores contestados");
+            io_hsm_tabela_V.Add("12", "Acertos diversos");
+            io_hsm_tabela_V.Add("13", "Acordo de cobrança");
+            io_hsm_tabela_V.Add("14", "Acordo juridico");
+            io_hsm_tabela_V.Add("15", "Aplicação de multa programa monitória chargeback");
+            io_hsm_tabela_V.Add("16", "Bloqueio de valor por ordem judicial");
+            io_hsm_tabela_V.Add("17", "Cancelamento de venda");
+            io_hsm_tabela_V.Add("18", "Cobrança de tarifa operacional");
+            io_hsm_tabela_V.Add("19", "Cobrança mensal linx comercio");
+            io_hsm_tabela_V.Add("20", "Cobrança plano banese");
+            io_hsm_tabela_V.Add("21", "Contrato de calcão");
+            io_hsm_tabela_V.Add("22", "Crédito de devolução cancelamento - Banco Emissor");
+            io_hsm_tabela_V.Add("23", "Crédito EC - Referente contestacao portador");
+            io_hsm_tabela_V.Add("24", "Crédito por cancelamento rejeitado - banese");
+            io_hsm_tabela_V.Add("25", "Débito processamento dupicado - Visa Pedagio");
+            io_hsm_tabela_V.Add("26", "Débito por venda realizada sem a leitura do chip");
+            io_hsm_tabela_V.Add("27", "Débito por venda rejeitada no sistema");
+            io_hsm_tabela_V.Add("28", "Débito referente a contestação do portador");
+            io_hsm_tabela_V.Add("29", "Estorno acordo juridico");
+            io_hsm_tabela_V.Add("30", "Estorno contrato de calcao");
+            io_hsm_tabela_V.Add("31", "Estorno de acordo de cobranca");
+            io_hsm_tabela_V.Add("32", "Estorno de bloqueio de valor por ordem judicial");
+            io_hsm_tabela_V.Add("33", "Estorno de cancelamento de venda");
+            io_hsm_tabela_V.Add("34", "Estorno de cobranca de tarifa operacional");
+            io_hsm_tabela_V.Add("35", "Estorno de cobranca mensal linx comercio");
+            io_hsm_tabela_V.Add("36", "Estorno de cobranca plano banese");
+            io_hsm_tabela_V.Add("37", "Estorno de débito venda sem a leitura do chip");
+            io_hsm_tabela_V.Add("38", "Estorno de insentivo comercial");
+            io_hsm_tabela_V.Add("39", "Estorno de multa programa monitória chargeback");
+            io_hsm_tabela_V.Add("40", "Estorno de rejeicao ARV");
+            io_hsm_tabela_V.Add("41", "Estorno de reversão pagamento duplicidade - ARV");
+            io_hsm_tabela_V.Add("42", "Estorno de tarifa de cadastro");
+            io_hsm_tabela_V.Add("43", "Estorno de tarifa extrato de papel");
+            io_hsm_tabela_V.Add("44", "Estorno deb processamento duplicado - Visa Pedagio");
+            io_hsm_tabela_V.Add("45", "Incentivo comercial");
+            io_hsm_tabela_V.Add("46", "Incentivo por venda de recarga");
+            io_hsm_tabela_V.Add("47", "Regularização de rejeição ARV");
+            io_hsm_tabela_V.Add("48", "Reversão pagto duplicidade - ARV");
+            io_hsm_tabela_V.Add("49", "Tarifa de cadastro");
+            io_hsm_tabela_V.Add("50", "Tarifa Extrato papel");
+            io_hsm_tabela_V.Add("51", "Aceleração de Débito de Antecipação");
 
             /*
-            Tabela VI - Tipo de captura.
+            Tabela VI - Bandeira.
             */
-            io_hsm_tabela_VI.Add("POS", "POS");
-            io_hsm_tabela_VI.Add("TEF", "TEF");
-            io_hsm_tabela_VI.Add("URA", "URA");
-            io_hsm_tabela_VI.Add("MOB", "MOBILE PAYMENT");
-            io_hsm_tabela_VI.Add("ECO", "E-COMMERCE");
+            io_hsm_tabela_VI.Add("001", "Visa");
+            io_hsm_tabela_VI.Add("002", "Mastercard");
+            io_hsm_tabela_VI.Add("006", "SoroCred");
+            io_hsm_tabela_VI.Add("007", "Elo");
+            io_hsm_tabela_VI.Add("009", "Diners");
+
+            io_hsm_tabela_VI.Add("011", "Agiplan");
+            io_hsm_tabela_VI.Add("015", "Banescard");
+            io_hsm_tabela_VI.Add("023", "Cabal");
+            io_hsm_tabela_VI.Add("029", "CredSystem");
+            io_hsm_tabela_VI.Add("035", "Esplanada");
+            io_hsm_tabela_VI.Add("064", "CredZ");
 
 
             /*
-            Tabela VII - Tipo de Origem.
+            Tabela VII - Ponto de venda.
             */
-            io_hsm_tabela_VII.Add("024", "Acerto de debito");
-            io_hsm_tabela_VII.Add("066", "Estorno de Venda");
-            io_hsm_tabela_VII.Add("067", "Aluguel Lojista");
-<<<<<<< HEAD
-            io_hsm_tabela_VII.Add("080", "Cancelamento de Compra de Títulos");
-=======
-            io_hsm_tabela_VII.Add("080", "Cancelamento de Compra de Títulos");            
->>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
-            io_hsm_tabela_VII.Add("081", "Taxa de Administração compras estornadas");
-            io_hsm_tabela_VII.Add("333", "Agendamento de Débito Equipamento");
+            io_hsm_tabela_VII.Add("01", "POS-Point of Sales");
+            io_hsm_tabela_VII.Add("02", "PDV-Ponto de Venda ou TEF");
+            io_hsm_tabela_VII.Add("03", "E-Comerce");
+            io_hsm_tabela_VII.Add("04", "EDI");
+            io_hsm_tabela_VII.Add("05", "ADP/BSP-Empresa Capturadora");
+            io_hsm_tabela_VII.Add("06", "Manual");
+            io_hsm_tabela_VII.Add("07", "URA-CVA");
+            io_hsm_tabela_VII.Add("08", "Mobile");
+            io_hsm_tabela_VII.Add("09", "Moedeiro eletrônico em rede");
+
+            /*
+            Tabela VIII - Erros.
+            */
+            io_hsm_tabela_VIII.Add("002", "Cartão Inváido");
+            io_hsm_tabela_VIII.Add("023", "Outros erros");
+            io_hsm_tabela_VIII.Add("031", "Transação de saque com cartão electron valor zerado");
+            io_hsm_tabela_VIII.Add("039", "Banco emissor inválido");
+            io_hsm_tabela_VIII.Add("044", "Data da transação inválida");
+            io_hsm_tabela_VIII.Add("045", "Código de autorização inválido");
+            io_hsm_tabela_VIII.Add("055", "Número de Parcelas Inválido");
+            io_hsm_tabela_VIII.Add("056", "Transação financiada para EC não autorizado");
+            io_hsm_tabela_VIII.Add("057", "Cartão em boletim protetor");
+            io_hsm_tabela_VIII.Add("061", "Número de cartão inválido");
+            io_hsm_tabela_VIII.Add("066", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("067", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("069", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("070", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("071", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("072", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("073", "Transação inválida");
+            io_hsm_tabela_VIII.Add("074", "Valor de Transação inválido");
+            io_hsm_tabela_VIII.Add("075", "Número de cartão inválido");
+            io_hsm_tabela_VIII.Add("077", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("078", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("079", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("080", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("081", "Cartão Vencido");
+            io_hsm_tabela_VIII.Add("082", "Transação Não Autorizada");
+            io_hsm_tabela_VIII.Add("083", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("084", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("086", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("092", "Banco Emissor sem Comunicação");
+            io_hsm_tabela_VIII.Add("093", "Desbalanceamento no plano parcelado");
+            io_hsm_tabela_VIII.Add("094", "Venda parcelada para cartão emitido no exterior");
+            io_hsm_tabela_VIII.Add("097", "Valor de parcela menor do que o permitido");
+            io_hsm_tabela_VIII.Add("099", "Banco emissor inválido");
+            io_hsm_tabela_VIII.Add("100", "Transação não autorizada");
+            io_hsm_tabela_VIII.Add("101", "Transação duplicada");
+            io_hsm_tabela_VIII.Add("102", "Transação duplicada");
+            io_hsm_tabela_VIII.Add("124", "BIN não cadastrado");
+            io_hsm_tabela_VIII.Add("126", "Transação de saque com cartão Electron inválido");
+            io_hsm_tabela_VIII.Add("128", "Transação de saque com cartão Electron inválido");
+            io_hsm_tabela_VIII.Add("129", "Transação de saque com cartão Electron inválido");
+            io_hsm_tabela_VIII.Add("130", "Transação de saque com cartão Electron inválido");
+            io_hsm_tabela_VIII.Add("133", "Transação de saque com cartão Electron inválido");
+            io_hsm_tabela_VIII.Add("134", "Transação de saque com cartão Electron inválido");
+            io_hsm_tabela_VIII.Add("145", "Estabelecimento inválido para destribuição");
         }
 
         /**

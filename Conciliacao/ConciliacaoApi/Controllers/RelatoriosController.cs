@@ -120,6 +120,7 @@ namespace ConciliacaoAPI.Controllers
                          new DateTime(datainicio).ToString("yyyy-MM-dd"),
                          new DateTime(datafinal).ToString("yyyy-MM-dd"));
 
+            filtro1 = filtro1 + " and a.taxa_cobrada > 0  ";
 
             if (!bandeira.Equals("0") && (!bandeira.Equals("\"\"")))
             {
@@ -212,8 +213,8 @@ namespace ConciliacaoAPI.Controllers
                                     er.nome_estabelecimento 
                             from conciliador_userede_eevd_resumooperacao a
                             left join cadastro_estabelecimento_rede er on er.id_estabelecimento_rede = cast(a.numero_filiacao_pv as decimal(20,0)) and (er.id_rede = coalesce(a.rede,1))
-                            " + filtro+
-                            
+                            " + filtro +" and a.valor_desconto > 0 "+
+
                             @"union all
                             select distinct
                                     2 as ordem,
@@ -251,8 +252,25 @@ namespace ConciliacaoAPI.Controllers
 	                                'RESUMO' as resumo,
                                     tipo_registro,
                                     numero_filiacao_pv,
-                                    data_credito,
-                                    data_resumo_venda,
+                                    ( select max(x.data_credito)
+                                        from conciliador_userede_eevc_resumooperacao x
+                                        where x.numero_resumo_venda = a.numero_resumo_venda and
+                                              x.numero_filiacao_pv = a.numero_filiacao_pv and
+                                              x.valor_bruto = a.valor_bruto and
+                                              x.bandeira = a.bandeira and
+                                              x.tipo_registro = a.tipo_registro and
+                                              x.rede = a.rede
+                                      ) as data_credito,
+                                     (
+                                        select max(x.data_resumo_venda)
+                                        from conciliador_userede_eevc_resumooperacao x
+                                        where x.numero_resumo_venda = a.numero_resumo_venda and
+                                              x.numero_filiacao_pv = a.numero_filiacao_pv and
+                                              x.valor_bruto = a.valor_bruto and
+                                              x.bandeira = a.bandeira and
+                                              x.tipo_registro = a.tipo_registro and
+                                              x.rede = a.rede
+                                      ) as data_resumo_venda,
                                     numero_resumo_venda,
                                     '' as nsu_rede,
                                     valor_bruto,
@@ -270,7 +288,7 @@ namespace ConciliacaoAPI.Controllers
                                     er.nome_estabelecimento  
                             from conciliador_userede_eevc_resumooperacao a
                             left join cadastro_estabelecimento_rede er on er.id_estabelecimento_rede = cast(a.numero_filiacao_pv as decimal(20,0)) and (er.id_rede = coalesce(a.rede,1))
-                            " + filtro + @"                            
+                            " + filtro + @" and a.valor_desconto > 0                           
                             union all
                             select distinct
                                     2 as ordem,
@@ -376,6 +394,8 @@ namespace ConciliacaoAPI.Controllers
              {
                  filtro = filtro + " and coalesce((select 1 from conciliador_tef t where t.ds_rede = a.ds_rede and t.dt_transacao = a.dt_transacao and t.nsu_rede = a.nsu_rede),0) = 0";
              }*/
+
+           
 
             filtro = filtro +
                      String.Format(" and {0} between '{1}' and '{2}' ",

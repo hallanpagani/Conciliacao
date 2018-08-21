@@ -150,12 +150,12 @@
 
                             <div class="row">
                                 <section class="col col-sm-12 col-md-3 col-lg-5" style="padding-right: 1px !important;padding-left: 0px !important;">
-                                    @Html.TextBox("datainicio", (string)ViewBag.DataInicio, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker" })
+                                    @Html.TextBox("datainicio", (string)ViewBag.DataInicio, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker", @autocomplete = "off" })
                                 </section>
 
                                 <section class="col col-sm-12 col-md-3 col-lg-7" style="padding-left: 2px !important;">
                                     <div class="input-group">
-                                        @Html.TextBox("datafinal", (string)ViewBag.DataFinal, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker" })
+                                        @Html.TextBox("datafinal", (string)ViewBag.DataFinal, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker", @autocomplete = "off" })
                                         <div class="input-group-btn">
                                             <button class="btn btn-default btn-primary dropdown-toggle" id="txtPeriodo_btnOpcoes" data-toggle="dropdown" type="button">
                                                 <i class="fa fa-list"></i>

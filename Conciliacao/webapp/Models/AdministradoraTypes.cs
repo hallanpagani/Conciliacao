@@ -13,6 +13,7 @@ namespace Conciliacao.Models
             List<SelectListItem> data = new List<SelectListItem>();
             data.Add(new SelectListItem() { Text = "", Value = "" , Selected = Selecionar.Equals("") });
             data.Add(new SelectListItem() { Text = "AMEX", Value = "AMEX", Selected = Selecionar.Equals("AMEX") });
+            data.Add(new SelectListItem() { Text = "BANESE", Value = "BANESE", Selected = Selecionar.Equals("BANESE") });
             data.Add(new SelectListItem() { Text = "BANESCARD", Value = "BANESCARD", Selected = Selecionar.Equals("BANESCARD") });
             data.Add(new SelectListItem() { Text = "CABAL", Value = "CABAL", Selected = Selecionar.Equals("CABAL") });
             data.Add(new SelectListItem() { Text = "CREDSYSTEM", Value = "CREDSYSTEM", Selected = Selecionar.Equals("CREDSYSTEM") });

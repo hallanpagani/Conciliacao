@@ -169,12 +169,12 @@
 
                             <div class="row">
                                 <section class="col col-sm-12 col-md-3 col-lg-5" style="padding-right: 1px !important;padding-left: 0px !important;">
-                                    @Html.TextBox("datainicio", (string)ViewBag.DataInicio, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker" })
+                                    @Html.TextBox("datainicio", (string)ViewBag.DataInicio, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker", @autocomplete = "off" })
                                 </section>
 
                                 <section class="col col-sm-12 col-md-3 col-lg-7" style="padding-left: 2px !important;">
                                     <div class="input-group">
-                                        @Html.TextBox("datafinal", (string)ViewBag.DataFinal, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker" })
+                                        @Html.TextBox("datafinal", (string)ViewBag.DataFinal, new { @maxlength = "10", @data_dateformat = "dd/mm/yy", @onkeypress = "mascaraDT(this, DATA)", @filtrar = "", @onclick = "this.focus();this.select()", @class = "form-control datepicker", @autocomplete = "off" })
                                         <div class="input-group-btn">
                                             <button class="btn btn-default btn-primary dropdown-toggle" id="txtPeriodo_btnOpcoes" data-toggle="dropdown" type="button">
                                                 <i class="fa fa-list"></i>
@@ -236,10 +236,14 @@
                                 <select id="Agencias" name="filtro_agencia" class="requerido" style="width:100%">
                                     @if (@Model.filtro_agencia != 0)
                                     {
-                                        <option value="@Model.filtro_agencia">@Model.filtro_agencia</option>
+                                        <option value="@Model.filtro_agencia">@Model.filtro_nm_agencia</option>
                                     }
                                 </select>
+<<<<<<< HEAD
                      
+=======
+                                @Html.HiddenFor(model => model.filtro_nm_agencia)
+>>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                             </section>
 
                             <section class="col col-sm-12 col-md-1 col-lg-2">
@@ -247,10 +251,14 @@
                                 <select id="Contas" name="filtro_conta" class="requerido" style="width:100%">
                                     @if (!(@Model.filtro_conta??"").Equals(""))
                                     {
-                                        <option value="@Model.filtro_conta">@Model.filtro_conta</option>
+                                        <option value="@Model.filtro_conta">@Model.filtro_nm_conta</option>
                                     }
                                 </select>
+<<<<<<< HEAD
                                 
+=======
+                                @Html.HiddenFor(model => model.filtro_nm_conta)
+>>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
                             </section>
 
                             <section class="col col-sm-12 col-md-1 col-lg-1">
@@ -924,6 +932,7 @@
                     }
                 ],
                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+                "sScrollX": "100%",
                 "pageLength": -1,
                 "bAutoWidth": true,
                 "aaSorting": [],
@@ -1009,7 +1018,7 @@
 
             $('#Agencias').on("select2:select", function (e) {
                 console.log($('#Agencias').select2('data')[0].text);
-                $('#filtro_agencia').val($('#Agencias').select2('data')[0].text); // what you would like to happen
+                $('#filtro_nm_agencia').val($('#Agencias').select2('data')[0].text); // what you would like to happen
             });
 
             var Url = '@Url.Action("GetAgencias", "Banco")';
@@ -1039,7 +1048,7 @@
 
             $('#Contas').on("select2:select", function (e) {
                 console.log($('#Contas').select2('data')[0].text);
-                $('#filtro_conta').val($('#Contas').select2('data')[0].text); // what you would like to happen
+                $('#filtro_nm_conta').val($('#Contas').select2('data')[0].text); // what you would like to happen
             });
 
             var Url = '@Url.Action("GetContas", "Banco")';

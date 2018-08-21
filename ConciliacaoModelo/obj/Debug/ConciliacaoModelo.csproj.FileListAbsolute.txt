@@ -8,4 +8,7 @@ D:\CSharp\Conciliacao\ConciliacaoModelo\bin\Debug\ConciliacaoModelo.dll
 D:\CSharp\Conciliacao\ConciliacaoModelo\bin\Debug\ConciliacaoModelo.pdb
 D:\CSharp\Conciliacao\ConciliacaoModelo\obj\Debug\ConciliacaoModelo.dll
 D:\CSharp\Conciliacao\ConciliacaoModelo\obj\Debug\ConciliacaoModelo.pdb
+<<<<<<< HEAD
 D:\CSharp\Conciliacao\ConciliacaoModelo\obj\Debug\ConciliacaoModelo.csproj.CoreCompileInputs.cache
+=======
+>>>>>>> 7d4f72e90771fdbe2ddce8e4d5c620260095bf10
