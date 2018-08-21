@@ -640,25 +640,44 @@ namespace ConciliacaoAPI.Controllers
                 filtro = filtro + string.Format(" and CAST(banco AS UNSIGNED) = {0} ", banco.ToUpper());
             }
 
-
-            return DAL.ListarObjetos<ConciliacaoUseRedeEEFICreditosStructListar>(string.Format("id_conta={0} and data_lancamento >= '{1}' and data_lancamento <= '{2}' {3} ", idconta, dtini, dtfim, filtro),"", @"numero_pv_centralizador,
-       numero_documento,
-       data_lancamento,
-       valor_lancamento,
-       banco,
-       agencia,
-       conta_corrente,
-       data_movimento,
-       numero_rv,
-       data_rv,
-       bandeira,
-       tipo_transacao,
-       valor_bruto_rv,
-       valor_taxa_desconto,
-       numero_parcela,
-       situacao,
-       numero_pv_original,
-       rede");
+            return DAL.ListarObjetosFromSql<ConciliacaoUseRedeEEFICreditosStructListar>(string.Format(@"select numero_pv_centralizador,
+                                                                                               (
+                                                                                                 select codigo_estabelecimento
+                                                                                                 from cadastro_estabelecimento_rede er
+                                                                                                 where er.id_estabelecimento_rede = cast(a.numero_pv_centralizador as
+                                                                                                 decimal (20, 0)) and
+                                                                                                       (er.id_rede = coalesce(a.rede, 1))
+                                                                                               ) as codigo_estabelecimento,
+                                                                                               (
+                                                                                                 select nome_estabelecimento
+                                                                                                 from cadastro_estabelecimento_rede er
+                                                                                                 where er.id_estabelecimento_rede = cast(a.numero_pv_centralizador as
+                                                                                                 decimal (20, 0)) and
+                                                                                                       (er.id_rede = coalesce(a.rede, 1))
+                                                                                               ) as nome_estabelecimento,
+                                                                                               numero_documento,
+                                                                                               data_lancamento,
+                                                                                               valor_lancamento,
+                                                                                               banco as banco,
+                                                                                               TRIM(LEADING '0' FROM agencia) as agencia,
+                                                                                               TRIM(LEADING '0' FROM conta_corrente) as conta_corrente,
+                                                                                               data_movimento,
+                                                                                               numero_rv,
+                                                                                               data_rv,
+                                                                                               bandeira,
+                                                                                               tipo_transacao,
+                                                                                               valor_bruto_rv,
+                                                                                               valor_taxa_desconto,
+                                                                                               numero_parcela,
+                                                                                               situacao,
+                                                                                               numero_pv_original,
+                                                                                               rede
+                                                                                        from conciliador_userede_eefi_credito a
+                                                                                        where {0}
+                                                                                        group by
+                                                                                               1, 2, 3, 4, 5, 6,
+                                                                                               7, 8, 9, 10, 11, 12, 13,
+                                                                                               14, 15, 16, 17, 18, 19, 20", (string.Format("id_conta={0} and data_lancamento >= '{1}' and data_lancamento <= '{2}' {3} ", idconta, dtini, dtfim, filtro)) ));  
         }
 
         [HttpGet]

@@ -38,6 +38,7 @@ namespace ConciliacaoModelo.model.conciliador.UseRede
         [Column("conta_corrente")]
         public string conta_corrente { get; set; }
 
+
         public string banco_trim
         {
             get

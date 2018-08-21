@@ -642,6 +642,11 @@ namespace Conciliacao.Controllers
             return View(model);
         }
 
+        public static string TrimAllWithSplitAndJoin(string str)
+        {
+            return string.Concat(str.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+        }
+
 
         [HttpGet]
         public ActionResult RelatorioFinanceiroExtratoBancario(string data, string historico, decimal valor)
@@ -649,7 +654,9 @@ namespace Conciliacao.Controllers
             DateTime datainicio = DateTime.ParseExact(data, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             DateTime datafinal = DateTime.ParseExact(data, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
-            BancoExpressao bancoexpressao = DAL.GetObjeto<BancoExpressao>(string.Format("nm_expressao=trim('{0}')", historico.Trim().Replace("  "," ").Replace("  ", " "))) ?? new BancoExpressao();
+            
+
+            BancoExpressao bancoexpressao = DAL.GetObjeto<BancoExpressao>(string.Format("REPLACE(REPLACE(REPLACE(trim(nm_expressao), ' ', ''), '\t', ''), '\n', '')=trim('{0}')", TrimAllWithSplitAndJoin(historico))) ?? new BancoExpressao();
 
             var model = new TransacaoCreditosViewModel();
 
